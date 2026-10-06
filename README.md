@@ -129,7 +129,7 @@ Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian
 - **Tujuan**: apa yang harus kamu capai.
 - **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
 - **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
-- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 7 ada **Petunjuk 2** yang menjelaskan langkah per method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
+- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 4, 6, dan 7 ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
 - **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
 - **Cek dirimu**: tes mana yang harus lulus.
 
@@ -334,7 +334,7 @@ Jawab untuk **setiap** garis relasi di diagram:
 - Apa arti `0..5` dan `0..1` pada garis tersebut?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Relasi yang disimpan sebagai field berarti kelas **mengingat** objek itu. Relasi dependensi tidak mengingat apa pun.
 - Pada komposisi, field diisi **di dalam constructor**, bukan dari parameter constructor.
@@ -342,6 +342,19 @@ Jawab untuk **setiap** garis relasi di diagram:
 - `findByIsbn`: telusuri hanya slot yang terisi. Bandingkan teks dengan `equals`, bukan `==`.
 - `Librarian`: method milik `Member` dan `Book` yang sudah ada sudah menjawab sebagian besar pertanyaanmu. Panggil, jangan tulis ulang aturannya.
 - Urutan pemeriksaan di `lend` penting. Apa yang terjadi jika kamu meminjam bukunya dulu, baru sadar anggotanya sudah mencapai batas?
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+
+- **`Book` dan `Author` (asosiasi)**: (1) tambahkan field bertipe `Author` di `Book`, `private`. Tidak ada yang mengisinya di constructor, jadi nilai awalnya `null`. (2) `getAuthor` mengembalikan field itu. (3) `setAuthor` hanya **menyimpan referensi** yang diterima. Jangan membuat `Author` baru di dalamnya, supaya dua buku bisa menunjuk ke objek yang sama.
+- **`LibraryCard`**: satu field `private` untuk nomor. Constructor menyimpannya, dan `getNumber` mengembalikannya.
+- **`Member` (komposisi)**: (1) tambahkan field bertipe `LibraryCard`. (2) Di constructor `Member`, setelah semua validasi lolos, buat objek `LibraryCard` dengan `new` dan simpan di field. Nomornya dibentuk dari teks `CARD-` yang digabung dengan `memberId`. (3) `getCard` mengembalikan field. Jangan menambahkan parameter kartu ke constructor, dan jangan membuat kartu baru setiap `getCard` dipanggil.
+- **`Shelf`**: (1) field: kode rak, array `Book` berukuran 5, dan penghitung jumlah buku terisi dengan nilai awal 0. (2) `addBook`: jika bukunya `null` atau penghitung sudah sama dengan panjang array, kembalikan `false`. Jika tidak, simpan buku di slot yang ditunjuk penghitung, naikkan penghitung, dan kembalikan `true`. (3) `getBookCount` mengembalikan penghitung. (4) `findByIsbn`: ulangi dari slot 0 sampai sebelum penghitung. Jika ISBN buku di slot itu sama dengan yang dicari (pakai `equals`), kembalikan buku itu. Jika perulangan selesai, kembalikan `null`. (5) `countAvailable`: ulangi dengan batas yang sama. Setiap buku yang tersedia menambah satu ke hitungan.
+- **`Librarian` (dependensi)**: tanpa field dan tanpa constructor khusus. Method-nya menerima `Member` dan `Book` sebagai parameter dan tidak menyimpannya.
+  - `lend`: (1) jika anggota tidak boleh meminjam, kembalikan `false`. (2) Pinjam bukunya. Jika gagal, kembalikan `false`. (3) Tambah pinjaman anggota, lalu kembalikan `true`. Cek anggota **sebelum** mengubah buku.
+  - `receive`: (1) jika buku tidak sedang dipinjam, kembalikan `false`. (2) Kurangi pinjaman anggota. Jika gagal (tidak punya pinjaman), kembalikan `false`. (3) Kembalikan bukunya, lalu kembalikan `true`.
 
 </details>
 
@@ -448,7 +461,7 @@ Struktur:
 - Dua constructor `Book` hampir sama. Bagaimana menghindari menyalin isinya?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Anotasi `@Override` membuat compiler menolak jika nama atau parameter salah. Pasang pada setiap override.
 - Kata kunci `super` bisa dipakai bukan hanya untuk constructor, tetapi juga untuk memanggil method milik parent.
@@ -456,6 +469,27 @@ Struktur:
 - `toString()` sudah ada di `Object`. Kamu meng-override-nya.
 - Teks `Unknown` hanya dipakai jika `author` bernilai `null`.
 - Perpanjangan perlu diingat di sebuah field di `LibraryItem`. Bagaimana `getTotalLoanDays()` memakainya agar tetap benar untuk `Book` (14) dan `Dvd` (3)?
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+
+- **`LibraryItem`**:
+  - `loanDays()` mengembalikan 7.
+  - `describe()` menyusun teks dari `title`, sebuah spasi, lalu `year` di dalam tanda kurung (hasil seperti `Generic (2000)`).
+  - `toString()` cukup memanggil `describe()`. Tidak perlu menyusun teks lagi.
+  - Tambahkan field `private` untuk total hari perpanjangan, nilai awal 0.
+  - `extendLoan(int days)`: jika `days` 0 atau negatif, lempar `IllegalArgumentException`. Jika tidak, tambahkan ke field perpanjangan.
+  - `extendLoan()` tidak perlu mengulang isi di atas. Cukup panggil `extendLoan(int)` dengan angka 7.
+  - `getTotalLoanDays()` menjumlahkan **hasil pemanggilan `loanDays()`** dan field perpanjangan. Jangan menulis angka 7 langsung. Dengan memanggil method, `Book` otomatis memakai 14 dan `Dvd` memakai 3 (inilah polymorphism).
+- **`Book`**:
+  - `loanDays()` mengembalikan 14.
+  - `describe()`: (1) ambil hasil `describe()` milik parent dengan `super`. (2) Tentukan nama penulis: `Unknown` jika `author` `null`, selain itu nama dari objek `Author`. (3) Gabungkan hasil parent, teks ` by ` (dengan spasi di kiri dan kanan), dan nama penulis.
+  - Constructor 4 parameter: baris pertamanya memanggil constructor 3 parameter milik `Book` sendiri (kata kunci `this` diikuti kurung). Setelah itu baru isi penulisnya.
+- **`Dvd`**: `loanDays()` mengembalikan 3. `describe()` mengambil hasil parent, lalu menambahkan spasi, tanda kurung siku berisi durasi dan teks `min` (hasil seperti `Inception (2010) [148 min]`).
+- **`Magazine`**: tidak ada override sama sekali. Constructor 2 parameter: baris pertamanya memanggil constructor 3 parameter milik `Magazine` sendiri dengan nomor edisi 1.
+- Cara memeriksa tanpa tes: di `Main`, taruh `Book`, `Dvd`, dan `Magazine` dalam satu array `LibraryItem[]`, cetak `loanDays()` dan `describe()` setiap elemen, lalu bandingkan dengan tabel nilai yang diharapkan.
 
 </details>
 
