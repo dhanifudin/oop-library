@@ -129,7 +129,7 @@ Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian
 - **Tujuan**: apa yang harus kamu capai.
 - **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
 - **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
-- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode.
+- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 7 ada **Petunjuk 2** yang menjelaskan langkah per method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
 - **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
 - **Cek dirimu**: tes mana yang harus lulus.
 
@@ -504,7 +504,7 @@ Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 Catatan: latihan ini belum mencatat siapa meminjam apa. Itu sengaja, supaya kamu fokus pada kerja sama antar kelas.
 
 <details>
-<summary>Petunjuk: Library</summary>
+<summary>Petunjuk 1: Library</summary>
 
 - Dua array (`items` dan `members`) masing-masing perlu penghitung isi, seperti di `Shelf`.
 - Tipe elemen array koleksi adalah `LibraryItem`. Itu sebabnya `Book`, `Dvd`, dan `Magazine` bisa masuk bersama.
@@ -512,6 +512,21 @@ Catatan: latihan ini belum mencatat siapa meminjam apa. Itu sengaja, supaya kamu
 - Untuk mengabaikan huruf besar-kecil, `String` punya method khusus perbandingan dan method untuk mengubah huruf.
 - `lend` dan `receive` cukup memanggil method yang sudah ada di `Member` dan `LibraryItem`. Tulis alurnya: cari, periksa, ubah.
 - Hasil `searchByKeyword` panjangnya belum diketahui sebelum menghitung. Pikirkan cara menampungnya dulu.
+
+</details>
+
+<details>
+<summary>Petunjuk 2: Library (langkah per method, buka jika Petunjuk 1 belum cukup)</summary>
+
+Field yang dibutuhkan: nama, array koleksi berukuran 20 dan penghitungnya, array anggota berukuran 10 dan penghitungnya. Nilai awal kedua penghitung adalah 0.
+
+- **`addItem`**: (1) jika item `null` atau penghitung sudah sama dengan panjang array, kembalikan `false`. (2) Simpan item di slot yang ditunjuk penghitung. (3) Naikkan penghitung. (4) Kembalikan `true`.
+- **`addMember`**: sama dengan `addItem`, ditambah satu pemeriksaan: panggil `findMember` dengan `memberId` anggota itu. Jika hasilnya bukan `null`, id sudah terdaftar.
+- **`getItems`** dan **`getMembers`**: salin array dari indeks 0 sampai sebelum penghitung ke array baru. `Arrays.copyOf(array, panjangBaru)` melakukannya.
+- **`findItemByTitle`** dan **`findMember`**: gunakan perulangan dari 0 sampai sebelum penghitung (bukan sampai panjang array, karena sisanya `null`). Jika ada yang cocok, langsung kembalikan. Jika perulangan selesai, kembalikan `null`. Untuk judul, cari method `String` yang membandingkan tanpa peduli huruf besar-kecil.
+- **`searchByKeyword`**: (1) buat array sementara sepanjang jumlah koleksi. (2) Telusuri koleksi. Ubah judul dan kata kunci ke huruf kecil, lalu periksa apakah judul memuat kata kunci. Jika ya, simpan di array sementara dan naikkan penghitung hasil. (3) Salin array sementara sepanjang penghitung hasil. Tanpa hasil, kamu otomatis mendapat array kosong.
+- **`lend`**: (1) cari anggota dan koleksi. (2) Jika salah satunya `null`, kembalikan `false`. (3) Jika anggota tidak boleh meminjam, kembalikan `false`. (4) Pinjam koleksinya. Jika gagal, kembalikan `false`. (5) Tambah pinjaman anggota, lalu kembalikan `true`. Perhatikan urutan 3 dan 4: koleksi baru boleh diubah setelah anggota dipastikan boleh meminjam.
+- **`receive`**: (1) cari anggota dan koleksi, `null` berarti `false`. (2) Jika koleksi tidak sedang dipinjam, kembalikan `false`. (3) Kurangi pinjaman anggota. Jika gagal (tidak punya pinjaman), kembalikan `false`. (4) Kembalikan koleksinya, lalu kembalikan `true`.
 
 </details>
 
@@ -615,6 +630,26 @@ public class LibraryApp {
 ```
 
 Perhatikan bahwa `LibraryApp` tidak memakai `System.in` dan `System.out` langsung. Itu yang membuat autograder bisa "mengetik" menu untuk aplikasimu.
+
+<details>
+<summary>Petunjuk 2: LibraryApp (langkah per method, buka jika komentar TODO belum cukup)</summary>
+
+Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`.
+
+- **`run`**: (1) buat variabel penanda yang menyatakan program masih berjalan. (2) Ulangi selama penanda itu benar. Di setiap putaran: cetak menu, lalu jika tidak ada baris input lagi hentikan perulangan. (3) Baca satu baris dan buang spasi di ujungnya. (4) Pilih aksi dengan `switch` pada teks tersebut: `"1"` sampai `"9"` memanggil method yang sesuai, `"0"` mencetak `Goodbye` dan mematikan penanda, dan `default` mencetak `Invalid choice`.
+- **`printMenu`**: satu `println` untuk judul (`=== ` + nama perpustakaan + ` ===`), sepuluh `println` untuk baris menu, lalu satu `print` (tanpa `ln`) untuk `Choose: `. Nama perpustakaan diminta dari `library`.
+- **`readLine`**: (1) `print` promptnya. (2) Jika `in` masih punya baris berikutnya, baca dan buang spasi ujungnya. (3) Jika tidak, kembalikan teks kosong.
+- **`readInt`**: (1) panggil `readLine`. (2) Jika teksnya kosong, kembalikan -1. (3) Telusuri setiap karakter. Jika ada yang bukan angka, kembalikan -1. (4) Ubah teks menjadi bilangan dengan method milik tipe pembungkus `Integer`. (5) Jika hasilnya 0, kembalikan -1 (karena yang diterima hanya bilangan positif). Teks yang sangat panjang bisa melebihi batas `int`, jadi batasi panjang teks (misalnya 9 digit) sebelum diubah.
+- **`showItems`**: (1) ambil array dari `library`. (2) Jika panjangnya 0, cetak `No items`. (3) Jika tidak, telusuri dan cetak satu baris per koleksi. Susun barisnya dari tiga bagian: hasil `describe()`, status (cek `isAvailable()` untuk memilih `Available` atau `Borrowed`), dan `loanDays()` diikuti ` days`, dipisahkan ` | `. Karena baris ini juga dipakai `searchItems`, pertimbangkan menaruhnya di satu method bantu.
+- **`addBook`**: (1) baca `ISBN`, `Title`, lalu `Year` dengan `readInt`. (2) Jika tahun -1, cetak `Invalid number` dan hentikan method. (3) Jika `ISBN` atau judul kosong, cetak `Invalid input` dan hentikan. (4) Buat objek `Book`. (5) Baca nama penulis. Jika tidak kosong, baca negara, buat `Author`, lalu pasang ke buku. (6) Serahkan buku ke `library` dan cetak `Item added` atau `Library is full` sesuai hasilnya.
+- **`addDvd`** dan **`addMagazine`**: pola yang sama, tanpa langkah penulis. Pesan hasilnya sama dengan `addBook`, sehingga bisa dipakai bersama lewat method bantu yang menerima hasil `addItem`.
+- **`registerMember`**: (1) baca id dan nama. (2) Jika salah satunya kosong, cetak `Invalid input` dan hentikan. (3) Buat `Member`. (4) Cetak `Member registered` atau `Member ID already exists` sesuai hasil `addMember`.
+- **`lendItem`** dan **`returnItem`**: baca id dan judul, panggil method yang sesuai di `library`, lalu pilih salah satu dari dua pesan berdasarkan hasilnya. Tidak ada aturan peminjaman di sini.
+- **`searchItems`**: baca kata kunci, minta hasil dari `library`, cetak `No items found` jika kosong, dan jika tidak cetak setiap hasil dengan format yang sama seperti `showItems`.
+- **`showMembers`**: minta array anggota. Jika kosong cetak `No members`. Jika tidak, cetak satu baris per anggota dengan bentuk `id - nama (N loans)`.
+- **`main`**: (1) buat `Library`. (2) Buat beberapa objek (`Book` yang sudah punya penulis, `Dvd`, `Magazine`, `Member`) dan tambahkan ke `library`. (3) Buat `LibraryApp` dengan `new Scanner(System.in)` dan `System.out`, lalu panggil `run()`.
+
+</details>
 
 ### Teks yang harus dicetak
 
