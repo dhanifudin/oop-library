@@ -129,7 +129,7 @@ Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian
 - **Tujuan**: apa yang harus kamu capai.
 - **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
 - **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
-- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 4, 6, dan 7 ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
+- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 2 sampai 7 ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
 - **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
 - **Cek dirimu**: tes mana yang harus lulus.
 
@@ -201,13 +201,24 @@ Kelas `Author` dan `Book` bisa dibuat menjadi objek, menyimpan data, dan menjala
 - Di constructor, nama parameter sama dengan nama field. Bagaimana Java membedakannya?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Deklarasikan field di dalam kelas, di luar method. Tipe field bisa dibaca dari diagram.
 - Kata kunci `this` menunjuk ke objek yang sedang dikerjakan.
 - Status "dipinjam atau tidak" cocok disimpan sebagai tipe `boolean`. Apa nilai awalnya?
 - Method yang mengembalikan `boolean` boleh punya dua `return` yang berbeda. Cek kondisi lebih dulu.
 - Di `Main`, coba buat dua objek `Book` dan cetak datanya. Ini membantu kamu melihat bahwa objek berdiri sendiri.
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+
+- **`Author`**: (1) buat dua field, nama dan negara, keduanya bertipe `String`. (2) Constructor menyalin setiap parameter ke field yang bernama sama. Pakai `this.` di sisi kiri agar Java tahu mana field dan mana parameter. (3) Setiap getter hanya mengembalikan field-nya. (4) `getInfo` menyusun teks dari nama, sebuah spasi, tanda kurung buka, negara, dan tanda kurung tutup.
+- **`Book`**: (1) buat empat field: `isbn` dan `title` bertipe `String`, `year` bertipe `int`, dan satu `boolean` bernama `available`. (2) Constructor menyalin `isbn`, `title`, dan `year` dari parameter. Field `available` tidak punya parameter. Karena buku baru langsung tersedia, isi dengan nilai `true`. (3) Setiap getter hanya mengembalikan field-nya. `isAvailable` mengembalikan `available`.
+- **`checkOut`**: (1) jika `available` bernilai `false`, hentikan dengan `return false`. (2) Jika tidak, ubah `available` menjadi `false` dan `return true`. Dua jalur `return` ini sudah cukup, tanpa `else`.
+- **`returnItem`**: satu baris yang mengubah `available` menjadi `true`. Method ini bertipe `void`, jadi tanpa `return` nilai.
+- Cara memeriksa tanpa tes: di `Main`, buat dua `Book`. Panggil `checkOut()` pada yang pertama dua kali dan cetak hasilnya (`true`, lalu `false`). Cetak `isAvailable()` kedua buku dan pastikan hanya yang pertama berubah.
 
 </details>
 
@@ -270,7 +281,7 @@ Semua kelas:
 - Mengapa `memberId` tidak boleh punya setter?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Ubah modifier field, lalu lihat apa yang error di `Main` kamu. Itu pelajaran enkapsulasinya.
 - Urutan aman di setter: **periksa dulu**, baru isi field. Kalau tidak valid, hentikan sebelum field disentuh.
@@ -278,6 +289,23 @@ Semua kelas:
 - Constructor boleh memanggil setter milik kelasnya sendiri.
 - Untuk teks kosong, class `String` punya method yang menjawab apakah teks kosong atau hanya spasi.
 - `canBorrow()` bisa dihitung langsung dari `loanCount` setiap kali dipanggil.
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+
+- **Langkah awal**: ubah semua field `Author` dan `Book` menjadi `private`. Jalankan `P02AuthorTest` dan `P02BookTest`: harus tetap lulus karena getter sudah ada. Jika `Main` kamu error, ganti akses langsung ke field dengan getter.
+- **`Book.setTitle`**: (1) jika `title` bernilai `null`, lempar `IllegalArgumentException` (cek `null` **lebih dulu**, karena memanggil method pada `null` menimbulkan error lain). (2) Jika `title` hanya berisi spasi atau kosong, lempar exception yang sama. Method `isBlank()` milik `String` menjawab ini. (3) Jika lolos kedua pemeriksaan, baru isi field.
+- **`Book.setYear`**: jika `year` kurang dari atau sama dengan 0, lempar `IllegalArgumentException`. Jika tidak, isi field.
+- **`Book` constructor**: (1) periksa `isbn` dengan pola yang sama dengan judul (`null` atau kosong ditolak). (2) Isi `isbn`. (3) Panggil `setTitle(title)` dan `setYear(year)` untuk judul dan tahun, bukan mengisi field langsung, supaya aturannya tidak ditulis dua kali. (4) Status `available` tetap `true`.
+- **`Member` field**: `memberId` dan `name` bertipe `String`, `loanCount` bertipe `int` dengan nilai awal 0. Semuanya `private`.
+- **`Member` constructor**: (1) periksa `memberId` (`null` atau kosong ditolak). (2) Isi `memberId`. (3) Panggil `setName(name)` agar aturan nama tidak ditulis dua kali.
+- **`Member.setName`**: pola yang sama dengan `Book.setTitle`.
+- **Tanpa setter**: tulis hanya getter untuk `memberId` dan `loanCount`. Perubahan `loanCount` hanya lewat `addLoan` dan `returnLoan`.
+- **`canBorrow`**: kembalikan hasil perbandingan `loanCount` dengan batas 3. Tidak ada field baru.
+- **`addLoan`**: (1) jika `canBorrow()` bernilai `false`, `return false`. (2) Jika tidak, naikkan `loanCount` satu dan `return true`. Manfaatkan `canBorrow()` supaya angka batas hanya ada di satu tempat.
+- **`returnLoan`**: (1) jika `loanCount` sama dengan 0, `return false`. (2) Jika tidak, turunkan satu dan `return true`.
 
 </details>
 
@@ -395,13 +423,27 @@ Merapikan kode: bagian yang sama antara `Book`, `Dvd`, dan `Magazine` hidup di s
 - Jika `LibraryItem` punya constructor yang meminta `title` dan `year`, siapa yang harus mengisinya saat sebuah `Dvd` dibuat?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Kata kunci `extends` menyatakan hubungan IS-A.
 - Constructor tidak diwariskan. Subclass memanggil constructor parent dengan `super(...)`, dan harus menjadi **baris pertama**.
 - `protected` bisa diakses subclass, tetapi tidak oleh kelas lain di luar paket dan keluarga.
 - Kerjakan bertahap: buat `LibraryItem`, pindahkan satu bagian, jalankan tes, ulangi. Jangan memindahkan semuanya sekaligus.
 - Jika tes lama merah setelah memindahkan sesuatu, sebuah method atau constructor kemungkinan hilang atau berubah.
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (urutan kerja refactoring, buka jika Petunjuk 1 belum cukup)</summary>
+
+Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus tetap sama dengan sebelum langkah itu, kecuali tes `P06InheritanceTest` yang baru lulus di akhir.
+
+1. **Buat `LibraryItem` dan salin dulu, jangan hapus dulu.** Buat file `LibraryItem.java`. Salin dari `Book` ke sana: field `title`, `year`, dan `available`, serta method `getTitle`, `setTitle`, `getYear`, `setYear`, `isAvailable`, `checkOut`, dan `returnItem`. Ubah `title` dan `year` menjadi `protected`. Tulis constructor `LibraryItem(String title, int year)` yang mengisi judul dan tahun lewat setter-nya dan membuat status `available` bernilai `true`.
+2. **Hubungkan `Book` ke `LibraryItem`.** Ubah deklarasi kelas `Book` menjadi `extends LibraryItem`. Di constructor `Book`, baris pertamanya memanggil `super` dengan judul dan tahun. Setelah itu periksa `isbn` dan isi `isbn`.
+3. **Hapus duplikat dari `Book`.** Hapus field `title`, `year`, `available` dan semua method yang sudah ada di `LibraryItem`. `Book` tinggal menyimpan `isbn`, `author`, dan method yang berhubungan dengan keduanya. Jalankan tes Bagian 2 sampai 4. Semua harus tetap lulus.
+4. **Buat `Dvd`.** `extends LibraryItem`, satu field `private` untuk durasi. Constructor menerima `title`, `year`, dan durasi. Baris pertamanya memanggil `super` dengan judul dan tahun, lalu menyimpan durasi. Tambahkan getter durasi.
+5. **Buat `Magazine`** dengan pola yang sama dengan `Dvd`, tetapi menyimpan nomor edisi.
+6. Jika muncul error "constructor LibraryItem ... cannot be applied to given types", artinya sebuah subclass belum memanggil `super(...)` dengan argumen yang sesuai. Periksa constructor subclass yang disebut di pesan error.
 
 </details>
 
