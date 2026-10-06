@@ -1,111 +1,99 @@
 # Latihan OOP: Aplikasi Konsol Perpustakaan (Pertemuan 1 sampai 7)
 
-Dalam latihan ini kamu membangun **aplikasi konsol yang benar-benar berjalan**: sistem perpustakaan dengan menu, data koleksi, anggota, dan peminjaman. Kamu membangunnya sedikit demi sedikit, mengikuti materi Pertemuan 1 sampai 7. Di proyek akhir kamu akan memakai kelas-kelas ini di bawah tampilan GUI.
+## Aturan
 
-> **Langkah pertama bukan menulis kode, tetapi memasang WakaTime.** Lanjutkan ke Langkah 0 di bawah.
+- Jangan ubah `src/test/**`, `.github/**`, dan `.wakatime-project`.
+- Ikuti diagram persis: nama kelas, field, constructor, dan method.
+- Buat semua field `private`, kecuali `title` dan `year` di `LibraryItem` (`protected`).
+- Pakai array biasa. Jangan pakai `List` atau `ArrayList`.
+- Jangan pakai `System.out.println` di `Library` dan kelas model. Tampilan hanya di `Main` dan `LibraryApp`.
+- Nyalakan WakaTime setiap kali mengerjakan (lihat Langkah 0).
+- Kerjakan sendiri. Diskusi konsep boleh. Kode dan laporan harus hasil kerjamu.
 
 ## Langkah 0: Pasang WakaTime (wajib, sebelum menulis kode apa pun)
 
-WakaTime adalah plugin yang mencatat berapa lama kamu benar-benar mengetik kode. Dosen memakainya untuk melihat **usaha** kamu, bukan hanya hasil akhirnya.
+WakaTime mencatat waktu kamu mengetik kode. Dosen memakainya untuk menilai usaha.
 
 1. Buat akun gratis di [wakatime.com](https://wakatime.com).
-2. Buka [wakatime.com/settings/api-key](https://wakatime.com/settings/api-key), lalu salin API key kamu. Jangan bagikan key ini kepada siapa pun.
-3. Pasang plugin di editor yang kamu pakai:
-   - **NetBeans**: menu `Tools > Plugins`, cari "WakaTime". Jika tidak ketemu, ikuti petunjuk di [wakatime.com/netbeans](https://wakatime.com/netbeans).
-   - **VS Code**: pasang ekstensi `WakaTime` (ID: `WakaTime.vscode-wakatime`).
+2. Salin API key dari [wakatime.com/settings/api-key](https://wakatime.com/settings/api-key). Jangan bagikan key ini.
+3. Pasang plugin di editormu:
+   - **NetBeans**: `Tools > Plugins`, cari "WakaTime". Jika tidak ada, ikuti [wakatime.com/netbeans](https://wakatime.com/netbeans).
+   - **VS Code**: pasang ekstensi `WakaTime` (`WakaTime.vscode-wakatime`).
    - **IntelliJ IDEA**: `Settings > Plugins`, cari "WakaTime".
-4. Saat plugin meminta, tempel API key kamu.
-5. Ketik kode apa saja beberapa menit, lalu buka [wakatime.com/dashboard](https://wakatime.com/dashboard). Pastikan project **oop-library** muncul di sana.
+4. Tempel API key saat plugin memintanya.
+5. Ketik kode beberapa menit, lalu buka [wakatime.com/dashboard](https://wakatime.com/dashboard). Pastikan project **oop-library** muncul.
 
-Aturan WakaTime:
+Ketentuan:
 
-- File `.wakatime-project` sudah ada di repositori ini dan berisi `oop-library`. File ini membuat semua mahasiswa memakai nama project yang sama. **Jangan ubah atau hapus.**
-- Nyalakan WakaTime **setiap kali** mengerjakan latihan ini. Waktu pengerjaan tanpa plugin tidak tercatat sebagai usaha.
-- Screenshot dashboard WakaTime wajib ada di laporan kamu (lihat [Laporan (PDF)](#laporan-pdf)).
-
-Sudah muncul di dashboard? Lanjut ke bagian berikutnya.
+- `.wakatime-project` berisi `oop-library`. Jangan ubah atau hapus.
+- Waktu pengerjaan tanpa plugin tidak dihitung.
+- Sertakan screenshot dashboard di laporan (lihat [Laporan (PDF)](#laporan-pdf)).
 
 ## Daftar Isi
 
-1. [Studi Kasus](#studi-kasus)
-2. [Peta Materi](#peta-materi)
-3. [Memulai](#memulai)
-4. [Membuka Proyek](#membuka-proyek)
-5. [Cara Membaca Diagram dan Petunjuk](#cara-membaca-diagram-dan-petunjuk)
-6. [Bagian 1 sampai 7](#bagian-1-pertemuan-1-pengantar)
-7. [Coba Aplikasinya](#coba-aplikasinya)
-8. [Laporan (PDF)](#laporan-pdf)
-9. [Pengumpulan](#pengumpulan)
-10. [Penilaian](#penilaian)
-11. [Aturan](#aturan)
+1. [Aturan](#aturan)
+2. [Langkah 0: Pasang WakaTime](#langkah-0-pasang-wakatime-wajib-sebelum-menulis-kode-apa-pun)
+3. [Studi Kasus](#studi-kasus)
+4. [Memulai](#memulai)
+5. [Membuka Proyek](#membuka-proyek)
+6. [Cara Membaca Diagram dan Petunjuk](#cara-membaca-diagram-dan-petunjuk)
+7. [Bagian 1 sampai 7](#bagian-1-pertemuan-1-pengantar)
+8. [Coba Aplikasinya](#coba-aplikasinya)
+9. [Laporan (PDF)](#laporan-pdf)
+10. [Pengumpulan](#pengumpulan)
+11. [Penilaian](#penilaian)
 
 ## Studi Kasus
 
 Perpustakaan Polinema meminjamkan tiga jenis koleksi:
 
-- **Buku** (dipinjam 14 hari), punya ISBN dan penulis.
-- **DVD** (dipinjam 3 hari), punya durasi.
-- **Majalah** (dipinjam 7 hari), punya nomor edisi.
+- **Buku**: dipinjam 14 hari, punya ISBN dan penulis.
+- **DVD**: dipinjam 3 hari, punya durasi.
+- **Majalah**: dipinjam 7 hari, punya nomor edisi.
 
-Setiap **anggota** punya kartu perpustakaan dan boleh meminjam paling banyak **3** koleksi sekaligus. Petugas memakai aplikasi konsol untuk menambah koleksi, mendaftarkan anggota, meminjamkan, menerima pengembalian, dan mencari koleksi.
-
-Mengapa aplikasi konsol? Aplikasi GUI yang baik dibangun di atas kelas-kelas OOP yang rapi. Latihan ini melatih bagian tersulitnya lebih dulu: merancang kelas, menghubungkannya, dan membuatnya bekerja bersama. Nanti, hanya tampilannya yang kamu ganti.
-
-## Peta Materi
-
-| Bagian | Pertemuan | Konsep | Kelas yang kamu kerjakan |
-|---|---|---|---|
-| 1 | P1 Pengantar | Cara compile dan run, objek di sekitar kita | `Main` |
-| 2 | P2 Class dan Object | class, object, constructor, `this`, method, return value | `Author`, `Book` |
-| 3 | P3 Enkapsulasi | `private`, validasi, read-only, derived getter | `Book`, `Author`, `Member` |
-| 4 | P4 Relasi Class | asosiasi, agregasi, komposisi, dependensi, array of objects | `Book`, `Member`, `LibraryCard`, `Shelf`, `Librarian` |
-| 5 | P6 Inheritance | `extends`, `super(...)`, `protected`, IS-A | `LibraryItem`, `Book`, `Dvd`, `Magazine` |
-| 6 | P7 Overriding dan Overloading | `@Override`, `super.method()`, `toString()`, overload method dan constructor | kelas yang sama dengan Bagian 5 |
-| 7 | Gabungan P1 sampai P7 | polymorphism dalam array, memisahkan logika dan tampilan | `Library`, `LibraryApp` |
-
-Pertemuan 5 adalah kuis, jadi tidak ada bagian untuknya. Kerjakan **berurutan**: setiap bagian memakai hasil bagian sebelumnya.
+Setiap **anggota** punya kartu perpustakaan dan boleh meminjam paling banyak **3** koleksi. Petugas memakai aplikasi konsol untuk menambah koleksi, mendaftarkan anggota, meminjamkan, menerima pengembalian, dan mencari koleksi.
 
 ## Memulai
 
-Pastikan WakaTime sudah aktif ([Langkah 0](#langkah-0-pasang-wakatime-wajib-sebelum-menulis-kode-apa-pun)).
+Pastikan WakaTime aktif ([Langkah 0](#langkah-0-pasang-wakatime-wajib-sebelum-menulis-kode-apa-pun)).
 
-1. Di halaman GitHub repositori ini, klik **Use this template**, lalu **Create a new repository**.
-2. Pilih visibilitas **Private**, lalu ikuti arahan Dosen tentang siapa yang perlu kamu undang.
-3. Clone repositori barumu ke komputer.
-4. Setiap kali selesai satu bagian, lakukan commit dan push.
-5. Buka tab **Actions** di GitHub. Autograder berjalan otomatis setiap kali kamu push, dan menampilkan nilai kodemu.
+1. Di GitHub, klik **Use this template**, lalu **Create a new repository**.
+2. Pilih **Private**, lalu ikuti arahan Dosen tentang siapa yang kamu undang.
+3. Clone repositori barumu.
+4. Commit dan push setiap selesai satu bagian.
+5. Buka tab **Actions**. Autograder berjalan di setiap push dan menampilkan nilai kodemu.
 
-Untuk menjalankan tes di komputermu sendiri:
+Jalankan semua tes di komputermu:
 
 ```
 mvn -q test
 ```
 
-Untuk menjalankan satu kelas tes saja, contohnya:
+Jalankan satu kelas tes:
 
 ```
 mvn -q test -Dtest=P02BookTest
 ```
 
-Di awal, hampir semua tes gagal. Itu normal. Tujuanmu adalah membuat semuanya lulus satu per satu. Baca pesan di tes yang gagal: pesannya menjelaskan apa yang kurang.
+Baca pesan tes yang gagal. Pesannya menjelaskan apa yang kurang.
 
 ## Membuka Proyek
 
-**NetBeans**: `File > Open Project`, pilih folder repositori ini (NetBeans mengenali `pom.xml` sebagai proyek Maven). Untuk menjalankan satu file: klik kanan file, pilih `Run File`, atau tekan `Shift+F6`.
+**NetBeans**: `File > Open Project`, pilih folder repositori. Jalankan satu file dengan `Run File` atau `Shift+F6`.
 
-**VS Code**: buka foldernya, pasang "Extension Pack for Java". Tombol `Run` muncul di atas method `main`.
+**VS Code**: buka folder, pasang "Extension Pack for Java", lalu klik `Run` di atas `main`.
 
-**Tanpa IDE** (command line):
+**Command line** (butuh JDK 17 atau lebih dan Maven):
 
 ```
 mvn -q compile exec:java -Dexec.mainClass=id.ac.polinema.library.Main
 ```
 
-Ganti `Main` dengan `LibraryApp` untuk menjalankan aplikasi akhir. Kamu butuh JDK 17 atau lebih baru dan Maven.
+Ganti `Main` dengan `LibraryApp` untuk menjalankan aplikasi akhir.
 
 ## Cara Membaca Diagram dan Petunjuk
 
-**Diagram kelas** adalah spesifikasi utama latihan ini. Semua nama kelas, field, constructor, dan method yang kamu butuhkan ada di diagram. Tidak ada file sumber diagram di repositori ini, jadi kamu harus membacanya sendiri dari gambar.
+Diagram kelas adalah spesifikasi utama. Semua kelas, field, constructor, dan method yang kamu butuhkan ada di diagram.
 
 | Simbol | Arti |
 |---|---|
@@ -122,28 +110,13 @@ Ganti `Main` dengan `LibraryApp` untuk menjalankan aplikasi akhir. Kamu butuh JD
 | panah segitiga kosong `<\|--` | inheritance (`extends`) |
 | `0..5`, `1`, `*` | multiplicity (jumlah objek) |
 
-Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian bawah adalah constructor dan method. Setelah itu baca garis antar kelas.
+Baca per kotak kelas: field di atas, constructor dan method di bawah. Lalu baca garis antar kelas.
 
-**Format setiap bagian**:
-
-- **Tujuan**: apa yang harus kamu capai.
-- **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
-- **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
-- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di setiap bagian ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
-- **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
-- **Cek dirimu**: tes mana yang harus lulus.
-
-Di file `.java` yang diberikan, komentar `TODO Petunjuk` berisi pertanyaan atau kata kunci. Hapus komentar itu setelah kamu selesai.
+Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
 
 ---
 
 ## Bagian 1 (Pertemuan 1): Pengantar
-
-**Mengapa ini penting?** Sebelum membuat objek, kamu harus yakin alat kerjamu berfungsi: menulis kode, compile, lalu run.
-
-### Tujuan
-
-Program `Main` berjalan dan mencetak satu baris sapaan.
 
 ### Aturan yang dicek autograder
 
@@ -194,13 +167,7 @@ Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yan
 
 ## Bagian 2 (Pertemuan 2): Class dan Object
 
-**Mengapa ini penting?** Class adalah cetakan, object adalah hasil cetakannya. Semua bagian berikutnya memakai class dan object.
-
 ![Diagram Bagian 2](docs/p02-author-book.png)
-
-### Tujuan
-
-Kelas `Author` dan `Book` bisa dibuat menjadi objek, menyimpan data, dan menjalankan aksi sederhana.
 
 ### Aturan yang dicek autograder
 
@@ -263,13 +230,7 @@ Mengapa hasil baris pertama dan kedua berbeda? Gambar `a`, `b`, dan `c` di stack
 
 ## Bagian 3 (Pertemuan 3): Enkapsulasi
 
-**Mengapa ini penting?** Kalau field `public`, siapa pun bisa mengisi `year = -5` atau `title = ""`. Enkapsulasi membuat objek menjaga datanya sendiri.
-
 ![Diagram Bagian 3](docs/p03-encapsulation.png)
-
-### Tujuan
-
-Objek menjaga datanya sendiri: data tidak bisa diubah sembarangan dan tidak pernah berada dalam keadaan tidak valid.
 
 ### Aturan yang dicek autograder
 
@@ -339,13 +300,7 @@ Tidak dinilai: tulis satu baris kode di `Main` yang akan merusak aturan "maksima
 
 ## Bagian 4 (Pertemuan 4): Relasi Class
 
-**Mengapa ini penting?** Objek jarang bekerja sendirian. Memilih relasi yang tepat menentukan siapa memiliki siapa, dan siapa yang ikut hilang ketika objek lain hilang.
-
 ![Diagram Bagian 4](docs/p04-relations.png)
-
-### Tujuan
-
-Menghubungkan kelas sesuai relasi di diagram: asosiasi, agregasi, komposisi, dan dependensi.
 
 ### Aturan yang dicek autograder
 
@@ -416,13 +371,7 @@ Tidak dinilai: jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-
 
 ## Bagian 5 (Pertemuan 6): Inheritance
 
-**Mengapa ini penting?** Perpustakaan tidak hanya punya buku. Kalau `Dvd` dan `Magazine` menyalin kode `Book`, setiap perbaikan harus dilakukan tiga kali. Inheritance membuat kode yang sama cukup ditulis sekali.
-
 ![Diagram Bagian 5](docs/p06-inheritance.png)
-
-### Tujuan
-
-Merapikan kode: bagian yang sama antara `Book`, `Dvd`, dan `Magazine` hidup di satu tempat, yaitu `LibraryItem`. Ini adalah **refactoring**: semua tes lama harus **tetap lulus**.
 
 ### Aturan yang dicek autograder
 
@@ -477,13 +426,7 @@ Tidak dinilai: apa yang diwarisi `Dvd` dari `LibraryItem`, dan apa yang tidak? M
 
 ## Bagian 6 (Pertemuan 7): Overriding dan Overloading
 
-**Mengapa ini penting?** Subclass sering perlu perilaku sendiri. Buku dipinjam 14 hari, DVD hanya 3 hari. Overriding mengganti perilaku turunan, overloading menyediakan beberapa cara memanggil method atau constructor yang sama.
-
 ![Diagram Bagian 6](docs/p07-override-overload.png)
-
-### Tujuan
-
-Subclass mengganti perilaku yang diwarisi (overriding), dan satu nama method atau constructor bisa dipanggil dengan beberapa bentuk parameter (overloading).
 
 ### Aturan yang dicek autograder
 
@@ -565,13 +508,7 @@ Tidak dinilai: di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`,
 
 ## Bagian 7 (Gabungan P1 sampai P7): Aplikasi Konsol
 
-**Mengapa ini penting?** Sekarang semua kelas dirangkai menjadi aplikasi utuh. Kuncinya adalah memisahkan **logika** dari **tampilan**.
-
 ![Diagram Bagian 7](docs/p08-console-app.png)
-
-### Tujuan
-
-Membuat aplikasi konsol dengan menu yang bisa menambah koleksi, mendaftarkan anggota, meminjam, mengembalikan, dan mencari. `Library` berisi logika. `LibraryApp` berisi tampilan.
 
 ### Pertanyaan pemandu
 
@@ -594,8 +531,6 @@ Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 | `searchByKeyword` | Semua koleksi yang judulnya **memuat** kata kunci (tanpa peduli huruf besar-kecil). Jika tidak ada, kembalikan array **kosong**, bukan `null`. |
 | `lend(memberId, title)` | `true` hanya jika anggota ada, koleksi ada, anggota boleh meminjam, dan koleksi tersedia. Setelah itu koleksi dipinjam dan pinjaman anggota bertambah. |
 | `receive(memberId, title)` | `true` hanya jika anggota dan koleksi ada, koleksi sedang dipinjam, dan anggota punya pinjaman. Setelah itu koleksi tersedia lagi dan pinjaman anggota berkurang. |
-
-Catatan: latihan ini belum mencatat siapa meminjam apa. Itu sengaja, supaya kamu fokus pada kerja sama antar kelas.
 
 <details>
 <summary>Petunjuk 1: Library</summary>
@@ -747,7 +682,7 @@ Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `Sys
 
 ### Teks yang harus dicetak
 
-Autograder membandingkan output, jadi tulis **persis** seperti tabel ini. Setiap pesan dicetak dengan `println`. Prompt dicetak dengan `print` (tanpa pindah baris).
+Tulis output **persis** seperti tabel. Cetak pesan dengan `println` dan prompt dengan `print` (tanpa pindah baris).
 
 | Menu | Prompt (berurutan) | Hasil |
 |---|---|---|
@@ -792,7 +727,7 @@ Setelah `main` di `LibraryApp` selesai, jalankan:
 mvn -q compile exec:java
 ```
 
-Contoh sesi (jawaban yang kamu ketik ada setelah prompt). Data contoh di `main` berisi buku `Clean Code`, DVD `Inception`, dan majalah `Tempo`, serta anggota `M001 - Budi`:
+Contoh sesi (data awal: buku `Clean Code`, DVD `Inception`, majalah `Tempo`, anggota `M001 - Budi`):
 
 ```
 === Polinema Library ===
@@ -818,43 +753,39 @@ Goodbye
 
 ## Laporan (PDF)
 
-Selain kode, kamu wajib menyerahkan **laporan dalam satu file PDF**. Tujuannya agar Dosen tahu kamu **paham**, bukan hanya kodenya jalan.
-
-- Nama file: `Laporan_<NIM>_<Nama>.pdf`, contoh `Laporan_2441720001_Budi_Santoso.pdf`.
-- Simpan di folder `laporan/` di repositori ini, lalu commit dan push.
-- Tulis dengan kata-katamu sendiri. Laporan yang disalin dari README atau dari teman tidak dinilai.
+Serahkan satu file PDF: `laporan/Laporan_<NIM>_<Nama>.pdf`, contoh `laporan/Laporan_2441720001_Budi_Santoso.pdf`. Commit dan push ke repositori. Tulis dengan kata-katamu sendiri. Laporan salinan tidak dinilai.
 
 Isi laporan:
 
-1. **Identitas**: nama, NIM, kelas, dan link repositori GitHub.
-2. **Untuk setiap Bagian 1 sampai 7**:
-   - **Penjelasan konsep** dengan kata-katamu sendiri (minimal 3 sampai 5 kalimat). Jawab: apa itu konsep ini, mengapa dipakai, dan di kelas mana kamu memakainya. Pertanyaan pemandu di setiap bagian boleh dijawab di sini.
-   - **Potongan kode** buatanmu (5 sampai 15 baris) beserta penjelasan baris per baris.
-   - **Jawaban "Telusuri"** untuk bagian tersebut.
-   - **Kendala dan solusi**: apa yang sulit, bagaimana kamu mengatasinya. Sebutkan juga jika kamu membuka Petunjuk, dan petunjuk yang mana.
+1. **Identitas**: nama, NIM, kelas, link repositori GitHub.
+2. **Setiap Bagian 1 sampai 7**:
+   - Penjelasan konsep dengan kata-katamu sendiri (3 sampai 5 kalimat): apa itu, mengapa dipakai, di kelas mana kamu memakainya. Jawab juga pertanyaan pemandu.
+   - Potongan kode buatanmu (5 sampai 15 baris) dan penjelasannya baris per baris.
+   - Jawaban "Telusuri".
+   - Kendala dan solusi. Tulis Petunjuk yang kamu buka.
 3. **Tambahan Bagian 7**:
-   - Screenshot aplikasi konsol saat berjalan (minimal satu sesi meminjam dan mengembalikan).
-   - Penjelasan bagaimana `LibraryApp`, `Library`, `Member`, dan `LibraryItem` bekerja sama pada satu alur peminjaman.
-4. **Hasil pengujian**: screenshot hasil `mvn test` atau tab Actions di GitHub yang menampilkan nilai.
-5. **Bukti WakaTime**: screenshot dashboard WakaTime untuk project `oop-library` (total waktu dan grafik per hari), ditambah total jam yang kamu tulis dalam teks.
-6. **Refleksi**: konsep mana yang masih membingungkan, dan apa rencanamu untuk memahaminya.
+   - Screenshot aplikasi berjalan (minimal satu sesi pinjam dan kembali).
+   - Penjelasan kerja sama `LibraryApp`, `Library`, `Member`, dan `LibraryItem` pada satu alur peminjaman.
+4. **Hasil pengujian**: screenshot `mvn test` atau tab Actions yang menampilkan nilai.
+5. **Bukti WakaTime**: screenshot dashboard project `oop-library` (total waktu dan grafik per hari) dan total jam dalam teks.
+6. **Refleksi**: konsep yang masih membingungkan dan rencana belajarmu.
 
 ## Pengumpulan
 
-Kamu mengumpulkan **seluruh repositori**, bukan hanya kode. Sebelum batas waktu, pastikan:
+Kumpulkan **seluruh repositori**. Sebelum batas waktu, pastikan:
 
 - [ ] WakaTime aktif selama kamu mengerjakan, dan project `oop-library` muncul di dashboard.
-- [ ] Semua kode sudah di-push ke GitHub.
-- [ ] Autograder di tab Actions sudah dijalankan dan nilainya tampil.
+- [ ] Semua kode sudah di-push.
+- [ ] Autograder di tab Actions sudah berjalan dan menampilkan nilai.
 - [ ] `laporan/Laporan_<NIM>_<Nama>.pdf` ada, bernama benar, dan sudah di-push.
 - [ ] Laporan memuat screenshot WakaTime.
-- [ ] File `.wakatime-project` tidak berubah.
+- [ ] `.wakatime-project` tidak berubah.
 
 Kirim link repositori sesuai arahan Dosen.
 
 ## Penilaian
 
-Nilai kode (100 poin) dihitung otomatis oleh autograder. Laporan dan usaha (WakaTime) dinilai manual oleh Dosen. **Ketiganya wajib ada.**
+Autograder menilai kode (100 poin). Dosen menilai laporan dan usaha (WakaTime) secara manual. **Ketiganya wajib ada.**
 
 | Tes | Bagian | Poin |
 |---|---|---|
@@ -875,12 +806,3 @@ Nilai kode (100 poin) dihitung otomatis oleh autograder. Laporan dan usaha (Waka
 | **Total** | | **100** |
 
 Satu kelas tes dinilai penuh hanya jika **semua** tesnya lulus.
-
-## Aturan
-
-- Jangan mengubah isi `src/test/**`, `.github/**`, dan `.wakatime-project`.
-- Ikuti diagram persis: nama kelas, field, constructor, dan method. Autograder memanggilnya dengan nama itu.
-- Semua field harus `private`, kecuali `title` dan `year` di `LibraryItem` yang `protected`.
-- Gunakan **array biasa**. Jangan memakai `List` atau `ArrayList` (koleksi dipelajari di materi berikutnya).
-- Tidak ada `System.out.println` di `Library` dan kelas model. Semua tampilan hanya di `Main` dan `LibraryApp`.
-- Kerjakan sendiri. Boleh berdiskusi tentang konsep, tetapi kode dan laporan harus hasil kerjamu.
