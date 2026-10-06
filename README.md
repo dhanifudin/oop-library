@@ -159,18 +159,19 @@ Program `Main` berjalan dan mencetak satu baris sapaan.
 <summary>Petunjuk 1</summary>
 
 - Cek `java -version` di terminal. Kamu butuh versi 17 atau lebih.
-- Kelas `System` punya anggota bernama `out`. Cari method-nya yang mencetak satu baris lalu pindah baris.
-- Teks yang dicetak harus ditulis sebagai String literal, persis sama.
+- Di Java, perintah untuk menampilkan teks ke layar berbentuk `System.out.println("teks kamu");`.
+- Teks yang ingin ditampilkan ditulis di dalam tanda kutip ganda. Ganti `teks kamu` dengan teks dari soal.
+- Perintah ini ditulis di dalam `main`, di antara kurung kurawalnya.
 
 </details>
 
 <details>
 <summary>Petunjuk 2 (langkah demi langkah, buka jika Petunjuk 1 belum cukup)</summary>
 
-1. Buka `Main.java`. Cari method `main`. Tulis kodemu **di dalam kurung kurawalnya**, menggantikan komentar `TODO`.
-2. Satu pernyataan cukup. Susunannya dari kiri ke kanan: nama kelas `System`, titik, `out`, titik, nama method pencetak satu baris (diawali `print`, diakhiri `ln`), lalu tanda kurung.
-3. Di dalam tanda kurung, tulis teks yang ingin dicetak. Teks diapit **tanda kutip ganda**. Huruf besar-kecil, spasi, dan ejaan harus persis sama dengan `Welcome to Polinema Library`.
-4. Akhiri pernyataan dengan **titik koma**.
+1. Buka `Main.java`. Cari bagian `main`. Tulis kodemu **di dalam kurung kurawalnya**, menggantikan komentar `TODO`.
+2. Satu baris perintah cukup. Bentuknya sudah ada di Petunjuk 1.
+3. Isi teks di antara tanda kutip ganda. Huruf besar-kecil, spasi, dan ejaan harus persis sama dengan `Welcome to Polinema Library`.
+4. Pastikan baris perintah diakhiri **titik koma**.
 5. Jalankan `Main` (di NetBeans: klik kanan file, `Run File`, atau `Shift+F6`). Teks yang kamu tulis muncul di jendela Output.
 6. Jika ada garis merah atau error, periksa kesalahan yang paling sering terjadi:
    - `System` ditulis dengan huruf kecil (Java membedakan huruf besar dan kecil).

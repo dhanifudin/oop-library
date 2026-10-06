@@ -4,13 +4,16 @@ package id.ac.polinema.library;
  * Bagian 1: titik awal program.
  *
  * Tugasmu: baris PERTAMA output program ini harus persis
- * "Welcome to Polinema Library". Setelah itu kamu bebas menambah baris lain,
- * misalnya mencoba membuat objek dari kelas yang kamu buat di bagian berikutnya.
+ * "Welcome to Polinema Library". Setelah itu kamu bebas menambah baris lain
+ * untuk bereksperimen.
  */
 public class Main {
 
     public static void main(String[] args) {
-        // TODO Petunjuk: kelas System punya anggota bernama out. Method apa di sana
-        // yang mencetak satu baris lalu pindah baris? Teksnya harus persis sama.
+        // TODO: Tampilkan sebuah teks ke layar.
+        // Di Java, perintahnya berbentuk: System.out.println("teks kamu");
+        // Ganti teks di dalam tanda kutip dengan teks dari soal. Huruf besar-kecil dan
+        // spasi harus persis sama. Tulis perintahnya di dalam kurung kurawal main ini,
+        // lalu jalankan programnya.
     }
 }
