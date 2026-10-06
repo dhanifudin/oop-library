@@ -1,23 +1,43 @@
 # Latihan OOP: Aplikasi Konsol Perpustakaan (Pertemuan 1 sampai 7)
 
-Dalam latihan ini kamu membangun **aplikasi konsol yang benar-benar berjalan**: sebuah sistem perpustakaan dengan menu, data buku, anggota, dan peminjaman. Kamu membangunnya sedikit demi sedikit, mengikuti materi Pertemuan 1 sampai 7.
+Dalam latihan ini kamu membangun **aplikasi konsol yang benar-benar berjalan**: sistem perpustakaan dengan menu, data koleksi, anggota, dan peminjaman. Kamu membangunnya sedikit demi sedikit, mengikuti materi Pertemuan 1 sampai 7. Di proyek akhir kamu akan memakai kelas-kelas ini di bawah tampilan GUI.
 
-Mengapa aplikasi konsol? Di proyek akhir kamu akan membuat aplikasi dengan GUI. Aplikasi GUI yang baik dibangun di atas kelas-kelas OOP yang sudah rapi. Latihan ini melatih bagian tersulitnya lebih dulu: merancang kelas, menghubungkannya, dan membuatnya bekerja bersama. Nanti, hanya tampilannya yang kamu ganti.
+> **Langkah pertama bukan menulis kode, tetapi memasang WakaTime.** Lanjutkan ke Langkah 0 di bawah.
+
+## Langkah 0: Pasang WakaTime (wajib, sebelum menulis kode apa pun)
+
+WakaTime adalah plugin yang mencatat berapa lama kamu benar-benar mengetik kode. Dosen memakainya untuk melihat **usaha** kamu, bukan hanya hasil akhirnya.
+
+1. Buat akun gratis di [wakatime.com](https://wakatime.com).
+2. Buka [wakatime.com/settings/api-key](https://wakatime.com/settings/api-key), lalu salin API key kamu. Jangan bagikan key ini kepada siapa pun.
+3. Pasang plugin di editor yang kamu pakai:
+   - **NetBeans**: menu `Tools > Plugins`, cari "WakaTime". Jika tidak ketemu, ikuti petunjuk di [wakatime.com/netbeans](https://wakatime.com/netbeans).
+   - **VS Code**: pasang ekstensi `WakaTime` (ID: `WakaTime.vscode-wakatime`).
+   - **IntelliJ IDEA**: `Settings > Plugins`, cari "WakaTime".
+4. Saat plugin meminta, tempel API key kamu.
+5. Ketik kode apa saja beberapa menit, lalu buka [wakatime.com/dashboard](https://wakatime.com/dashboard). Pastikan project **oop-library** muncul di sana.
+
+Aturan WakaTime:
+
+- File `.wakatime-project` sudah ada di repositori ini dan berisi `oop-library`. File ini membuat semua mahasiswa memakai nama project yang sama. **Jangan ubah atau hapus.**
+- Nyalakan WakaTime **setiap kali** mengerjakan latihan ini. Waktu pengerjaan tanpa plugin tidak tercatat sebagai usaha.
+- Screenshot dashboard WakaTime wajib ada di laporan kamu (lihat [Laporan (PDF)](#laporan-pdf)).
+
+Sudah muncul di dashboard? Lanjut ke bagian berikutnya.
 
 ## Daftar Isi
 
 1. [Studi Kasus](#studi-kasus)
 2. [Peta Materi](#peta-materi)
-3. [Wajib: Pasang WakaTime](#wajib-pasang-wakatime)
-4. [Memulai](#memulai)
-5. [Membuka Proyek](#membuka-proyek)
-6. [Cara Membaca Diagram](#cara-membaca-diagram)
-7. [Bagian 1 sampai 7](#bagian-1-pertemuan-1-pengantar)
-8. [Coba Aplikasinya](#coba-aplikasinya)
-9. [Laporan (PDF)](#laporan-pdf)
-10. [Pengumpulan](#pengumpulan)
-11. [Penilaian](#penilaian)
-12. [Aturan](#aturan)
+3. [Memulai](#memulai)
+4. [Membuka Proyek](#membuka-proyek)
+5. [Cara Membaca Diagram dan Petunjuk](#cara-membaca-diagram-dan-petunjuk)
+6. [Bagian 1 sampai 7](#bagian-1-pertemuan-1-pengantar)
+7. [Coba Aplikasinya](#coba-aplikasinya)
+8. [Laporan (PDF)](#laporan-pdf)
+9. [Pengumpulan](#pengumpulan)
+10. [Penilaian](#penilaian)
+11. [Aturan](#aturan)
 
 ## Studi Kasus
 
@@ -28,6 +48,8 @@ Perpustakaan Polinema meminjamkan tiga jenis koleksi:
 - **Majalah** (dipinjam 7 hari), punya nomor edisi.
 
 Setiap **anggota** punya kartu perpustakaan dan boleh meminjam paling banyak **3** koleksi sekaligus. Petugas memakai aplikasi konsol untuk menambah koleksi, mendaftarkan anggota, meminjamkan, menerima pengembalian, dan mencari koleksi.
+
+Mengapa aplikasi konsol? Aplikasi GUI yang baik dibangun di atas kelas-kelas OOP yang rapi. Latihan ini melatih bagian tersulitnya lebih dulu: merancang kelas, menghubungkannya, dan membuatnya bekerja bersama. Nanti, hanya tampilannya yang kamu ganti.
 
 ## Peta Materi
 
@@ -41,30 +63,11 @@ Setiap **anggota** punya kartu perpustakaan dan boleh meminjam paling banyak **3
 | 6 | P7 Overriding dan Overloading | `@Override`, `super.method()`, `toString()`, overload method dan constructor | kelas yang sama dengan Bagian 5 |
 | 7 | Gabungan P1 sampai P7 | polymorphism dalam array, memisahkan logika dan tampilan | `Library`, `LibraryApp` |
 
-Pertemuan 5 adalah kuis, jadi tidak ada bagian untuknya.
-
-Kerjakan **berurutan**. Setiap bagian memakai hasil bagian sebelumnya.
-
-## Wajib: Pasang WakaTime
-
-WakaTime adalah plugin yang mencatat berapa lama kamu benar-benar mengetik kode. Dosen memakainya untuk melihat **usaha** kamu, bukan hanya hasil akhirnya. Pasang **sebelum** menulis satu baris kode pun.
-
-1. Buat akun gratis di [wakatime.com](https://wakatime.com).
-2. Buka [wakatime.com/settings/api-key](https://wakatime.com/settings/api-key), lalu salin API key kamu. Jangan bagikan key ini kepada siapa pun.
-3. Pasang plugin di editor yang kamu pakai:
-   - **NetBeans**: menu `Tools > Plugins`, cari "WakaTime". Jika tidak ketemu, ikuti petunjuk di [wakatime.com/netbeans](https://wakatime.com/netbeans).
-   - **VS Code**: pasang ekstensi `WakaTime` (ID: `WakaTime.vscode-wakatime`).
-   - **IntelliJ IDEA**: `Settings > Plugins`, cari "WakaTime".
-4. Saat plugin meminta, tempel API key kamu.
-5. Ketik kode beberapa menit, lalu buka [wakatime.com/dashboard](https://wakatime.com/dashboard). Pastikan project **oop-library** muncul di sana.
-
-Aturan WakaTime:
-
-- File `.wakatime-project` sudah ada di repositori ini dan berisi `oop-library`. File ini membuat semua mahasiswa memakai nama project yang sama. **Jangan ubah atau hapus.**
-- Nyalakan WakaTime **setiap kali** mengerjakan latihan ini. Waktu pengerjaan tanpa plugin tidak tercatat sebagai usaha.
-- Screenshot dashboard WakaTime wajib ada di laporan kamu (lihat [Laporan (PDF)](#laporan-pdf)).
+Pertemuan 5 adalah kuis, jadi tidak ada bagian untuknya. Kerjakan **berurutan**: setiap bagian memakai hasil bagian sebelumnya.
 
 ## Memulai
+
+Pastikan WakaTime sudah aktif ([Langkah 0](#langkah-0-pasang-wakatime-wajib-sebelum-menulis-kode-apa-pun)).
 
 1. Di halaman GitHub repositori ini, klik **Use this template**, lalu **Create a new repository**.
 2. Pilih visibilitas **Private**, lalu ikuti arahan Dosen tentang siapa yang perlu kamu undang.
@@ -84,7 +87,7 @@ Untuk menjalankan satu kelas tes saja, contohnya:
 mvn -q test -Dtest=P02BookTest
 ```
 
-Di awal, hampir semua tes gagal. Itu normal. Tujuanmu adalah membuat semuanya lulus satu per satu. Pesan di tes yang gagal sudah dibuat agar menjelaskan apa yang kurang.
+Di awal, hampir semua tes gagal. Itu normal. Tujuanmu adalah membuat semuanya lulus satu per satu. Baca pesan di tes yang gagal: pesannya menjelaskan apa yang kurang.
 
 ## Membuka Proyek
 
@@ -100,9 +103,9 @@ mvn -q compile exec:java -Dexec.mainClass=id.ac.polinema.library.Main
 
 Ganti `Main` dengan `LibraryApp` untuk menjalankan aplikasi akhir. Kamu butuh JDK 17 atau lebih baru dan Maven.
 
-## Cara Membaca Diagram
+## Cara Membaca Diagram dan Petunjuk
 
-Diagram kelas adalah **spesifikasi utama** latihan ini. Semua nama kelas, field, constructor, dan method yang kamu butuhkan ada di diagram. Tidak ada file sumber diagram di repositori ini, jadi kamu harus membacanya sendiri dari gambar.
+**Diagram kelas** adalah spesifikasi utama latihan ini. Semua nama kelas, field, constructor, dan method yang kamu butuhkan ada di diagram. Tidak ada file sumber diagram di repositori ini, jadi kamu harus membacanya sendiri dari gambar.
 
 | Simbol | Arti |
 |---|---|
@@ -121,22 +124,53 @@ Diagram kelas adalah **spesifikasi utama** latihan ini. Semua nama kelas, field,
 
 Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian bawah adalah constructor dan method. Setelah itu baca garis antar kelas.
 
+**Format setiap bagian**:
+
+- **Tujuan**: apa yang harus kamu capai.
+- **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
+- **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
+- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode.
+- **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
+- **Cek dirimu**: tes mana yang harus lulus.
+
+Di file `.java` yang diberikan, komentar `TODO Petunjuk` berisi pertanyaan atau kata kunci. Hapus komentar itu setelah kamu selesai.
+
 ---
 
 ## Bagian 1 (Pertemuan 1): Pengantar
 
-**Mengapa ini penting?** Sebelum membuat objek, kamu harus yakin bahwa alat kerjamu berfungsi: menulis kode, compile, lalu run.
+**Mengapa ini penting?** Sebelum membuat objek, kamu harus yakin alat kerjamu berfungsi: menulis kode, compile, lalu run.
 
-**Langkah**
+### Tujuan
 
-1. Pastikan JDK terpasang: jalankan `java -version` di terminal.
-2. Buka `src/main/java/id/ac/polinema/library/Main.java`.
-3. Isi method `main` agar mencetak `Welcome to Polinema Library` sebagai baris pertama output.
-4. Jalankan `Main` dari IDE kamu.
+Program `Main` berjalan dan mencetak satu baris sapaan.
 
-**Telusuri** (tidak dinilai, tulis jawabannya di laporan): sebutkan 5 benda di perpustakaan yang menurutmu adalah *objek*. Untuk masing-masing, tulis satu *data* yang dimilikinya dan satu *aksi* yang bisa dilakukannya.
+### Aturan yang dicek autograder
 
-**Cek dirimu**: `P01MainOutputTest` lulus.
+- Baris **pertama** output `Main` adalah persis `Welcome to Polinema Library`.
+- Setelah baris itu, kamu bebas menambah baris lain.
+
+### Pertanyaan pemandu
+
+- Apa yang terjadi saat kamu menekan Run: apa yang dikerjakan compiler, dan apa yang dikerjakan JVM?
+- Method mana yang pertama kali dijalankan Java, dan mengapa harus `static`?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Cek `java -version` di terminal. Kamu butuh versi 17 atau lebih.
+- Kelas `System` punya anggota bernama `out`. Cari method-nya yang mencetak satu baris lalu pindah baris.
+- Teks yang dicetak harus ditulis sebagai String literal, persis sama.
+
+</details>
+
+### Telusuri
+
+Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yang menurutmu adalah *objek*. Untuk masing-masing, tulis satu *data* yang dimilikinya dan satu *aksi* yang bisa dilakukannya.
+
+### Cek dirimu
+
+`P01MainOutputTest` lulus.
 
 ---
 
@@ -146,17 +180,40 @@ Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian
 
 ![Diagram Bagian 2](docs/p02-author-book.png)
 
-**Langkah**
+### Tujuan
 
-1. Buka `Author.java`. Deklarasikan field sesuai diagram, lalu isi constructor dan semua method.
-2. Buka `Book.java`. Lakukan hal yang sama. Aturan perilakunya:
-   - Buku baru langsung **tersedia** (`isAvailable()` bernilai `true`).
-   - `checkOut()` mengembalikan `true` dan menandai buku dipinjam. Jika buku sudah dipinjam, ia mengembalikan `false`.
-   - `returnItem()` membuat buku tersedia lagi.
-3. Di Bagian ini field boleh `public` (seperti di diagram). Kamu akan menutupnya di Bagian 3.
-4. Di `Main`, coba buat dua objek `Book` dan cetak datanya.
+Kelas `Author` dan `Book` bisa dibuat menjadi objek, menyimpan data, dan menjalankan aksi sederhana.
 
-**Telusuri** (tidak dinilai): perhatikan kode ini, lalu tebak outputnya.
+### Aturan yang dicek autograder
+
+- Constructor menyimpan semua parameternya, dan getter mengembalikan nilai yang sama.
+- `Author.getInfo()` mengembalikan teks berbentuk `nama (negara)`. Contoh: `Andrea Hirata (Indonesia)`.
+- Buku yang baru dibuat **tersedia**.
+- `checkOut()` berhasil (`true`) satu kali. Selama buku masih dipinjam, memanggilnya lagi menghasilkan `false`.
+- `returnItem()` membuat buku bisa dipinjam lagi.
+- Dua objek `Book` tidak saling memengaruhi.
+- Di bagian ini field boleh `public` (seperti di diagram). Di Bagian 3 kamu akan menutupnya.
+
+### Pertanyaan pemandu
+
+- Data apa saja yang perlu diingat setiap objek `Book`? Mana yang berasal dari parameter, mana yang diatur sendiri oleh objek?
+- Agar objek tahu sedang dipinjam atau tidak, apa yang harus diingatnya?
+- Di constructor, nama parameter sama dengan nama field. Bagaimana Java membedakannya?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Deklarasikan field di dalam kelas, di luar method. Tipe field bisa dibaca dari diagram.
+- Kata kunci `this` menunjuk ke objek yang sedang dikerjakan.
+- Status "dipinjam atau tidak" cocok disimpan sebagai tipe `boolean`. Apa nilai awalnya?
+- Method yang mengembalikan `boolean` boleh punya dua `return` yang berbeda. Cek kondisi lebih dulu.
+- Di `Main`, coba buat dua objek `Book` dan cetak datanya. Ini membantu kamu melihat bahwa objek berdiri sendiri.
+
+</details>
+
+### Telusuri
+
+Tidak dinilai: perhatikan kode ini, lalu tebak outputnya.
 
 ```java
 Book a = new Book("1", "Clean Code", 2008);
@@ -169,7 +226,9 @@ System.out.println(c.isAvailable());
 
 Mengapa hasil baris pertama dan kedua berbeda? Gambar `a`, `b`, dan `c` di stack, dan objeknya di heap.
 
-**Cek dirimu**: `P02AuthorTest` dan `P02BookTest` lulus.
+### Cek dirimu
+
+`P02AuthorTest` dan `P02BookTest` lulus.
 
 ---
 
@@ -179,25 +238,56 @@ Mengapa hasil baris pertama dan kedua berbeda? Gambar `a`, `b`, dan `c` di stack
 
 ![Diagram Bagian 3](docs/p03-encapsulation.png)
 
-**Langkah**
+### Tujuan
 
-1. Jadikan **semua field** `Author` dan `Book` menjadi `private`. Bandingkan dengan diagram Bagian 2: apa saja yang berubah?
-2. Tambahkan validasi di `Book`:
-   - `setTitle`: judul `null`, kosong, atau hanya spasi tidak valid.
-   - `setYear`: tahun 0 atau negatif tidak valid.
-   - Jika tidak valid: `throw new IllegalArgumentException(...)` dan **biarkan nilai lama**.
-   - Constructor juga harus menolak data yang tidak valid. `isbn` juga tidak boleh kosong.
-3. `isbn` bersifat **read-only**: tidak ada `setIsbn`. Status `available` juga tidak punya setter. Ia hanya berubah lewat `checkOut()` dan `returnItem()`.
-4. Buka `Member.java` dan buat kelasnya sesuai diagram:
-   - `memberId` dan `loanCount` read-only (tanpa setter).
-   - `setName` menolak nama kosong dan menjaga nama lama.
-   - `canBorrow()` bernilai `true` selama `loanCount < 3`. Nilai ini **dihitung**, jangan disimpan sebagai field.
-   - `addLoan()` menambah `loanCount`. Jika sudah 3, tidak berubah dan mengembalikan `false`.
-   - `returnLoan()` mengurangi `loanCount`. Jika sudah 0, tidak berubah dan mengembalikan `false`.
+Objek menjaga datanya sendiri: data tidak bisa diubah sembarangan dan tidak pernah berada dalam keadaan tidak valid.
 
-**Telusuri** (tidak dinilai): jika `Member` punya `public int loanCount`, tulis satu baris kode di `Main` yang merusak aturan "maksimal 3 pinjaman". Mengapa `private` mencegahnya?
+### Aturan yang dicek autograder
 
-**Cek dirimu**: `P03EncapsulationTest` dan `P03MemberTest` lulus. Tes Bagian 2 harus tetap lulus.
+Semua kelas:
+
+- Semua field `private`. Bandingkan diagram Bagian 3 dengan Bagian 2.
+
+`Book`:
+
+- Judul `null`, kosong, atau hanya spasi **ditolak**. Tahun 0 atau negatif **ditolak**.
+- Penolakan berarti `IllegalArgumentException` dilempar dan nilai lama **tetap**.
+- Constructor juga menolak data tidak valid. `isbn` tidak boleh kosong.
+- `isbn` read-only (tanpa setter). Status tersedia tidak punya setter dan hanya berubah lewat `checkOut()` dan `returnItem()`.
+
+`Member` (kelas ini kamu isi dari stub sesuai diagram):
+
+- `memberId` dan `loanCount` read-only (tanpa setter). `memberId` dan nama tidak boleh kosong.
+- `setName` menolak nama kosong dan menjaga nama lama.
+- Jumlah pinjaman selalu antara 0 dan 3. `addLoan()` dan `returnLoan()` mengembalikan `true` jika berhasil dan `false` jika sudah di batas.
+- `canBorrow()` menjawab apakah anggota masih boleh meminjam.
+
+### Pertanyaan pemandu
+
+- Jika `Member` punya `public int loanCount`, baris kode apa yang merusak aturan "maksimal 3"? Bagaimana `private` mencegahnya?
+- Constructor dan setter punya aturan validasi yang sama. Bagaimana menghindari menulis aturannya dua kali?
+- Apakah `canBorrow()` perlu field sendiri? Apa yang terjadi jika datanya tidak sinkron dengan `loanCount`?
+- Mengapa `memberId` tidak boleh punya setter?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Ubah modifier field, lalu lihat apa yang error di `Main` kamu. Itu pelajaran enkapsulasinya.
+- Urutan aman di setter: **periksa dulu**, baru isi field. Kalau tidak valid, hentikan sebelum field disentuh.
+- Untuk menolak data, ingat kata kunci `throw` dan tipe exception yang disebut di atas.
+- Constructor boleh memanggil setter milik kelasnya sendiri.
+- Untuk teks kosong, class `String` punya method yang menjawab apakah teks kosong atau hanya spasi.
+- `canBorrow()` bisa dihitung langsung dari `loanCount` setiap kali dipanggil.
+
+</details>
+
+### Telusuri
+
+Tidak dinilai: tulis satu baris kode di `Main` yang akan merusak aturan "maksimal 3 pinjaman" jika field `loanCount` `public`. Mengapa baris itu tidak bisa dikompilasi setelah field menjadi `private`?
+
+### Cek dirimu
+
+`P03EncapsulationTest` dan `P03MemberTest` lulus. Tes Bagian 2 harus tetap lulus.
 
 ---
 
@@ -207,32 +297,61 @@ Mengapa hasil baris pertama dan kedua berbeda? Gambar `a`, `b`, dan `c` di stack
 
 ![Diagram Bagian 4](docs/p04-relations.png)
 
-Baca diagramnya dengan teliti. Ada empat relasi, dan setiap relasi punya konsekuensi di kode:
+### Tujuan
 
-| Relasi | Di diagram | Artinya di kode |
-|---|---|---|
-| Asosiasi | `Book` ke `Author` | `Book` menyimpan **referensi** ke `Author`, tetapi `Author` dibuat di luar dan bisa dipakai banyak buku. |
-| Agregasi | `Shelf` ke `Book` | `Shelf` menyimpan array `Book`, tetapi `Book` ada di luar rak juga. |
-| Komposisi | `Member` ke `LibraryCard` | `Member` **membuat** `LibraryCard` sendiri di constructor. Kartu tidak datang dari parameter. |
-| Dependensi | `Librarian` ke `Member` dan `Book` | `Librarian` hanya memakai keduanya sebagai **parameter** method, tanpa menyimpannya. |
+Menghubungkan kelas sesuai relasi di diagram: asosiasi, agregasi, komposisi, dan dependensi.
 
-**Langkah**
+### Aturan yang dicek autograder
 
-1. Di `Book`, tambahkan field `author`, `getAuthor()`, dan `setAuthor(Author)`. Buku baru belum punya penulis (`null`).
-2. Buat kelas `LibraryCard`. Nomor kartu diberikan lewat constructor.
-3. Di `Member`, tambahkan `getCard()`. Constructor `Member` membuat kartu bernomor `"CARD-"` ditambah `memberId`, misalnya `CARD-M001`.
-4. Buat kelas `Shelf`:
-   - Array `Book` berkapasitas **5**, dan penghitung jumlah buku yang terisi.
-   - `addBook` mengembalikan `false` jika rak penuh atau bukunya `null`.
-   - `findByIsbn` mengembalikan objek `Book` yang sama (bukan salinan), atau `null` jika tidak ketemu.
-   - `countAvailable` menghitung buku yang masih tersedia.
-5. Buat kelas `Librarian` (tanpa field):
-   - `lend(Member, Book)`: berhasil jika anggota boleh meminjam **dan** buku tersedia. Setelah itu buku dipinjam dan pinjaman anggota bertambah. Jika tidak, kembalikan `false` tanpa mengubah apa pun.
-   - `receive(Member, Book)`: berhasil jika buku sedang dipinjam dan anggota punya pinjaman. Setelah itu buku tersedia lagi dan pinjaman anggota berkurang.
+`Book` dan `Author` (asosiasi):
 
-**Telusuri** (tidak dinilai): jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-nya? Jika objek `Shelf` dibuang, apa yang terjadi pada `Book` di dalamnya? Jelaskan perbedaan keduanya dengan kata-katamu sendiri.
+- Buku baru belum punya penulis. `getAuthor()` mengembalikan objek `Author` **yang sama** dengan yang diberikan ke `setAuthor`, dan dua buku boleh berbagi satu `Author`.
 
-**Cek dirimu**: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04MemberCardCompositionTest`, dan `P04LibrarianDependencyTest` lulus.
+`Member` dan `LibraryCard` (komposisi):
+
+- Setiap `Member` punya kartu dengan nomor berbentuk `CARD-` diikuti `memberId`. Contoh: `CARD-M001`.
+- Kartu **tidak** diberikan dari luar. `Member` tidak punya constructor yang menerima `LibraryCard`. Dua anggota punya dua kartu berbeda.
+
+`Shelf` (agregasi):
+
+- Kapasitas rak **5** buku. `addBook` mengembalikan `false` jika rak penuh atau bukunya `null`.
+- `findByIsbn` mengembalikan objek `Book` yang sama (bukan salinan), atau `null` jika tidak ada.
+- `countAvailable` menghitung buku yang saat ini tersedia.
+
+`Librarian` (dependensi):
+
+- Tidak punya field sama sekali.
+- `lend(member, book)` berhasil hanya jika anggota boleh meminjam **dan** buku tersedia. Jika berhasil, buku dipinjam dan pinjaman anggota bertambah. Jika gagal, tidak ada yang berubah.
+- `receive(member, book)` berhasil hanya jika buku sedang dipinjam dan anggota punya pinjaman. Jika berhasil, buku tersedia lagi dan pinjaman anggota berkurang.
+
+### Pertanyaan pemandu
+
+Jawab untuk **setiap** garis relasi di diagram:
+
+- Siapa yang **membuat** objek di ujung garis: kelas ini sendiri, atau kode di luarnya?
+- Jika pemilik objek dibuang, apakah objek di ujung garis ikut hilang?
+- Apakah objek di ujung garis perlu disimpan sebagai **field**, atau cukup muncul sebagai **parameter** method?
+- Apa arti `0..5` dan `0..1` pada garis tersebut?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Relasi yang disimpan sebagai field berarti kelas **mengingat** objek itu. Relasi dependensi tidak mengingat apa pun.
+- Pada komposisi, field diisi **di dalam constructor**, bukan dari parameter constructor.
+- Array di Java punya ukuran tetap. Kamu butuh satu variabel lagi untuk tahu berapa slot yang sudah terisi.
+- `findByIsbn`: telusuri hanya slot yang terisi. Bandingkan teks dengan `equals`, bukan `==`.
+- `Librarian`: method milik `Member` dan `Book` yang sudah ada sudah menjawab sebagian besar pertanyaanmu. Panggil, jangan tulis ulang aturannya.
+- Urutan pemeriksaan di `lend` penting. Apa yang terjadi jika kamu meminjam bukunya dulu, baru sadar anggotanya sudah mencapai batas?
+
+</details>
+
+### Telusuri
+
+Tidak dinilai: jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-nya? Jika objek `Shelf` dibuang, apa yang terjadi pada `Book` di dalamnya? Jelaskan perbedaan keduanya dengan kata-katamu sendiri.
+
+### Cek dirimu
+
+`P04AssociationTest`, `P04ShelfAggregationTest`, `P04MemberCardCompositionTest`, dan `P04LibrarianDependencyTest` lulus.
 
 ---
 
@@ -242,19 +361,44 @@ Baca diagramnya dengan teliti. Ada empat relasi, dan setiap relasi punya konseku
 
 ![Diagram Bagian 5](docs/p06-inheritance.png)
 
-Ini adalah bagian **refactoring**: kamu memindahkan kode yang sudah ada ke tempat yang lebih tepat, dan semua tes lama harus **tetap lulus**.
+### Tujuan
 
-**Langkah**
+Merapikan kode: bagian yang sama antara `Book`, `Dvd`, dan `Magazine` hidup di satu tempat, yaitu `LibraryItem`. Ini adalah **refactoring**: semua tes lama harus **tetap lulus**.
 
-1. Buat kelas `LibraryItem` sesuai diagram. Ia menerima `title` dan `year` di constructor, dan memvalidasinya seperti `Book` di Bagian 3. Field `title` dan `year` bersifat `protected`.
-2. Pindahkan dari `Book` ke `LibraryItem`: field `title`, `year`, `available`, serta method `getTitle`, `setTitle`, `getYear`, `setYear`, `isAvailable`, `checkOut`, dan `returnItem`.
-3. Ubah `Book` menjadi `extends LibraryItem`. Constructor `Book` memanggil `super(title, year)`. `Book` hanya menyimpan `isbn` dan `author`.
-4. Buat `Dvd` dan `Magazine` yang juga `extends LibraryItem`, dengan field dan constructor sesuai diagram.
-5. Jalankan seluruh tes. Tes Bagian 2 sampai 4 harus tetap lulus.
+### Aturan yang dicek autograder
 
-**Telusuri** (tidak dinilai): apa yang diwarisi `Dvd` dari `LibraryItem`, dan apa yang tidak? Mengapa constructor `LibraryItem` tidak ikut diwariskan, tetapi tetap harus dipanggil oleh `Dvd`?
+- `Book`, `Dvd`, dan `Magazine` adalah subclass langsung dari `LibraryItem`.
+- `LibraryItem` memvalidasi `title` dan `year` seperti `Book` di Bagian 3. Field `title` dan `year` bersifat `protected`, dan tidak ada field `public`.
+- `Book` tidak lagi menyimpan `title`, `year`, dan status tersedia sendiri, dan tidak menulis ulang method yang sama dengan `LibraryItem`.
+- `Dvd` dan `Magazine` menyimpan data khususnya sesuai diagram (`private`). Getter judul dan tahun serta `checkOut`/`returnItem` dipakai dari `LibraryItem`.
+- Validasi setter ikut berlaku di semua subclass.
+- Semua tes Bagian 2 sampai 4 masih lulus.
 
-**Cek dirimu**: `P06InheritanceTest` lulus, dan tes Bagian 2 sampai 4 tidak ada yang rusak.
+### Pertanyaan pemandu
+
+- Bandingkan `Book` di diagram Bagian 4 dengan `Dvd` di diagram Bagian 5. Apa yang **sama** di keduanya? Apa yang **khusus**?
+- Kalimat "`Dvd` adalah sebuah `LibraryItem`" masuk akal. Apakah "`Library` adalah sebuah `Book`" juga masuk akal?
+- Mengapa `title` dan `year` ditandai `#` dan bukan `-`?
+- Jika `LibraryItem` punya constructor yang meminta `title` dan `year`, siapa yang harus mengisinya saat sebuah `Dvd` dibuat?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Kata kunci `extends` menyatakan hubungan IS-A.
+- Constructor tidak diwariskan. Subclass memanggil constructor parent dengan `super(...)`, dan harus menjadi **baris pertama**.
+- `protected` bisa diakses subclass, tetapi tidak oleh kelas lain di luar paket dan keluarga.
+- Kerjakan bertahap: buat `LibraryItem`, pindahkan satu bagian, jalankan tes, ulangi. Jangan memindahkan semuanya sekaligus.
+- Jika tes lama merah setelah memindahkan sesuatu, sebuah method atau constructor kemungkinan hilang atau berubah.
+
+</details>
+
+### Telusuri
+
+Tidak dinilai: apa yang diwarisi `Dvd` dari `LibraryItem`, dan apa yang tidak? Mengapa constructor `LibraryItem` tidak ikut diwariskan, tetapi tetap harus dipanggil saat `Dvd` dibuat?
+
+### Cek dirimu
+
+`P06InheritanceTest` lulus, dan tes Bagian 2 sampai 4 tidak ada yang rusak.
 
 ---
 
@@ -264,66 +408,116 @@ Ini adalah bagian **refactoring**: kamu memindahkan kode yang sudah ada ke tempa
 
 ![Diagram Bagian 6](docs/p07-override-overload.png)
 
-**Langkah**
+### Tujuan
 
-1. Di `LibraryItem` tambahkan:
-   - `loanDays()` mengembalikan `7`.
-   - `describe()` mengembalikan teks `"judul (tahun)"`, misalnya `Generic (2000)`.
-   - `toString()` mengembalikan `describe()`.
-   - `extendLoan()` menambah **7** hari perpanjangan.
-   - `extendLoan(int days)` menambah sebanyak `days`. Nilai 0 atau negatif ditolak dengan `IllegalArgumentException`.
-   - `getTotalLoanDays()` = `loanDays()` ditambah semua hari perpanjangan.
-2. **Override** di subclass (beri `@Override`):
+Subclass mengganti perilaku yang diwarisi (overriding), dan satu nama method atau constructor bisa dipanggil dengan beberapa bentuk parameter (overloading).
 
-   | Kelas | `loanDays()` | `describe()` |
-   |---|---|---|
-   | `Book` | 14 | `super.describe()` + `" by "` + nama penulis (atau `Unknown` jika belum ada) |
-   | `Dvd` | 3 | `super.describe()` + `" ["` + durasi + `" min]"` |
-   | `Magazine` | tidak di-override (memakai versi `LibraryItem`) | tidak di-override |
+### Aturan yang dicek autograder
 
-   Contoh hasil: `Clean Code (2008) by Robert Martin` dan `Inception (2010) [148 min]`.
-3. **Overload constructor**:
-   - `Book(isbn, title, year, author)` memanggil `this(isbn, title, year)` lalu mengisi penulis.
-   - `Magazine(title, year)` memanggil `this(title, year, 1)`.
-4. Di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`, satu `Dvd`, dan satu `Magazine`. Cetak `loanDays()` dan `describe()` masing-masing dengan satu perulangan.
+Method baru di `LibraryItem` (baca daftarnya di diagram):
 
-**Telusuri** (tidak dinilai): pada langkah 4, variabelnya bertipe `LibraryItem`. Mengapa yang dicetak tetap `14`, `3`, dan `7`, bukan `7` untuk semuanya? Siapa yang menentukan versi method mana yang berjalan: tipe variabel atau objeknya?
+- `loanDays()` mengembalikan **7**.
+- `describe()` mengembalikan deskripsi singkat, dan `toString()` mengembalikan hasil yang sama dengan `describe()`.
+- `extendLoan()` menambah perpanjangan **7** hari. `extendLoan(int days)` menambah sebanyak `days`, dan menolak 0 atau negatif dengan `IllegalArgumentException`.
+- `getTotalLoanDays()` adalah lama pinjam ditambah semua perpanjangan.
 
-**Cek dirimu**: `P07OverrideTest` dan `P07OverloadTest` lulus.
+Nilai yang diharapkan:
+
+| Objek | `loanDays()` | `describe()` |
+|---|---|---|
+| `LibraryItem("Generic", 2000)` | 7 | `Generic (2000)` |
+| `Book` tanpa penulis | 14 | `Clean Code (2008) by Unknown` |
+| `Book` dengan penulis Robert Martin | 14 | `Clean Code (2008) by Robert Martin` |
+| `Dvd("Inception", 2010, 148)` | 3 | `Inception (2010) [148 min]` |
+| `Magazine("Tempo", 2024, 7)` | 7 | `Tempo (2024)` |
+
+Constructor baru (lihat diagram):
+
+- `Book(isbn, title, year, author)` langsung mengisi penulis.
+- `Magazine(title, year)` memberi nomor edisi **1**. Versi 3 parameter tetap berfungsi.
+
+Struktur:
+
+- `Book` dan `Dvd` meng-override `loanDays()`. `Magazine` **tidak** meng-override-nya.
+
+### Pertanyaan pemandu
+
+- Bandingkan `describe()` milik `Book` dan milik `LibraryItem`. Bagian mana yang sudah dikerjakan parent? Perlukah kamu menulisnya ulang?
+- `Magazine` tidak perlu `loanDays()` sendiri. Mengapa? Versi siapa yang berjalan?
+- `extendLoan()` dan `extendLoan(int)` sama-sama bernama `extendLoan`. Apa yang membedakannya bagi compiler? Bisakah salah satu memakai yang lain?
+- Dua constructor `Book` hampir sama. Bagaimana menghindari menyalin isinya?
+
+<details>
+<summary>Petunjuk</summary>
+
+- Anotasi `@Override` membuat compiler menolak jika nama atau parameter salah. Pasang pada setiap override.
+- Kata kunci `super` bisa dipakai bukan hanya untuk constructor, tetapi juga untuk memanggil method milik parent.
+- Constructor boleh memanggil constructor lain di kelas yang **sama**, dengan kata kunci yang berbeda dari `super(...)`. Pemanggilan ini juga harus berada di baris pertama.
+- `toString()` sudah ada di `Object`. Kamu meng-override-nya.
+- Teks `Unknown` hanya dipakai jika `author` bernilai `null`.
+- Perpanjangan perlu diingat di sebuah field di `LibraryItem`. Bagaimana `getTotalLoanDays()` memakainya agar tetap benar untuk `Book` (14) dan `Dvd` (3)?
+
+</details>
+
+### Telusuri
+
+Tidak dinilai: di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`, satu `Dvd`, dan satu `Magazine`, lalu cetak `loanDays()` dan `describe()` masing-masing dengan satu perulangan. Variabelnya bertipe `LibraryItem`, tetapi hasilnya `14`, `3`, dan `7`, bukan `7` untuk semuanya. Siapa yang menentukan versi method mana yang berjalan: tipe variabel atau objeknya?
+
+### Cek dirimu
+
+`P07OverrideTest` dan `P07OverloadTest` lulus.
 
 ---
 
 ## Bagian 7 (Gabungan P1 sampai P7): Aplikasi Konsol
 
-**Mengapa ini penting?** Sekarang semua kelas dirangkai menjadi aplikasi utuh. Kuncinya adalah memisahkan **logika** dari **tampilan**:
-
-- `Library` hanya berisi logika (menyimpan koleksi dan anggota, meminjam, mengembalikan). **Ia tidak boleh mencetak apa pun.**
-- `LibraryApp` hanya mengurus tampilan konsol (menu, membaca input, mencetak hasil).
-
-Di proyek akhir, `LibraryApp` akan diganti oleh tampilan GUI, sedangkan `Library` dan kelas lainnya tidak perlu diubah sama sekali.
+**Mengapa ini penting?** Sekarang semua kelas dirangkai menjadi aplikasi utuh. Kuncinya adalah memisahkan **logika** dari **tampilan**.
 
 ![Diagram Bagian 7](docs/p08-console-app.png)
 
-### Kelas `Library`
+### Tujuan
 
-Buat kelas `Library` sesuai diagram. Array `items` berisi `Book`, `Dvd`, dan `Magazine` **dalam satu array yang sama**. Ini mungkin karena ketiganya adalah `LibraryItem` (polymorphism).
+Membuat aplikasi konsol dengan menu yang bisa menambah koleksi, mendaftarkan anggota, meminjam, mengembalikan, dan mencari. `Library` berisi logika. `LibraryApp` berisi tampilan.
 
-| Method | Perilaku |
+### Pertanyaan pemandu
+
+- `Library` tidak boleh mencetak apa pun. Mengapa? Apa yang kamu ganti di proyek akhir saat tampilannya menjadi GUI, dan apa yang tidak perlu disentuh?
+- Array `items` berisi `Book`, `Dvd`, dan `Magazine` sekaligus. Mengapa itu diizinkan? Konsep apa namanya?
+- Mengapa `LibraryApp` menerima `Scanner` dan `PrintStream` lewat constructor, bukan langsung memakai `System.in` dan `System.out`?
+- Pada alur "pinjam": objek mana yang dipanggil, dan method apa yang berjalan di masing-masingnya?
+
+### Aturan yang dicek autograder: kelas `Library`
+
+Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
+
+| Method | Aturan |
 |---|---|
-| `addItem` | Menambah koleksi. `false` jika `null` atau array penuh (20). |
-| `addMember` | Menambah anggota. `false` jika `null`, penuh (10), atau `memberId` sudah ada. |
-| `getItems`, `getMembers` | Array baru yang **hanya berisi elemen terisi** (bukan 20 atau 10 elemen dengan banyak `null`). |
-| `findItemByTitle` | Mencari berdasarkan judul, **tidak peduli huruf besar-kecil**. `null` jika tidak ada. |
-| `findMember` | Mencari berdasarkan `memberId`. `null` jika tidak ada. |
-| `searchByKeyword` | Semua koleksi yang judulnya **memuat** kata kunci (tidak peduli huruf besar-kecil). Jika tidak ada, kembalikan array kosong (bukan `null`). |
-| `lend(memberId, title)` | `true` jika anggota ada, koleksi ada, anggota boleh meminjam, dan koleksi tersedia. Lalu koleksi dipinjam dan pinjaman anggota bertambah. Selain itu `false`. |
-| `receive(memberId, title)` | `true` jika anggota dan koleksi ada, koleksi sedang dipinjam, dan anggota punya pinjaman. Lalu koleksi tersedia lagi dan pinjaman anggota berkurang. Selain itu `false`. |
+| `addItem` | `false` jika `null` atau array penuh (20 item). |
+| `addMember` | `false` jika `null`, penuh (10 anggota), atau `memberId` sudah terdaftar. |
+| `getItems`, `getMembers` | Array baru yang **hanya berisi elemen terisi**. |
+| `findItemByTitle` | Judul dicocokkan **tanpa peduli huruf besar-kecil**. `null` jika tidak ada. |
+| `findMember` | Berdasarkan `memberId`. `null` jika tidak ada. |
+| `searchByKeyword` | Semua koleksi yang judulnya **memuat** kata kunci (tanpa peduli huruf besar-kecil). Jika tidak ada, kembalikan array **kosong**, bukan `null`. |
+| `lend(memberId, title)` | `true` hanya jika anggota ada, koleksi ada, anggota boleh meminjam, dan koleksi tersedia. Setelah itu koleksi dipinjam dan pinjaman anggota bertambah. |
+| `receive(memberId, title)` | `true` hanya jika anggota dan koleksi ada, koleksi sedang dipinjam, dan anggota punya pinjaman. Setelah itu koleksi tersedia lagi dan pinjaman anggota berkurang. |
 
 Catatan: latihan ini belum mencatat siapa meminjam apa. Itu sengaja, supaya kamu fokus pada kerja sama antar kelas.
 
+<details>
+<summary>Petunjuk: Library</summary>
+
+- Dua array (`items` dan `members`) masing-masing perlu penghitung isi, seperti di `Shelf`.
+- Tipe elemen array koleksi adalah `LibraryItem`. Itu sebabnya `Book`, `Dvd`, dan `Magazine` bisa masuk bersama.
+- Untuk memotong array menjadi hanya bagian yang terisi, pelajari `java.util.Arrays.copyOf`. Memakai `Arrays` untuk array biasa tetap sesuai aturan (bukan koleksi).
+- Untuk mengabaikan huruf besar-kecil, `String` punya method khusus perbandingan dan method untuk mengubah huruf.
+- `lend` dan `receive` cukup memanggil method yang sudah ada di `Member` dan `LibraryItem`. Tulis alurnya: cari, periksa, ubah.
+- Hasil `searchByKeyword` panjangnya belum diketahui sebelum menghitung. Pikirkan cara menampungnya dulu.
+
+</details>
+
 ### Kelas `LibraryApp`
 
-Buat file `LibraryApp.java`. Kerangka di bawah ini sudah menangani perulangan menu dan pembacaan input supaya kamu fokus pada pemakaian objek. Salin, lalu **isi semua method bertanda `TODO`**.
+Buat file `LibraryApp.java`. Di bawah ini adalah **kerangka**. Konstruktornya sudah lengkap. Semua method lain berisi petunjuk di komentar `TODO`. Salin, lalu tulis isi setiap method. Hapus komentar `TODO` setelah selesai.
 
 ```java
 package id.ac.polinema.library;
@@ -344,83 +538,83 @@ public class LibraryApp {
     }
 
     public void run() {
-        boolean running = true;
-        while (running) {
-            printMenu();
-            if (!in.hasNextLine()) {
-                break;
-            }
-            String choice = in.nextLine().trim();
-            switch (choice) {
-                case "1": showItems(); break;
-                case "2": addBook(); break;
-                case "3": addDvd(); break;
-                case "4": addMagazine(); break;
-                case "5": registerMember(); break;
-                case "6": lendItem(); break;
-                case "7": returnItem(); break;
-                case "8": searchItems(); break;
-                case "9": showMembers(); break;
-                case "0":
-                    out.println("Goodbye");
-                    running = false;
-                    break;
-                default:
-                    out.println("Invalid choice");
-            }
-        }
+        // TODO Petunjuk:
+        // - Menu diulang terus sampai pengguna memilih 0. Struktur perulangan apa yang cocok?
+        // - Pilihan menu dibaca sebagai String, lalu dipetakan ke method di bawah. Apa
+        //   struktur percabangan yang cocok untuk satu nilai dengan banyak kemungkinan?
+        // - Cetak "Goodbye" saat keluar, dan "Invalid choice" untuk pilihan yang tidak dikenal.
+        // - Apa yang terjadi jika input habis (hasNextLine() bernilai false)? Jangan sampai crash.
     }
 
     private void printMenu() {
-        out.println("=== " + library.getName() + " ===");
-        out.println("1. List items");
-        out.println("2. Add book");
-        out.println("3. Add DVD");
-        out.println("4. Add magazine");
-        out.println("5. Register member");
-        out.println("6. Lend item");
-        out.println("7. Return item");
-        out.println("8. Search items");
-        out.println("9. List members");
-        out.println("0. Exit");
-        out.print("Choose: ");
+        // TODO Petunjuk: cetak judul dan 10 baris menu persis seperti tabel "Teks yang harus dicetak".
+        // Judul memakai nama perpustakaan dari Library.
     }
 
-    // Mencetak prompt lalu membaca satu baris (tanpa spasi di ujung).
     private String readLine(String prompt) {
-        out.print(prompt);
-        return in.hasNextLine() ? in.nextLine().trim() : "";
+        // TODO Petunjuk: cetak prompt TANPA pindah baris, lalu baca satu baris. Buang spasi di
+        // ujung teks. Jika input sudah habis, kembalikan teks kosong.
+        return "";
     }
 
-    // Mencetak prompt lalu membaca bilangan bulat positif. Mengembalikan -1 jika tidak valid.
     private int readInt(String prompt) {
-        String text = readLine(prompt);
-        try {
-            int value = Integer.parseInt(text);
-            return value > 0 ? value : -1;
-        } catch (NumberFormatException e) {
-            return -1;
-        }
+        // TODO Petunjuk: pakai readLine. Kembalikan angka jika teksnya bilangan bulat positif,
+        // dan -1 jika bukan. Tanpa try-catch: periksa dulu setiap karakternya. Tipe `Character`
+        // punya method untuk memeriksa angka.
+        return -1;
     }
 
-    private void showItems() { /* TODO */ }
-    private void addBook() { /* TODO */ }
-    private void addDvd() { /* TODO */ }
-    private void addMagazine() { /* TODO */ }
-    private void registerMember() { /* TODO */ }
-    private void lendItem() { /* TODO */ }
-    private void returnItem() { /* TODO */ }
-    private void searchItems() { /* TODO */ }
-    private void showMembers() { /* TODO */ }
+    private void showItems() {
+        // TODO Petunjuk: minta array koleksi dari library. Satu baris per koleksi. Bagaimana jika kosong?
+        // Method mana yang menjawab deskripsi dan lama pinjam, dan apakah kamu perlu tahu jenis koleksinya?
+    }
+
+    private void addBook() {
+        // TODO Petunjuk: baca isian dalam urutan di tabel. Periksa input SEBELUM membuat objek,
+        // supaya constructor tidak melempar exception. Data penulis hanya ditanya jika
+        // nama penulis tidak kosong.
+    }
+
+    private void addDvd() {
+        // TODO Petunjuk: mirip addBook, tetapi lebih pendek. Apa yang bisa dipakai ulang?
+    }
+
+    private void addMagazine() {
+        // TODO Petunjuk: mirip addDvd. Perhatikan: hasil addItem bisa true atau false.
+    }
+
+    private void registerMember() {
+        // TODO Petunjuk: baca id dan nama, periksa tidak kosong, lalu serahkan ke library.
+        // Cetak pesan sesuai hasil addMember.
+    }
+
+    private void lendItem() {
+        // TODO Petunjuk: baca id dan judul, lalu serahkan keputusan ke library. LibraryApp
+        // tidak memeriksa aturan peminjaman sendiri. Hanya mencetak hasilnya.
+    }
+
+    private void returnItem() {
+        // TODO Petunjuk: mirip lendItem.
+    }
+
+    private void searchItems() {
+        // TODO Petunjuk: baca kata kunci, minta hasil dari library, cetak dengan format yang sama
+        // seperti showItems. Bagaimana jika hasilnya kosong?
+    }
+
+    private void showMembers() {
+        // TODO Petunjuk: satu baris per anggota. Bagaimana jika kosong?
+    }
 
     public static void main(String[] args) {
-        // TODO: buat Library bernama "Polinema Library", isi beberapa data contoh,
-        // lalu jalankan: new LibraryApp(library, new Scanner(System.in), System.out).run();
+        // TODO Petunjuk: buat Library bernama "Polinema Library", isi beberapa data contoh
+        // (buku dengan penulis, DVD, majalah, satu anggota), lalu jalankan LibraryApp dengan
+        // keyboard dan layar sungguhan.
     }
 }
 ```
 
-Pelajari kerangkanya dulu. Perhatikan bahwa `LibraryApp` menerima `Scanner` dan `PrintStream` dari luar. Itu yang membuat autograder bisa "mengetik" menu untuk aplikasimu.
+Perhatikan bahwa `LibraryApp` tidak memakai `System.in` dan `System.out` langsung. Itu yang membuat autograder bisa "mengetik" menu untuk aplikasimu.
 
 ### Teks yang harus dicetak
 
@@ -428,6 +622,7 @@ Autograder membandingkan output, jadi tulis **persis** seperti tabel ini. Setiap
 
 | Menu | Prompt (berurutan) | Hasil |
 |---|---|---|
+| (tiap putaran) | Judul `=== <nama perpustakaan> ===`, lalu baris `1. List items`, `2. Add book`, `3. Add DVD`, `4. Add magazine`, `5. Register member`, `6. Lend item`, `7. Return item`, `8. Search items`, `9. List members`, `0. Exit`, lalu prompt `Choose: ` | menu tampil lagi setelah setiap aksi |
 | 1 List items | tidak ada | Satu baris per koleksi: `describe() \| status \| N days`. Status: `Available` atau `Borrowed`. N = `loanDays()`. Jika kosong: `No items`. |
 | 2 Add book | `ISBN: `, `Title: `, `Year: `, `Author name (blank for none): `, lalu `Author country: ` hanya jika nama penulis tidak kosong | `Item added`, atau `Library is full` |
 | 3 Add DVD | `Title: `, `Year: `, `Duration (minutes): ` | `Item added`, atau `Library is full` |
@@ -442,17 +637,21 @@ Autograder membandingkan output, jadi tulis **persis** seperti tabel ini. Setiap
 
 Aturan input untuk menu 2, 3, dan 4:
 
-- Baca **semua** isian dulu (kecuali data penulis buku, yang dibaca setelah validasi).
 - Jika `Year` (atau durasi atau nomor edisi) bukan bilangan bulat positif: cetak `Invalid number` dan batalkan penambahan.
 - Jika `ISBN` atau `Title` kosong: cetak `Invalid input` dan batalkan.
 - Untuk menu 5, jika `Member ID` atau `Name` kosong: cetak `Invalid input` dan batalkan.
 - Kamu **tidak** perlu menangkap exception. Cek dulu inputnya, sehingga constructor tidak pernah menerima data tidak valid.
+- Untuk menu 2: `ISBN`, `Title`, dan `Year` dibaca dulu. Data penulis dibaca setelah ketiganya valid.
 
 Contoh baris menu 1: `Clean Code (2008) by Robert Martin | Available | 14 days`.
 
-**Telusuri** (tidak dinilai): ikuti satu alur peminjaman dari menu 6 sampai selesai. Sebutkan urutan objek yang dipanggil: `LibraryApp`, `Library`, `Member`, `LibraryItem`. Method apa saja yang berjalan di setiap objek? Tulis di laporan.
+### Telusuri
 
-**Cek dirimu**: `P08LibraryTest` dan `P08LibraryAppTest` lulus, lalu jalankan aplikasinya dan coba semua menu.
+Tidak dinilai: ikuti satu alur peminjaman dari menu 6 sampai selesai. Sebutkan urutan objek yang dipanggil: `LibraryApp`, `Library`, `Member`, `LibraryItem`. Method apa saja yang berjalan di setiap objek? Tulis di laporan.
+
+### Cek dirimu
+
+`P08LibraryTest` dan `P08LibraryAppTest` lulus, lalu jalankan aplikasinya dan coba semua menu.
 
 ---
 
@@ -500,10 +699,10 @@ Isi laporan:
 
 1. **Identitas**: nama, NIM, kelas, dan link repositori GitHub.
 2. **Untuk setiap Bagian 1 sampai 7**:
-   - **Penjelasan konsep** dengan kata-katamu sendiri (minimal 3 sampai 5 kalimat). Jawab pertanyaan pemandu: apa itu konsep ini, mengapa dipakai, dan di kelas mana kamu memakainya.
+   - **Penjelasan konsep** dengan kata-katamu sendiri (minimal 3 sampai 5 kalimat). Jawab: apa itu konsep ini, mengapa dipakai, dan di kelas mana kamu memakainya. Pertanyaan pemandu di setiap bagian boleh dijawab di sini.
    - **Potongan kode** buatanmu (5 sampai 15 baris) beserta penjelasan baris per baris.
    - **Jawaban "Telusuri"** untuk bagian tersebut.
-   - **Kendala dan solusi**: apa yang sulit, bagaimana kamu mengatasinya.
+   - **Kendala dan solusi**: apa yang sulit, bagaimana kamu mengatasinya. Sebutkan juga jika kamu membuka Petunjuk, dan petunjuk yang mana.
 3. **Tambahan Bagian 7**:
    - Screenshot aplikasi konsol saat berjalan (minimal satu sesi meminjam dan mengembalikan).
    - Penjelasan bagaimana `LibraryApp`, `Library`, `Member`, dan `LibraryItem` bekerja sama pada satu alur peminjaman.
@@ -515,10 +714,11 @@ Isi laporan:
 
 Kamu mengumpulkan **seluruh repositori**, bukan hanya kode. Sebelum batas waktu, pastikan:
 
+- [ ] WakaTime aktif selama kamu mengerjakan, dan project `oop-library` muncul di dashboard.
 - [ ] Semua kode sudah di-push ke GitHub.
 - [ ] Autograder di tab Actions sudah dijalankan dan nilainya tampil.
 - [ ] `laporan/Laporan_<NIM>_<Nama>.pdf` ada, bernama benar, dan sudah di-push.
-- [ ] Laporan memuat screenshot WakaTime, dan WakaTime aktif selama kamu mengerjakan.
+- [ ] Laporan memuat screenshot WakaTime.
 - [ ] File `.wakatime-project` tidak berubah.
 
 Kirim link repositori sesuai arahan Dosen.
