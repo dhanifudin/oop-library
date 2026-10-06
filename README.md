@@ -129,7 +129,7 @@ Tips: baca per kotak kelas, dari atas ke bawah. Bagian atas adalah field, bagian
 - **Tujuan**: apa yang harus kamu capai.
 - **Aturan yang dicek autograder**: hal yang pasti diuji. Contoh teks di sini hanya contoh bentuk, bukan kode yang bisa disalin.
 - **Pertanyaan pemandu**: jawab dulu di kepala atau di kertas sebelum menulis kode.
-- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di Bagian 2 sampai 7 ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
+- **Petunjuk**: klik untuk membuka. Buka hanya setelah kamu mencoba sendiri. Petunjuk menyebut konsep, bukan kode. Di setiap bagian ada **Petunjuk 2** yang menjelaskan langkah per kelas atau method, untuk dibuka hanya jika Petunjuk 1 belum cukup.
 - **Telusuri**: latihan menebak, tidak dinilai. Jawabannya masuk laporan.
 - **Cek dirimu**: tes mana yang harus lulus.
 
@@ -156,11 +156,28 @@ Program `Main` berjalan dan mencetak satu baris sapaan.
 - Method mana yang pertama kali dijalankan Java, dan mengapa harus `static`?
 
 <details>
-<summary>Petunjuk</summary>
+<summary>Petunjuk 1</summary>
 
 - Cek `java -version` di terminal. Kamu butuh versi 17 atau lebih.
 - Kelas `System` punya anggota bernama `out`. Cari method-nya yang mencetak satu baris lalu pindah baris.
 - Teks yang dicetak harus ditulis sebagai String literal, persis sama.
+
+</details>
+
+<details>
+<summary>Petunjuk 2 (langkah demi langkah, buka jika Petunjuk 1 belum cukup)</summary>
+
+1. Buka `Main.java`. Cari method `main`. Tulis kodemu **di dalam kurung kurawalnya**, menggantikan komentar `TODO`.
+2. Satu pernyataan cukup. Susunannya dari kiri ke kanan: nama kelas `System`, titik, `out`, titik, nama method pencetak satu baris (diawali `print`, diakhiri `ln`), lalu tanda kurung.
+3. Di dalam tanda kurung, tulis teks yang ingin dicetak. Teks diapit **tanda kutip ganda**. Huruf besar-kecil, spasi, dan ejaan harus persis sama dengan `Welcome to Polinema Library`.
+4. Akhiri pernyataan dengan **titik koma**.
+5. Jalankan `Main` (di NetBeans: klik kanan file, `Run File`, atau `Shift+F6`). Teks yang kamu tulis muncul di jendela Output.
+6. Jika ada garis merah atau error, periksa kesalahan yang paling sering terjadi:
+   - `System` ditulis dengan huruf kecil (Java membedakan huruf besar dan kecil).
+   - Tanda kutip tidak berpasangan.
+   - Titik koma terlupa.
+   - Kode ditulis di luar kurung kurawal `main`.
+7. Cek hasilnya: baris pertama output hanya berisi teks itu, tanpa tambahan spasi atau karakter lain.
 
 </details>
 
