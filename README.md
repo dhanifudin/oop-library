@@ -155,6 +155,25 @@ Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
 
 </details>
 
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti `____` dengan teks dari soal.
+
+```java
+// Main.java
+package id.ac.polinema.library;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("____");
+    }
+}
+```
+
+</details>
+
 ### Telusuri
 
 Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yang menurutmu adalah *objek*. Untuk masing-masing, tulis satu *data* yang dimilikinya dan satu *aksi* yang bisa dilakukannya.
