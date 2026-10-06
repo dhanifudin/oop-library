@@ -8,6 +8,10 @@ package id.ac.polinema.library;
  *
  * Field tidak dideklarasikan di sini: baca diagram kelas di README.
  * Di Bagian 2 field boleh public. Di Bagian 3 kamu akan menutupnya.
+ *
+ * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas constructor:
+ *   public ____ name;
+ *   public ____ country;
  */
 public class Author {
 
@@ -15,11 +19,18 @@ public class Author {
     public Author(String name, String country) {
         // TODO Petunjuk: nama parameter sama dengan nama field. Kata kunci apa yang
         // menunjuk ke objek yang sedang dibuat?
+        //
+        // Kerangka:
+        //   this.name = ____;
+        //   this.country = ____;
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public String getName() {
         // TODO Petunjuk: kembalikan data yang disimpan constructor.
+        //
+        // Kerangka:
+        //   return ____;
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
@@ -31,6 +42,9 @@ public class Author {
     /** Teks berbentuk "nama (negara)". Contoh: Andrea Hirata (Indonesia). */
     public String getInfo() {
         // TODO Petunjuk: gabungkan dua data dengan operator + dan tanda kurung dalam String.
+        //
+        // Kerangka:
+        //   return name + " (" + ____ + ")";
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

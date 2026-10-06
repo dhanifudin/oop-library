@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -157,5 +159,28 @@ class P08LibraryAppTest {
         assertHas(out, "Clean Code (2008) by Unknown");
         assertHas(out, "No items found");
         assertTrue(!out.contains("Inception (2010)"), "Inception tidak cocok dengan kata kunci 'code'");
+    }
+
+    @Test
+    @DisplayName("Main mencetak sapaan, lalu menjalankan LibraryApp dengan data contoh")
+    void mainStartsTheApp() {
+        PrintStream originalOut = System.out;
+        InputStream originalIn = System.in;
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(buffer, true, StandardCharsets.UTF_8));
+        System.setIn(new ByteArrayInputStream("1\n0\n".getBytes(StandardCharsets.UTF_8)));
+        try {
+            Main.main(new String[0]);
+        } finally {
+            System.setOut(originalOut);
+            System.setIn(originalIn);
+        }
+        String out = buffer.toString(StandardCharsets.UTF_8);
+        assertTrue(out.startsWith("Welcome to Polinema Library"),
+                "Baris pertama output Main harus sapaan. Output sebenarnya:\n" + out);
+        assertHas(out, "=== Polinema Library ===");
+        assertHas(out, "Goodbye");
+        assertTrue(!out.contains("No items"),
+                "Main harus mengisi data contoh sebelum menjalankan LibraryApp");
     }
 }

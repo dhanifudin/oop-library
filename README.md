@@ -86,10 +86,10 @@ Baca pesan tes yang gagal. Pesannya menjelaskan apa yang kurang.
 **Command line** (butuh JDK 17 atau lebih dan Maven):
 
 ```
-mvn -q compile exec:java -Dexec.mainClass=id.ac.polinema.library.Main
+mvn -q compile exec:java
 ```
 
-Ganti `Main` dengan `LibraryApp` untuk menjalankan aplikasi akhir.
+Perintah ini menjalankan `Main`, satu-satunya titik awal program.
 
 ## Cara Membaca Diagram dan Petunjuk
 
@@ -359,6 +359,134 @@ Jawab untuk **setiap** garis relasi di diagram:
 
 </details>
 
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// LibraryCard.java
+package id.ac.polinema.library;
+
+public class LibraryCard {
+    private String number;
+
+    public LibraryCard(String number) {
+        this.number = ____;
+    }
+
+    public String getNumber() {
+        return ____;
+    }
+}
+```
+
+```java
+// Book.java (tambahan)
+private Author author;   // belum diisi, jadi nilainya null
+
+public Author getAuthor() {
+    return ____;
+}
+
+public void setAuthor(Author author) {
+    this.author = ____;   // simpan referensinya, jangan membuat Author baru
+}
+```
+
+```java
+// Member.java (tambahan)
+private LibraryCard card;
+
+// di constructor, setelah semua validasi:
+this.card = new LibraryCard("____" + memberId);
+
+public LibraryCard getCard() {
+    return ____;
+}
+```
+
+```java
+// Shelf.java
+package id.ac.polinema.library;
+
+public class Shelf {
+    private String code;
+    private Book[] books = new Book[____];   // kapasitas rak
+    private int count;                        // jumlah slot terisi, awalnya 0
+
+    public Shelf(String code) {
+        this.code = code;
+    }
+
+    public String getCode() { return code; }
+
+    public int getBookCount() {
+        return ____;
+    }
+
+    public boolean addBook(Book book) {
+        if (book == null || count == ____) {
+            return false;
+        }
+        books[count] = ____;
+        count++;
+        return true;
+    }
+
+    public Book findByIsbn(String isbn) {
+        for (int i = 0; i < ____; i++) {
+            if (books[i].getIsbn().equals(____)) {
+                return books[i];
+            }
+        }
+        return ____;
+    }
+
+    public int countAvailable() {
+        int total = 0;
+        for (int i = 0; i < count; i++) {
+            if (books[i].____()) {
+                total++;
+            }
+        }
+        return total;
+    }
+}
+```
+
+```java
+// Librarian.java
+package id.ac.polinema.library;
+
+public class Librarian {
+
+    public boolean lend(Member member, Book book) {
+        if (!member.____()) {
+            return false;
+        }
+        if (!book.____()) {
+            return false;
+        }
+        member.____();
+        return true;
+    }
+
+    public boolean receive(Member member, Book book) {
+        if (book.____()) {          // buku tidak sedang dipinjam?
+            return false;
+        }
+        if (!member.____()) {
+            return false;
+        }
+        book.____();
+        return true;
+    }
+}
+```
+
+</details>
+
 ### Telusuri
 
 Tidak dinilai: jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-nya? Jika objek `Shelf` dibuang, apa yang terjadi pada `Book` di dalamnya? Jelaskan perbedaan keduanya dengan kata-katamu sendiri.
@@ -411,6 +539,81 @@ Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus t
 4. **Buat `Dvd`.** `extends LibraryItem`, satu field `private` untuk durasi. Constructor menerima `title`, `year`, dan durasi. Baris pertamanya memanggil `super` dengan judul dan tahun, lalu menyimpan durasi. Tambahkan getter durasi.
 5. **Buat `Magazine`** dengan pola yang sama dengan `Dvd`, tetapi menyimpan nomor edisi.
 6. Jika muncul error "constructor LibraryItem ... cannot be applied to given types", artinya sebuah subclass belum memanggil `super(...)` dengan argumen yang sesuai. Periksa constructor subclass yang disebut di pesan error.
+
+</details>
+
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// LibraryItem.java
+package id.ac.polinema.library;
+
+public class LibraryItem {
+    protected String title;
+    protected int year;
+    private boolean available;
+
+    public LibraryItem(String title, int year) {
+        setTitle(title);
+        setYear(____);
+        this.available = ____;
+    }
+
+    // Pindahkan dari Book ke sini:
+    // getTitle, setTitle, getYear, setYear, isAvailable, checkOut, returnItem
+}
+```
+
+```java
+// Book.java
+public class Book extends ____ {
+    private String isbn;
+    private Author author;
+
+    public Book(String isbn, String title, int year) {
+        ____(title, year);                // baris pertama
+        if (isbn == null || ____) {
+            throw new IllegalArgumentException("ISBN must not be blank");
+        }
+        this.isbn = isbn;
+    }
+
+    // getIsbn, getAuthor, dan setAuthor tetap di Book
+}
+```
+
+```java
+// Dvd.java
+public class Dvd extends ____ {
+    private int durationMinutes;
+
+    public Dvd(String title, int year, int durationMinutes) {
+        ____(title, year);
+        this.durationMinutes = ____;
+    }
+
+    public int getDurationMinutes() {
+        return ____;
+    }
+}
+```
+
+```java
+// Magazine.java
+public class Magazine extends ____ {
+    private int issueNumber;
+
+    public Magazine(String title, int year, int issueNumber) {
+        ____;                             // panggil constructor parent
+        ____;                             // simpan nomor edisi
+    }
+
+    // getIssueNumber()
+}
+```
 
 </details>
 
@@ -496,6 +699,85 @@ Struktur:
 
 </details>
 
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// LibraryItem.java (tambahan)
+private int extraDays;   // total hari perpanjangan, awalnya 0
+
+public int loanDays() {
+    return ____;
+}
+
+public String describe() {
+    return title + " (" + ____ + ")";
+}
+
+@Override
+public String toString() {
+    return ____();
+}
+
+public void extendLoan() {
+    extendLoan(____);
+}
+
+public void extendLoan(int days) {
+    if (days ____ 0) {
+        throw new IllegalArgumentException("____");
+    }
+    extraDays += ____;
+}
+
+public int getTotalLoanDays() {
+    return ____() + extraDays;      // panggil method, jangan tulis angka langsung
+}
+```
+
+```java
+// Book.java (tambahan)
+@Override
+public int loanDays() {
+    return ____;
+}
+
+@Override
+public String describe() {
+    String name = (author == null) ? "____" : author.____();
+    return ____.describe() + " by " + name;     // versi milik parent
+}
+
+public Book(String isbn, String title, int year, Author author) {
+    ____(isbn, title, year);                     // panggil constructor 3 parameter
+    this.author = author;
+}
+```
+
+```java
+// Dvd.java (tambahan)
+@Override
+public int loanDays() {
+    return ____;
+}
+
+@Override
+public String describe() {
+    return super.describe() + " [" + ____ + " min]";
+}
+```
+
+```java
+// Magazine.java (tambahan)
+public Magazine(String title, int year) {
+    ____(title, year, 1);
+}
+```
+
+</details>
+
 ### Telusuri
 
 Tidak dinilai: di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`, satu `Dvd`, dan satu `Magazine`, lalu cetak `loanDays()` dan `describe()` masing-masing dengan satu perulangan. Variabelnya bertipe `LibraryItem`, tetapi hasilnya `14`, `3`, dan `7`, bukan `7` untuk semuanya. Siapa yang menentukan versi method mana yang berjalan: tipe variabel atau objeknya?
@@ -559,9 +841,105 @@ Field yang dibutuhkan: nama, array koleksi berukuran 20 dan penghitungnya, array
 
 </details>
 
+<details>
+<summary>Kerangka kode: Library (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// Library.java
+package id.ac.polinema.library;
+
+import java.util.Arrays;
+
+public class Library {
+    private String name;
+    private LibraryItem[] items = new LibraryItem[____];
+    private int itemCount;
+    private Member[] members = new Member[____];
+    private int memberCount;
+
+    public Library(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return ____;
+    }
+
+    public boolean addItem(LibraryItem item) {
+        if (item == null || itemCount == ____) {
+            return false;
+        }
+        items[itemCount] = ____;
+        itemCount++;
+        return true;
+    }
+
+    public boolean addMember(Member member) {
+        // sama seperti addItem, ditambah satu syarat: id belum terdaftar
+        if (member == null || memberCount == ____ || findMember(member.____()) != null) {
+            return false;
+        }
+        // simpan di members, lalu naikkan memberCount
+        return true;
+    }
+
+    public LibraryItem[] getItems() {
+        return Arrays.copyOf(items, ____);
+    }
+
+    // getMembers(): pola yang sama dengan getItems
+
+    public LibraryItem findItemByTitle(String title) {
+        for (int i = 0; i < ____; i++) {
+            if (items[i].getTitle().____(title)) {      // abaikan huruf besar-kecil
+                return items[i];
+            }
+        }
+        return null;
+    }
+
+    // findMember(String memberId): pola yang sama, bandingkan dengan getMemberId()
+
+    public LibraryItem[] searchByKeyword(String keyword) {
+        LibraryItem[] found = new LibraryItem[____];
+        int total = 0;
+        for (int i = 0; i < itemCount; i++) {
+            if (items[i].getTitle().toLowerCase().____(keyword.toLowerCase())) {
+                found[total] = ____;
+                total++;
+            }
+        }
+        return Arrays.copyOf(found, ____);
+    }
+
+    public boolean lend(String memberId, String title) {
+        Member member = ____(memberId);
+        LibraryItem item = ____(title);
+        if (member == null || item == null) {
+            return false;
+        }
+        if (!member.____()) {
+            return false;
+        }
+        if (!item.____()) {
+            return false;
+        }
+        member.____();
+        return true;
+    }
+
+    // receive(String memberId, String title): cari, periksa item sedang dipinjam,
+    // kurangi pinjaman anggota, lalu kembalikan item
+}
+```
+
+</details>
+
 ### Kelas `LibraryApp`
 
-Buat file `LibraryApp.java`. Di bawah ini adalah **kerangka**. Konstruktornya sudah lengkap. Semua method lain berisi petunjuk di komentar `TODO`. Salin, lalu tulis isi setiap method. Hapus komentar `TODO` setelah selesai.
+Buat file `LibraryApp.java`. Perulangan menu (`run`) dan pembacaan input dengan `Scanner` (`readLine`, `readInt`) **sudah lengkap**. Salin, lalu isi method yang masih kosong. Setiap method punya petunjuk dan kerangka di komentarnya: ganti `____`, lalu hapus tanda `//` di depan baris kode.
 
 ```java
 package id.ac.polinema.library;
@@ -581,94 +959,191 @@ public class LibraryApp {
         this.out = out;
     }
 
+    // Perulangan tanpa akhir: menu tampil lagi dan lagi sampai pengguna memilih 0.
     public void run() {
-        // TODO Petunjuk:
-        // - Menu diulang terus sampai pengguna memilih 0. Struktur perulangan apa yang cocok?
-        // - Pilihan menu dibaca sebagai String, lalu dipetakan ke method di bawah. Apa
-        //   struktur percabangan yang cocok untuk satu nilai dengan banyak kemungkinan?
-        // - Cetak "Goodbye" saat keluar, dan "Invalid choice" untuk pilihan yang tidak dikenal.
-        // - Apa yang terjadi jika input habis (hasNextLine() bernilai false)? Jangan sampai crash.
+        while (true) {
+            printMenu();
+            if (!in.hasNextLine()) {      // input habis: berhenti, jangan crash
+                return;
+            }
+            String choice = in.nextLine().trim();
+            switch (choice) {
+                case "1": showItems(); break;
+                case "2": addBook(); break;
+                case "3": addDvd(); break;
+                case "4": addMagazine(); break;
+                case "5": registerMember(); break;
+                case "6": lendItem(); break;
+                case "7": returnItem(); break;
+                case "8": searchItems(); break;
+                case "9": showMembers(); break;
+                case "0":
+                    out.println("Goodbye");
+                    return;               // keluar dari run, perulangan berhenti
+                default:
+                    out.println("Invalid choice");
+            }
+        }
+    }
+
+    // Mencetak prompt (tanpa pindah baris), lalu membaca satu baris. Spasi di ujung dibuang.
+    private String readLine(String prompt) {
+        out.print(prompt);
+        if (!in.hasNextLine()) {
+            return "";
+        }
+        return in.nextLine().trim();
+    }
+
+    // Membaca bilangan bulat positif. Mengembalikan -1 jika isinya bukan bilangan positif.
+    private int readInt(String prompt) {
+        String text = readLine(prompt);
+        if (text.isEmpty() || text.length() > 9) {
+            return -1;
+        }
+        for (int i = 0; i < text.length(); i++) {
+            if (!Character.isDigit(text.charAt(i))) {
+                return -1;
+            }
+        }
+        int value = Integer.parseInt(text);
+        return value > 0 ? value : -1;
     }
 
     private void printMenu() {
-        // TODO Petunjuk: cetak judul dan 10 baris menu persis seperti tabel "Teks yang harus dicetak".
-        // Judul memakai nama perpustakaan dari Library.
+        out.println("=== " + library.getName() + " ===");
+        out.println("1. List items");
+        out.println("2. Add book");
+        // TODO: lanjutkan baris 3 sampai 9 dan "0. Exit" sesuai tabel "Teks yang harus dicetak".
+        out.print("Choose: ");
     }
 
-    private String readLine(String prompt) {
-        // TODO Petunjuk: cetak prompt TANPA pindah baris, lalu baca satu baris. Buang spasi di
-        // ujung teks. Jika input sudah habis, kembalikan teks kosong.
+    // Satu baris untuk satu koleksi: describe, status, lama pinjam.
+    private String line(LibraryItem item) {
+        // String status = item.____() ? "Available" : "Borrowed";
+        // return item.describe() + " | " + status + " | " + item.____() + " days";
         return "";
     }
 
-    private int readInt(String prompt) {
-        // TODO Petunjuk: pakai readLine. Kembalikan angka jika teksnya bilangan bulat positif,
-        // dan -1 jika bukan. Tanpa try-catch: periksa dulu setiap karakternya. Tipe `Character`
-        // punya method untuk memeriksa angka.
-        return -1;
-    }
-
     private void showItems() {
-        // TODO Petunjuk: minta array koleksi dari library. Satu baris per koleksi. Bagaimana jika kosong?
-        // Method mana yang menjawab deskripsi dan lama pinjam, dan apakah kamu perlu tahu jenis koleksinya?
+        // LibraryItem[] items = library.____();
+        // if (items.length == 0) {
+        //     out.println("No items");
+        // }
+        // for (LibraryItem item : items) {
+        //     out.println(line(item));
+        // }
     }
 
     private void addBook() {
-        // TODO Petunjuk: baca isian dalam urutan di tabel. Periksa input SEBELUM membuat objek,
-        // supaya constructor tidak melempar exception. Data penulis hanya ditanya jika
-        // nama penulis tidak kosong.
+        // String isbn = readLine("ISBN: ");
+        // String title = readLine("Title: ");
+        // int year = readInt("Year: ");
+        // if (year < 0) {
+        //     out.println("Invalid number");
+        //     return;
+        // }
+        // if (isbn.isEmpty() || ____) {
+        //     out.println("Invalid input");
+        //     return;
+        // }
+        // Book book = new Book(isbn, title, year);
+        // String authorName = readLine("____");
+        // if (!authorName.isEmpty()) {
+        //     String country = readLine("____");
+        //     book.setAuthor(new Author(____, ____));
+        // }
+        // out.println(library.____(book) ? "Item added" : "Library is full");
     }
 
     private void addDvd() {
-        // TODO Petunjuk: mirip addBook, tetapi lebih pendek. Apa yang bisa dipakai ulang?
+        // String title = readLine("Title: ");
+        // int year = readInt("Year: ");
+        // int minutes = readInt("____");
+        // if (year < 0 || ____) { out.println("Invalid number"); return; }
+        // if (title.isEmpty()) { out.println("Invalid input"); return; }
+        // out.println(library.addItem(new Dvd(title, year, minutes)) ? "Item added" : "Library is full");
     }
 
     private void addMagazine() {
-        // TODO Petunjuk: mirip addDvd. Perhatikan: hasil addItem bisa true atau false.
+        // Pola yang sama dengan addDvd. Prompt ketiga: "Issue number: ".
     }
 
     private void registerMember() {
-        // TODO Petunjuk: baca id dan nama, periksa tidak kosong, lalu serahkan ke library.
-        // Cetak pesan sesuai hasil addMember.
+        // String id = readLine("Member ID: ");
+        // String name = readLine("____");
+        // if (id.isEmpty() || ____) {
+        //     out.println("Invalid input");
+        //     return;
+        // }
+        // boolean added = library.addMember(new Member(id, name));
+        // out.println(added ? "Member registered" : "____");
     }
 
     private void lendItem() {
-        // TODO Petunjuk: baca id dan judul, lalu serahkan keputusan ke library. LibraryApp
-        // tidak memeriksa aturan peminjaman sendiri. Hanya mencetak hasilnya.
+        // String id = readLine("Member ID: ");
+        // String title = readLine("Title: ");
+        // out.println(library.____(id, title) ? "Loan successful" : "Loan failed");
     }
 
     private void returnItem() {
-        // TODO Petunjuk: mirip lendItem.
+        // Pola yang sama dengan lendItem, tetapi memanggil receive dan pesan "Return ...".
     }
 
     private void searchItems() {
-        // TODO Petunjuk: baca kata kunci, minta hasil dari library, cetak dengan format yang sama
-        // seperti showItems. Bagaimana jika hasilnya kosong?
+        // String keyword = readLine("____");
+        // LibraryItem[] found = library.____(keyword);
+        // if (found.length == 0) {
+        //     out.println("No items found");
+        // }
+        // for (LibraryItem item : found) {
+        //     out.println(line(item));
+        // }
     }
 
     private void showMembers() {
-        // TODO Petunjuk: satu baris per anggota. Bagaimana jika kosong?
-    }
-
-    public static void main(String[] args) {
-        // TODO Petunjuk: buat Library bernama "Polinema Library", isi beberapa data contoh
-        // (buku dengan penulis, DVD, majalah, satu anggota), lalu jalankan LibraryApp dengan
-        // keyboard dan layar sungguhan.
+        // Member[] members = library.getMembers();
+        // if (members.length == 0) {
+        //     out.println("No members");
+        // }
+        // for (Member m : members) {
+        //     out.println(m.getMemberId() + " - " + m.____() + " (" + m.____() + " loans)");
+        // }
     }
 }
 ```
 
-Perhatikan bahwa `LibraryApp` tidak memakai `System.in` dan `System.out` langsung. Itu yang membuat autograder bisa "mengetik" menu untuk aplikasimu.
+`LibraryApp` tidak memakai `System.in` dan `System.out` langsung. Itu yang membuat autograder bisa "mengetik" menu untuk aplikasimu.
+
+### `Main`: satu-satunya titik awal program
+
+Buka `Main.java` dan lanjutkan di bawah baris sapaan. `Main` membuat `Library`, mengisi data contoh, lalu menjalankan `LibraryApp` dengan keyboard dan layar sungguhan. `LibraryApp` tidak punya `main` sendiri.
+
+```java
+import java.util.Scanner;   // di bagian atas file
+
+public static void main(String[] args) {
+    System.out.println("Welcome to Polinema Library");
+
+    Library library = new Library("Polinema Library");
+    Book book = new Book("978-0132350884", "Clean Code", 2008);
+    book.setAuthor(new Author("Robert Martin", "____"));
+    library.addItem(____);
+    library.addItem(new Dvd("Inception", 2010, ____));
+    library.addItem(new Magazine("Tempo", 2024, ____));
+    library.addMember(new Member("M001", "____"));
+
+    LibraryApp app = new LibraryApp(____, new Scanner(System.in), System.out);
+    app.____();
+}
+```
 
 <details>
 <summary>Petunjuk 2: LibraryApp (langkah per method, buka jika komentar TODO belum cukup)</summary>
 
-Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`.
+Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`. Method `run`, `readLine`, dan `readInt` sudah ada di kerangka.
 
-- **`run`**: (1) buat variabel penanda yang menyatakan program masih berjalan. (2) Ulangi selama penanda itu benar. Di setiap putaran: cetak menu, lalu jika tidak ada baris input lagi hentikan perulangan. (3) Baca satu baris dan buang spasi di ujungnya. (4) Pilih aksi dengan `switch` pada teks tersebut: `"1"` sampai `"9"` memanggil method yang sesuai, `"0"` mencetak `Goodbye` dan mematikan penanda, dan `default` mencetak `Invalid choice`.
 - **`printMenu`**: satu `println` untuk judul (`=== ` + nama perpustakaan + ` ===`), sepuluh `println` untuk baris menu, lalu satu `print` (tanpa `ln`) untuk `Choose: `. Nama perpustakaan diminta dari `library`.
-- **`readLine`**: (1) `print` promptnya. (2) Jika `in` masih punya baris berikutnya, baca dan buang spasi ujungnya. (3) Jika tidak, kembalikan teks kosong.
-- **`readInt`**: (1) panggil `readLine`. (2) Jika teksnya kosong, kembalikan -1. (3) Telusuri setiap karakter. Jika ada yang bukan angka, kembalikan -1. (4) Ubah teks menjadi bilangan dengan method milik tipe pembungkus `Integer`. (5) Jika hasilnya 0, kembalikan -1 (karena yang diterima hanya bilangan positif). Teks yang sangat panjang bisa melebihi batas `int`, jadi batasi panjang teks (misalnya 9 digit) sebelum diubah.
 - **`showItems`**: (1) ambil array dari `library`. (2) Jika panjangnya 0, cetak `No items`. (3) Jika tidak, telusuri dan cetak satu baris per koleksi. Susun barisnya dari tiga bagian: hasil `describe()`, status (cek `isAvailable()` untuk memilih `Available` atau `Borrowed`), dan `loanDays()` diikuti ` days`, dipisahkan ` | `. Karena baris ini juga dipakai `searchItems`, pertimbangkan menaruhnya di satu method bantu.
 - **`addBook`**: (1) baca `ISBN`, `Title`, lalu `Year` dengan `readInt`. (2) Jika tahun -1, cetak `Invalid number` dan hentikan method. (3) Jika `ISBN` atau judul kosong, cetak `Invalid input` dan hentikan. (4) Buat objek `Book`. (5) Baca nama penulis. Jika tidak kosong, baca negara, buat `Author`, lalu pasang ke buku. (6) Serahkan buku ke `library` dan cetak `Item added` atau `Library is full` sesuai hasilnya.
 - **`addDvd`** dan **`addMagazine`**: pola yang sama, tanpa langkah penulis. Pesan hasilnya sama dengan `addBook`, sehingga bisa dipakai bersama lewat method bantu yang menerima hasil `addItem`.
@@ -676,11 +1151,13 @@ Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `Sys
 - **`lendItem`** dan **`returnItem`**: baca id dan judul, panggil method yang sesuai di `library`, lalu pilih salah satu dari dua pesan berdasarkan hasilnya. Tidak ada aturan peminjaman di sini.
 - **`searchItems`**: baca kata kunci, minta hasil dari `library`, cetak `No items found` jika kosong, dan jika tidak cetak setiap hasil dengan format yang sama seperti `showItems`.
 - **`showMembers`**: minta array anggota. Jika kosong cetak `No members`. Jika tidak, cetak satu baris per anggota dengan bentuk `id - nama (N loans)`.
-- **`main`**: (1) buat `Library`. (2) Buat beberapa objek (`Book` yang sudah punya penulis, `Dvd`, `Magazine`, `Member`) dan tambahkan ke `library`. (3) Buat `LibraryApp` dengan `new Scanner(System.in)` dan `System.out`, lalu panggil `run()`.
+- **`Main.main`** (di `Main.java`): (1) cetak sapaan. (2) Buat `Library`. (3) Buat beberapa objek (`Book` yang sudah punya penulis, `Dvd`, `Magazine`, `Member`) dan tambahkan ke `library`. (4) Buat `LibraryApp` dengan `new Scanner(System.in)` dan `System.out`, lalu panggil `run()`.
 
 </details>
 
 ### Teks yang harus dicetak
+
+`Main` mencetak sapaan, membuat `Library` bernama `Polinema Library` berisi data contoh, lalu menjalankan `LibraryApp` dengan `System.in` dan `System.out`.
 
 Tulis output **persis** seperti tabel. Cetak pesan dengan `println` dan prompt dengan `print` (tanpa pindah baris).
 
@@ -721,7 +1198,7 @@ Tidak dinilai: ikuti satu alur peminjaman dari menu 6 sampai selesai. Sebutkan u
 
 ## Coba Aplikasinya
 
-Setelah `main` di `LibraryApp` selesai, jalankan:
+Setelah `Main` selesai, jalankan:
 
 ```
 mvn -q compile exec:java
