@@ -207,6 +207,79 @@ Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yan
 
 </details>
 
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// Author.java
+package id.ac.polinema.library;
+
+public class Author {
+    public ____ name;
+    public ____ country;
+
+    public Author(String name, String country) {
+        this.name = ____;
+        this.country = ____;
+    }
+
+    public String getName() {
+        return ____;
+    }
+
+    public String getCountry() {
+        return ____;
+    }
+
+    public String getInfo() {
+        return name + " (" + ____ + ")";
+    }
+}
+```
+
+```java
+// Book.java
+package id.ac.polinema.library;
+
+public class Book {
+    public String isbn;
+    public ____ title;
+    public ____ year;
+    public ____ available;           // true berarti belum dipinjam
+
+    public Book(String isbn, String title, int year) {
+        this.isbn = isbn;
+        this.title = ____;
+        this.year = ____;
+        this.available = ____;       // buku baru langsung tersedia
+    }
+
+    public String getIsbn() { return isbn; }
+    public String getTitle() { return ____; }
+    public int getYear() { return ____; }
+
+    public boolean isAvailable() {
+        return ____;
+    }
+
+    public boolean checkOut() {
+        if (____) {                  // sudah dipinjam?
+            return false;
+        }
+        ____ = false;
+        return true;
+    }
+
+    public void returnItem() {
+        ____ = true;
+    }
+}
+```
+
+</details>
+
 ### Telusuri
 
 Tidak dinilai: perhatikan kode ini, lalu tebak outputnya.
@@ -285,6 +358,97 @@ Semua kelas:
 - **`canBorrow`**: kembalikan hasil perbandingan `loanCount` dengan batas 3. Tidak ada field baru.
 - **`addLoan`**: (1) jika `canBorrow()` bernilai `false`, `return false`. (2) Jika tidak, naikkan `loanCount` satu dan `return true`. Manfaatkan `canBorrow()` supaya angka batas hanya ada di satu tempat.
 - **`returnLoan`**: (1) jika `loanCount` sama dengan 0, `return false`. (2) Jika tidak, turunkan satu dan `return true`.
+
+</details>
+
+<details>
+<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+
+Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
+
+```java
+// Author.java dan Book.java: ubah semua field menjadi private
+private String name;
+private String country;
+```
+
+```java
+// Book.java (tambahan)
+public void setTitle(String title) {
+    if (title == null || title.____()) {
+        throw new IllegalArgumentException("____");
+    }
+    this.title = title;
+}
+
+public void setYear(int year) {
+    if (year ____ 0) {
+        throw new IllegalArgumentException("____");
+    }
+    this.year = year;
+}
+
+// constructor Book: periksa isbn, lalu pakai setter untuk judul dan tahun
+public Book(String isbn, String title, int year) {
+    if (isbn == null || ____) {
+        throw new IllegalArgumentException("ISBN must not be blank");
+    }
+    this.isbn = isbn;
+    setTitle(____);
+    setYear(____);
+    this.available = true;
+}
+```
+
+```java
+// Member.java
+package id.ac.polinema.library;
+
+public class Member {
+    private ____ memberId;
+    private ____ name;
+    private int loanCount;           // awalnya 0
+
+    public Member(String memberId, String name) {
+        if (memberId == null || ____) {
+            throw new IllegalArgumentException("____");
+        }
+        this.memberId = memberId;
+        setName(____);               // aturan nama ditulis sekali, di setName
+    }
+
+    public String getMemberId() { return memberId; }
+    public String getName() { return ____; }
+    public int getLoanCount() { return ____; }
+
+    public void setName(String name) {
+        if (name == null || ____) {
+            throw new IllegalArgumentException("____");
+        }
+        this.name = name;
+    }
+
+    public boolean canBorrow() {
+        return loanCount ____ 3;
+    }
+
+    public boolean addLoan() {
+        if (!____) {
+            return false;
+        }
+        loanCount++;
+        return true;
+    }
+
+    public boolean returnLoan() {
+        if (loanCount == ____) {
+            return false;
+        }
+        loanCount--;
+        return true;
+    }
+}
+```
 
 </details>
 
