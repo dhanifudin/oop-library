@@ -174,7 +174,7 @@ public class Main {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yang menurutmu adalah *objek*. Untuk masing-masing, tulis satu *data* yang dimilikinya dan satu *aksi* yang bisa dilakukannya.
 
@@ -299,7 +299,7 @@ public class Book {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: perhatikan kode ini, lalu tebak outputnya.
 
@@ -471,7 +471,7 @@ public class Member {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: tulis satu baris kode di `Main` yang akan merusak aturan "maksimal 3 pinjaman" jika field `loanCount` `public`. Mengapa baris itu tidak bisa dikompilasi setelah field menjadi `private`?
 
@@ -670,7 +670,7 @@ public class Librarian {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-nya? Jika objek `Shelf` dibuang, apa yang terjadi pada `Book` di dalamnya? Jelaskan perbedaan keduanya dengan kata-katamu sendiri.
 
@@ -800,7 +800,7 @@ public class Magazine extends ____ {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: apa yang diwarisi `Dvd` dari `LibraryItem`, dan apa yang tidak? Mengapa constructor `LibraryItem` tidak ikut diwariskan, tetapi tetap harus dipanggil saat `Dvd` dibuat?
 
@@ -961,7 +961,7 @@ public Magazine(String title, int year) {
 
 </details>
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`, satu `Dvd`, dan satu `Magazine`, lalu cetak `loanDays()` dan `describe()` masing-masing dengan satu perulangan. Variabelnya bertipe `LibraryItem`, tetapi hasilnya `14`, `3`, dan `7`, bukan `7` untuk semuanya. Siapa yang menentukan versi method mana yang berjalan: tipe variabel atau objeknya?
 
@@ -1382,7 +1382,7 @@ Aturan input untuk menu 2, 3, dan 4:
 
 Contoh baris menu 1: `Clean Code (2008) by Robert Martin | Available | 14 days`.
 
-### Telusuri
+### Uji Pemahaman
 
 Tidak dinilai: ikuti satu alur peminjaman dari menu 6 sampai selesai. Sebutkan urutan objek yang dipanggil: `LibraryApp`, `Library`, `Member`, `LibraryItem`. Method apa saja yang berjalan di setiap objek? Tulis di laporan.
 
@@ -1434,7 +1434,7 @@ Isi laporan:
 2. **Setiap Bagian 1 sampai 7**:
    - Penjelasan konsep dengan kata-katamu sendiri (3 sampai 5 kalimat): apa itu, mengapa dipakai, di kelas mana kamu memakainya. Jawab juga pertanyaan pemandu.
    - Potongan kode buatanmu (5 sampai 15 baris) dan penjelasannya baris per baris.
-   - Jawaban "Telusuri".
+   - Jawaban "Uji Pemahaman".
    - Kendala dan solusi. Tulis Petunjuk yang kamu buka.
 3. **Tambahan Bagian 7**:
    - Screenshot aplikasi berjalan (minimal satu sesi pinjam dan kembali).
