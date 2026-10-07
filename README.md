@@ -118,7 +118,7 @@ Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu.
 
 ## Bagian 1 (Pertemuan 1): Pengantar
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 - Baris **pertama** output `Main` adalah persis `Welcome to Polinema Library`.
 - Setelah baris itu, kamu bebas menambah baris lain.
@@ -188,7 +188,7 @@ Tes yang harus lulus: `P01MainOutputTest`.
 
 ![Diagram Bagian 2](docs/p02-author-book.png)
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 - Constructor menyimpan semua parameternya, dan getter mengembalikan nilai yang sama.
 - `Author.getInfo()` mengembalikan teks berbentuk `nama (negara)`. Contoh: `Andrea Hirata (Indonesia)`.
@@ -324,7 +324,7 @@ Tes yang harus lulus: `P02AuthorTest` dan `P02BookTest`.
 
 ![Diagram Bagian 3](docs/p03-encapsulation.png)
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 Semua kelas:
 
@@ -485,7 +485,7 @@ Tes yang harus lulus: `P03EncapsulationTest` dan `P03MemberTest`. Tes Bagian 2 t
 
 ![Diagram Bagian 4](docs/p04-relations.png)
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 `Book` dan `Author` (asosiasi):
 
@@ -684,7 +684,7 @@ Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04Membe
 
 ![Diagram Bagian 5](docs/p06-inheritance.png)
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 - `Book`, `Dvd`, dan `Magazine` adalah subclass langsung dari `LibraryItem`.
 - `LibraryItem` memvalidasi `title` dan `year` seperti `Book` di Bagian 3. Field `title` dan `year` bersifat `protected`, dan tidak ada field `public`.
@@ -814,7 +814,7 @@ Tes yang harus lulus: `P06InheritanceTest`. Tes Bagian 2 sampai 4 tidak boleh ru
 
 ![Diagram Bagian 6](docs/p07-override-overload.png)
 
-### Aturan yang dicek autograder
+### Yang Diuji Oleh Autograder
 
 Method baru di `LibraryItem` (baca daftarnya di diagram):
 
@@ -982,7 +982,7 @@ Tes yang harus lulus: `P07OverrideTest` dan `P07OverloadTest`.
 - Mengapa `LibraryApp` menerima `Scanner` dan `PrintStream` lewat constructor, bukan langsung memakai `System.in` dan `System.out`?
 - Pada alur "pinjam": objek mana yang dipanggil, dan method apa yang berjalan di masing-masingnya?
 
-### Aturan yang dicek autograder: kelas `Library`
+### Yang Diuji Oleh Autograder: kelas `Library`
 
 Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 
