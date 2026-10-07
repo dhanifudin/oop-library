@@ -123,7 +123,7 @@ Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu.
 - Baris **pertama** output `Main` adalah persis `Welcome to Polinema Library`.
 - Setelah baris itu, kamu bebas menambah baris lain.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - Apa yang terjadi saat kamu menekan Run: apa yang dikerjakan compiler, dan apa yang dikerjakan JVM?
 - Method mana yang pertama kali dijalankan Java, dan mengapa harus `static`?
@@ -198,7 +198,7 @@ Tes yang harus lulus: `P01MainOutputTest`.
 - Dua objek `Book` tidak saling memengaruhi.
 - Di bagian ini field boleh `public` (seperti di diagram). Di Bagian 3 kamu akan menutupnya.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - Data apa saja yang perlu diingat setiap objek `Book`? Mana yang berasal dari parameter, mana yang diatur sendiri oleh objek?
 - Agar objek tahu sedang dipinjam atau tidak, apa yang harus diingatnya?
@@ -344,7 +344,7 @@ Semua kelas:
 - Jumlah pinjaman selalu antara 0 dan 3. `addLoan()` dan `returnLoan()` mengembalikan `true` jika berhasil dan `false` jika sudah di batas.
 - `canBorrow()` menjawab apakah anggota masih boleh meminjam.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - Jika `Member` punya `public int loanCount`, baris kode apa yang merusak aturan "maksimal 3"? Bagaimana `private` mencegahnya?
 - Constructor dan setter punya aturan validasi yang sama. Bagaimana menghindari menulis aturannya dua kali?
@@ -508,7 +508,7 @@ Tes yang harus lulus: `P03EncapsulationTest` dan `P03MemberTest`. Tes Bagian 2 t
 - `lend(member, book)` berhasil hanya jika anggota boleh meminjam **dan** buku tersedia. Jika berhasil, buku dipinjam dan pinjaman anggota bertambah. Jika gagal, tidak ada yang berubah.
 - `receive(member, book)` berhasil hanya jika buku sedang dipinjam dan anggota punya pinjaman. Jika berhasil, buku tersedia lagi dan pinjaman anggota berkurang.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 Jawab untuk **setiap** garis relasi di diagram:
 
@@ -693,7 +693,7 @@ Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04Membe
 - Validasi setter ikut berlaku di semua subclass.
 - Semua tes Bagian 2 sampai 4 masih lulus.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - Bandingkan `Book` di diagram Bagian 4 dengan `Dvd` di diagram Bagian 5. Apa yang **sama** di keduanya? Apa yang **khusus**?
 - Kalimat "`Dvd` adalah sebuah `LibraryItem`" masuk akal. Apakah "`Library` adalah sebuah `Book`" juga masuk akal?
@@ -842,7 +842,7 @@ Struktur:
 
 - `Book` dan `Dvd` meng-override `loanDays()`. `Magazine` **tidak** meng-override-nya.
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - Bandingkan `describe()` milik `Book` dan milik `LibraryItem`. Bagian mana yang sudah dikerjakan parent? Perlukah kamu menulisnya ulang?
 - `Magazine` tidak perlu `loanDays()` sendiri. Mengapa? Versi siapa yang berjalan?
@@ -975,7 +975,7 @@ Tes yang harus lulus: `P07OverrideTest` dan `P07OverloadTest`.
 
 ![Diagram Bagian 7](docs/p08-console-app.png)
 
-### Pertanyaan pemandu
+### Pikirkan Dulu
 
 - `Library` tidak boleh mencetak apa pun. Mengapa? Apa yang kamu ganti di proyek akhir saat tampilannya menjadi GUI, dan apa yang tidak perlu disentuh?
 - Array `items` berisi `Book`, `Dvd`, dan `Magazine` sekaligus. Mengapa itu diizinkan? Konsep apa namanya?
@@ -1432,7 +1432,7 @@ Isi laporan:
 
 1. **Identitas**: nama, NIM, kelas, link repositori GitHub.
 2. **Setiap Bagian 1 sampai 7**:
-   - Penjelasan konsep dengan kata-katamu sendiri (3 sampai 5 kalimat): apa itu, mengapa dipakai, di kelas mana kamu memakainya. Jawab juga pertanyaan pemandu.
+   - Penjelasan konsep dengan kata-katamu sendiri (3 sampai 5 kalimat): apa itu, mengapa dipakai, di kelas mana kamu memakainya. Jawab juga pertanyaan di bagian "Pikirkan Dulu".
    - Potongan kode buatanmu (5 sampai 15 baris) dan penjelasannya baris per baris.
    - Jawaban "Uji Pemahaman".
    - Kendala dan solusi. Tulis Bantuan yang kamu buka.
