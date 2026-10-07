@@ -22,7 +22,7 @@ public class Member {
      * IllegalArgumentException jika tidak valid.
      */
     public Member(String memberId, String name) {
-        // TODO Petunjuk: validasi dulu sebelum mengisi field. Aturan nama sama dengan setName.
+        // TODO Bantuan: validasi dulu sebelum mengisi field. Aturan nama sama dengan setName.
         // Bagian 4: kartu anggota juga dibuat di sini (lihat diagram Bagian 4).
         //
         // Kerangka:
@@ -35,18 +35,18 @@ public class Member {
     }
 
     public String getMemberId() {
-        // TODO Petunjuk: kembalikan data yang disimpan constructor.
+        // TODO Bantuan: kembalikan data yang disimpan constructor.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public String getName() {
-        // TODO Petunjuk: sama seperti getMemberId.
+        // TODO Bantuan: sama seperti getMemberId.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /** Nama tidak boleh null atau kosong: lempar IllegalArgumentException dan biarkan nama lama. */
     public void setName(String name) {
-        // TODO Petunjuk: periksa dulu, baru isi field.
+        // TODO Bantuan: periksa dulu, baru isi field.
         //
         // Kerangka:
         //   if (name == null || ____) {
@@ -57,13 +57,13 @@ public class Member {
     }
 
     public int getLoanCount() {
-        // TODO Petunjuk: kembalikan jumlah pinjaman saat ini.
+        // TODO Bantuan: kembalikan jumlah pinjaman saat ini.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /** True jika anggota masih boleh meminjam (batasnya 3 pinjaman). */
     public boolean canBorrow() {
-        // TODO Petunjuk: apakah perlu field baru, atau cukup dihitung dari data yang sudah ada?
+        // TODO Bantuan: apakah perlu field baru, atau cukup dihitung dari data yang sudah ada?
         //
         // Kerangka:
         //   return loanCount ____ 3;
@@ -72,7 +72,7 @@ public class Member {
 
     /** Menambah jumlah pinjaman. Jika sudah di batas, tidak berubah dan hasilnya false. */
     public boolean addLoan() {
-        // TODO Petunjuk: periksa batas dulu. Adakah method lain di kelas ini yang sudah
+        // TODO Bantuan: periksa batas dulu. Adakah method lain di kelas ini yang sudah
         // menjawab pertanyaan "boleh atau tidak"?
         //
         // Kerangka:
@@ -86,7 +86,7 @@ public class Member {
 
     /** Mengurangi jumlah pinjaman. Jika sudah tidak ada pinjaman, tidak berubah dan hasilnya false. */
     public boolean returnLoan() {
-        // TODO Petunjuk: batas bawah jumlah pinjaman adalah berapa?
+        // TODO Bantuan: batas bawah jumlah pinjaman adalah berapa?
         //
         // Kerangka:
         //   if (loanCount == ____) {

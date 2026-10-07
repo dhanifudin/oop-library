@@ -17,7 +17,7 @@ public class Author {
 
     /** Membuat penulis dengan nama dan negara asal. */
     public Author(String name, String country) {
-        // TODO Petunjuk: nama parameter sama dengan nama field. Kata kunci apa yang
+        // TODO Bantuan: nama parameter sama dengan nama field. Kata kunci apa yang
         // menunjuk ke objek yang sedang dibuat?
         //
         // Kerangka:
@@ -27,7 +27,7 @@ public class Author {
     }
 
     public String getName() {
-        // TODO Petunjuk: kembalikan data yang disimpan constructor.
+        // TODO Bantuan: kembalikan data yang disimpan constructor.
         //
         // Kerangka:
         //   return ____;
@@ -35,13 +35,13 @@ public class Author {
     }
 
     public String getCountry() {
-        // TODO Petunjuk: sama seperti getName.
+        // TODO Bantuan: sama seperti getName.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /** Teks berbentuk "nama (negara)". Contoh: Andrea Hirata (Indonesia). */
     public String getInfo() {
-        // TODO Petunjuk: gabungkan dua data dengan operator + dan tanda kurung dalam String.
+        // TODO Bantuan: gabungkan dua data dengan operator + dan tanda kurung dalam String.
         //
         // Kerangka:
         //   return name + " (" + ____ + ")";

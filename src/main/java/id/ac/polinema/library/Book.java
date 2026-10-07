@@ -23,7 +23,7 @@ public class Book {
      * Bagian 3: isbn tidak boleh kosong; title dan year divalidasi seperti setter-nya.
      */
     public Book(String isbn, String title, int year) {
-        // TODO Petunjuk: isi semua field. Buku baru: apakah sedang dipinjam atau tidak?
+        // TODO Bantuan: isi semua field. Buku baru: apakah sedang dipinjam atau tidak?
         // Bagian 3: aturan validasi judul dan tahun sama dengan setter. Bisakah constructor
         // memakai setter-nya?
         //
@@ -40,7 +40,7 @@ public class Book {
     }
 
     public String getIsbn() {
-        // TODO Petunjuk: kembalikan data yang disimpan constructor.
+        // TODO Bantuan: kembalikan data yang disimpan constructor.
         //
         // Kerangka:
         //   return ____;
@@ -48,18 +48,18 @@ public class Book {
     }
 
     public String getTitle() {
-        // TODO Petunjuk: sama seperti getIsbn.
+        // TODO Bantuan: sama seperti getIsbn.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public int getYear() {
-        // TODO Petunjuk: sama seperti getIsbn.
+        // TODO Bantuan: sama seperti getIsbn.
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /** True jika buku sedang ada di perpustakaan (tidak dipinjam). */
     public boolean isAvailable() {
-        // TODO Petunjuk: field apa yang menyimpan status pinjam?
+        // TODO Bantuan: field apa yang menyimpan status pinjam?
         //
         // Kerangka:
         //   return ____;
@@ -71,7 +71,7 @@ public class Book {
      * dipinjam, hasilnya false dan keadaan buku tidak berubah.
      */
     public boolean checkOut() {
-        // TODO Petunjuk: apa yang harus kamu periksa lebih dulu sebelum mengubah status?
+        // TODO Bantuan: apa yang harus kamu periksa lebih dulu sebelum mengubah status?
         // Method ini punya dua jalur return yang berbeda.
         //
         // Kerangka:
@@ -85,7 +85,7 @@ public class Book {
 
     /** Mengembalikan buku: buku bisa dipinjam lagi. */
     public void returnItem() {
-        // TODO Petunjuk: satu baris saja. Status apa yang berubah?
+        // TODO Bantuan: satu baris saja. Status apa yang berubah?
         //
         // Kerangka:
         //   ____ = true;
@@ -97,7 +97,7 @@ public class Book {
      * dengan IllegalArgumentException, dan judul lama tetap.
      */
     public void setTitle(String title) {
-        // TODO Petunjuk: periksa dulu, baru isi field. Class String punya method untuk
+        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
         // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
         //
         // Kerangka:
@@ -113,7 +113,7 @@ public class Book {
      * IllegalArgumentException, dan tahun lama tetap.
      */
     public void setYear(int year) {
-        // TODO Petunjuk: pola yang sama dengan setTitle. Apa syarat tahun yang valid?
+        // TODO Bantuan: pola yang sama dengan setTitle. Apa syarat tahun yang valid?
         //
         // Kerangka:
         //   if (year ____ 0) {

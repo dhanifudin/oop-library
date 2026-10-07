@@ -36,7 +36,7 @@ Ketentuan:
 3. [Studi Kasus](#studi-kasus)
 4. [Memulai](#memulai)
 5. [Membuka Proyek](#membuka-proyek)
-6. [Cara Membaca Diagram dan Petunjuk](#cara-membaca-diagram-dan-petunjuk)
+6. [Cara Membaca Diagram dan Bantuan](#cara-membaca-diagram-dan-bantuan)
 7. [Bagian 1 sampai 7](#bagian-1-pertemuan-1-pengantar)
 8. [Coba Aplikasinya](#coba-aplikasinya)
 9. [Laporan (PDF)](#laporan-pdf)
@@ -91,7 +91,7 @@ mvn -q compile exec:java
 
 Perintah ini menjalankan `Main`, satu-satunya titik awal program.
 
-## Cara Membaca Diagram dan Petunjuk
+## Cara Membaca Diagram dan Bantuan
 
 Diagram kelas adalah spesifikasi utama. Semua kelas, field, constructor, dan method yang kamu butuhkan ada di diagram.
 
@@ -112,7 +112,7 @@ Diagram kelas adalah spesifikasi utama. Semua kelas, field, constructor, dan met
 
 Baca per kotak kelas: field di atas, constructor dan method di bawah. Lalu baca garis antar kelas.
 
-Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
+Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu.
 
 ---
 
@@ -129,7 +129,7 @@ Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
 - Method mana yang pertama kali dijalankan Java, dan mengapa harus `static`?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Cek `java -version` di terminal. Kamu butuh versi 17 atau lebih.
 - Di Java, perintah untuk menampilkan teks ke layar berbentuk `System.out.println("teks kamu");`.
@@ -139,10 +139,10 @@ Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
 </details>
 
 <details>
-<summary>Petunjuk 2 (langkah demi langkah, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (langkah demi langkah, buka jika Bantuan 1 belum cukup)</summary>
 
 1. Buka `Main.java`. Cari bagian `main`. Tulis kodemu **di dalam kurung kurawalnya**, menggantikan komentar `TODO`.
-2. Satu baris perintah cukup. Bentuknya sudah ada di Petunjuk 1.
+2. Satu baris perintah cukup. Bentuknya sudah ada di Bantuan 1.
 3. Isi teks di antara tanda kutip ganda. Huruf besar-kecil, spasi, dan ejaan harus persis sama dengan `Welcome to Polinema Library`.
 4. Pastikan baris perintah diakhiri **titik koma**.
 5. Jalankan `Main` (di NetBeans: klik kanan file, `Run File`, atau `Shift+F6`). Teks yang kamu tulis muncul di jendela Output.
@@ -156,7 +156,7 @@ Buka Petunjuk 1 dulu. Buka Petunjuk 2 hanya jika masih buntu.
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti `____` dengan teks dari soal.
 
@@ -205,7 +205,7 @@ Tes yang harus lulus: `P01MainOutputTest`.
 - Di constructor, nama parameter sama dengan nama field. Bagaimana Java membedakannya?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Deklarasikan field di dalam kelas, di luar method. Tipe field bisa dibaca dari diagram.
 - Kata kunci `this` menunjuk ke objek yang sedang dikerjakan.
@@ -216,7 +216,7 @@ Tes yang harus lulus: `P01MainOutputTest`.
 </details>
 
 <details>
-<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
 - **`Author`**: (1) buat dua field, nama dan negara, keduanya bertipe `String`. (2) Constructor menyalin setiap parameter ke field yang bernama sama. Pakai `this.` di sisi kiri agar Java tahu mana field dan mana parameter. (3) Setiap getter hanya mengembalikan field-nya. (4) `getInfo` menyusun teks dari nama, sebuah spasi, tanda kurung buka, negara, dan tanda kurung tutup.
 - **`Book`**: (1) buat empat field: `isbn` dan `title` bertipe `String`, `year` bertipe `int`, dan satu `boolean` bernama `available`. (2) Constructor menyalin `isbn`, `title`, dan `year` dari parameter. Field `available` tidak punya parameter. Karena buku baru langsung tersedia, isi dengan nilai `true`. (3) Setiap getter hanya mengembalikan field-nya. `isAvailable` mengembalikan `available`.
@@ -227,7 +227,7 @@ Tes yang harus lulus: `P01MainOutputTest`.
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -352,7 +352,7 @@ Semua kelas:
 - Mengapa `memberId` tidak boleh punya setter?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Ubah modifier field, lalu lihat apa yang error di `Main` kamu. Itu pelajaran enkapsulasinya.
 - Urutan aman di setter: **periksa dulu**, baru isi field. Kalau tidak valid, hentikan sebelum field disentuh.
@@ -364,7 +364,7 @@ Semua kelas:
 </details>
 
 <details>
-<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
 - **Langkah awal**: ubah semua field `Author` dan `Book` menjadi `private`. Jalankan `P02AuthorTest` dan `P02BookTest`: harus tetap lulus karena getter sudah ada. Jika `Main` kamu error, ganti akses langsung ke field dengan getter.
 - **`Book.setTitle`**: (1) jika `title` bernilai `null`, lempar `IllegalArgumentException` (cek `null` **lebih dulu**, karena memanggil method pada `null` menimbulkan error lain). (2) Jika `title` hanya berisi spasi atau kosong, lempar exception yang sama. Method `isBlank()` milik `String` menjawab ini. (3) Jika lolos kedua pemeriksaan, baru isi field.
@@ -381,7 +381,7 @@ Semua kelas:
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -518,7 +518,7 @@ Jawab untuk **setiap** garis relasi di diagram:
 - Apa arti `0..5` dan `0..1` pada garis tersebut?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Relasi yang disimpan sebagai field berarti kelas **mengingat** objek itu. Relasi dependensi tidak mengingat apa pun.
 - Pada komposisi, field diisi **di dalam constructor**, bukan dari parameter constructor.
@@ -530,7 +530,7 @@ Jawab untuk **setiap** garis relasi di diagram:
 </details>
 
 <details>
-<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
 - **`Book` dan `Author` (asosiasi)**: (1) tambahkan field bertipe `Author` di `Book`, `private`. Tidak ada yang mengisinya di constructor, jadi nilai awalnya `null`. (2) `getAuthor` mengembalikan field itu. (3) `setAuthor` hanya **menyimpan referensi** yang diterima. Jangan membuat `Author` baru di dalamnya, supaya dua buku bisa menunjuk ke objek yang sama.
 - **`LibraryCard`**: satu field `private` untuk nomor. Constructor menyimpannya, dan `getNumber` mengembalikannya.
@@ -543,7 +543,7 @@ Jawab untuk **setiap** garis relasi di diagram:
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -701,7 +701,7 @@ Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04Membe
 - Jika `LibraryItem` punya constructor yang meminta `title` dan `year`, siapa yang harus mengisinya saat sebuah `Dvd` dibuat?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Kata kunci `extends` menyatakan hubungan IS-A.
 - Constructor tidak diwariskan. Subclass memanggil constructor parent dengan `super(...)`, dan harus menjadi **baris pertama**.
@@ -712,7 +712,7 @@ Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04Membe
 </details>
 
 <details>
-<summary>Petunjuk 2 (urutan kerja refactoring, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (urutan kerja refactoring, buka jika Bantuan 1 belum cukup)</summary>
 
 Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus tetap sama dengan sebelum langkah itu, kecuali tes `P06InheritanceTest` yang baru lulus di akhir.
 
@@ -726,7 +726,7 @@ Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus t
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -850,7 +850,7 @@ Struktur:
 - Dua constructor `Book` hampir sama. Bagaimana menghindari menyalin isinya?
 
 <details>
-<summary>Petunjuk 1</summary>
+<summary>Bantuan 1</summary>
 
 - Anotasi `@Override` membuat compiler menolak jika nama atau parameter salah. Pasang pada setiap override.
 - Kata kunci `super` bisa dipakai bukan hanya untuk constructor, tetapi juga untuk memanggil method milik parent.
@@ -862,7 +862,7 @@ Struktur:
 </details>
 
 <details>
-<summary>Petunjuk 2 (langkah per kelas, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
 - **`LibraryItem`**:
   - `loanDays()` mengembalikan 7.
@@ -883,7 +883,7 @@ Struktur:
 </details>
 
 <details>
-<summary>Kerangka kode (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -998,7 +998,7 @@ Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 | `receive(memberId, title)` | `true` hanya jika anggota dan koleksi ada, koleksi sedang dipinjam, dan anggota punya pinjaman. Setelah itu koleksi tersedia lagi dan pinjaman anggota berkurang. |
 
 <details>
-<summary>Petunjuk 1: Library</summary>
+<summary>Bantuan 1: Library</summary>
 
 - Dua array (`items` dan `members`) masing-masing perlu penghitung isi, seperti di `Shelf`.
 - Tipe elemen array koleksi adalah `LibraryItem`. Itu sebabnya `Book`, `Dvd`, dan `Magazine` bisa masuk bersama.
@@ -1010,7 +1010,7 @@ Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 </details>
 
 <details>
-<summary>Petunjuk 2: Library (langkah per method, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2: Library (langkah per method, buka jika Bantuan 1 belum cukup)</summary>
 
 Field yang dibutuhkan: nama, array koleksi berukuran 20 dan penghitungnya, array anggota berukuran 10 dan penghitungnya. Nilai awal kedua penghitung adalah 0.
 
@@ -1025,7 +1025,7 @@ Field yang dibutuhkan: nama, array koleksi berukuran 20 dan penghitungnya, array
 </details>
 
 <details>
-<summary>Kerangka kode: Library (belum lengkap, buka jika Petunjuk 2 belum cukup)</summary>
+<summary>Kerangka kode: Library (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
 
 Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
 
@@ -1122,7 +1122,7 @@ public class Library {
 
 ### Kelas `LibraryApp`
 
-Buat file `LibraryApp.java`. Perulangan menu (`run`) dan pembacaan input dengan `Scanner` (`readLine`, `readInt`) **sudah lengkap**. Salin, lalu isi method yang masih kosong. Setiap method punya petunjuk dan kerangka di komentarnya: ganti `____`, lalu hapus tanda `//` di depan baris kode.
+Buat file `LibraryApp.java`. Perulangan menu (`run`) dan pembacaan input dengan `Scanner` (`readLine`, `readInt`) **sudah lengkap**. Salin, lalu isi method yang masih kosong. Setiap method punya bantuan dan kerangka di komentarnya: ganti `____`, lalu hapus tanda `//` di depan baris kode.
 
 ```java
 package id.ac.polinema.library;
@@ -1322,7 +1322,7 @@ public static void main(String[] args) {
 ```
 
 <details>
-<summary>Petunjuk 1: LibraryApp</summary>
+<summary>Bantuan 1: LibraryApp</summary>
 
 - Kerjakan satu method sekali, dari yang paling sederhana: `showItems`, lalu `lendItem` dan `returnItem`, lalu `showMembers`, `registerMember`, dan terakhir `addBook`, `addDvd`, `addMagazine`. Jalankan `P08LibraryAppTest` setelah beberapa method selesai.
 - Setiap method di kerangka punya komentar dengan kode dan `____`. Hapus tanda `//` di depan baris, lalu ganti `____` dengan nama method atau teks yang benar. Tanya dirimu: method mana di `Library`, `Member`, atau `LibraryItem` yang menjawab bagian ini?
@@ -1335,7 +1335,7 @@ public static void main(String[] args) {
 </details>
 
 <details>
-<summary>Petunjuk 2: LibraryApp (langkah per method, buka jika Petunjuk 1 belum cukup)</summary>
+<summary>Bantuan 2: LibraryApp (langkah per method, buka jika Bantuan 1 belum cukup)</summary>
 
 Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`. Method `run`, `readLine`, dan `readInt` sudah ada di kerangka.
 
@@ -1435,7 +1435,7 @@ Isi laporan:
    - Penjelasan konsep dengan kata-katamu sendiri (3 sampai 5 kalimat): apa itu, mengapa dipakai, di kelas mana kamu memakainya. Jawab juga pertanyaan pemandu.
    - Potongan kode buatanmu (5 sampai 15 baris) dan penjelasannya baris per baris.
    - Jawaban "Uji Pemahaman".
-   - Kendala dan solusi. Tulis Petunjuk yang kamu buka.
+   - Kendala dan solusi. Tulis Bantuan yang kamu buka.
 3. **Tambahan Bagian 7**:
    - Screenshot aplikasi berjalan (minimal satu sesi pinjam dan kembali).
    - Penjelasan kerja sama `LibraryApp`, `Library`, `Member`, dan `LibraryItem` pada satu alur peminjaman.
