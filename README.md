@@ -1322,7 +1322,20 @@ public static void main(String[] args) {
 ```
 
 <details>
-<summary>Petunjuk 2: LibraryApp (langkah per method, buka jika komentar TODO belum cukup)</summary>
+<summary>Petunjuk 1: LibraryApp</summary>
+
+- Kerjakan satu method sekali, dari yang paling sederhana: `showItems`, lalu `lendItem` dan `returnItem`, lalu `showMembers`, `registerMember`, dan terakhir `addBook`, `addDvd`, `addMagazine`. Jalankan `P08LibraryAppTest` setelah beberapa method selesai.
+- Setiap method di kerangka punya komentar dengan kode dan `____`. Hapus tanda `//` di depan baris, lalu ganti `____` dengan nama method atau teks yang benar. Tanya dirimu: method mana di `Library`, `Member`, atau `LibraryItem` yang menjawab bagian ini?
+- Semua handler berpola sama: **baca input**, **periksa**, **serahkan ke `library`**, lalu **cetak hasil**. `LibraryApp` tidak memutuskan boleh atau tidaknya meminjam. Keputusan itu milik `Library`.
+- Cetak dengan `out`, baca dengan `readLine` dan `readInt`. `readInt` mengembalikan -1 jika isinya bukan bilangan positif, jadi periksa -1 itu sebelum membuat objek.
+- Pesan di layar harus persis seperti tabel "Teks yang harus dicetak". Perbedaan satu huruf membuat tes gagal.
+- Method `line` dipakai oleh `showItems` dan `searchItems`. Tulis sekali, panggil dua kali.
+- `run` sudah lengkap. Pahami alurnya: menu dicetak, satu baris dibaca, `switch` memilih method, lalu perulangan mengulang. Mengapa perulangan berhenti saat pilihan `0` atau saat input habis?
+
+</details>
+
+<details>
+<summary>Petunjuk 2: LibraryApp (langkah per method, buka jika Petunjuk 1 belum cukup)</summary>
 
 Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`. Method `run`, `readLine`, dan `readInt` sudah ada di kerangka.
 
