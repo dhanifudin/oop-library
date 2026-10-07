@@ -178,9 +178,9 @@ public class Main {
 
 Tidak dinilai, tulis jawabannya di laporan: sebutkan 5 benda di perpustakaan yang menurutmu adalah *objek*. Untuk masing-masing, tulis satu *data* yang dimilikinya dan satu *aksi* yang bisa dilakukannya.
 
-### Cek dirimu
+### Periksa Hasil
 
-`P01MainOutputTest` lulus.
+Tes yang harus lulus: `P01MainOutputTest`.
 
 ---
 
@@ -314,9 +314,9 @@ System.out.println(c.isAvailable());
 
 Mengapa hasil baris pertama dan kedua berbeda? Gambar `a`, `b`, dan `c` di stack, dan objeknya di heap.
 
-### Cek dirimu
+### Periksa Hasil
 
-`P02AuthorTest` dan `P02BookTest` lulus.
+Tes yang harus lulus: `P02AuthorTest` dan `P02BookTest`.
 
 ---
 
@@ -475,9 +475,9 @@ public class Member {
 
 Tidak dinilai: tulis satu baris kode di `Main` yang akan merusak aturan "maksimal 3 pinjaman" jika field `loanCount` `public`. Mengapa baris itu tidak bisa dikompilasi setelah field menjadi `private`?
 
-### Cek dirimu
+### Periksa Hasil
 
-`P03EncapsulationTest` dan `P03MemberTest` lulus. Tes Bagian 2 harus tetap lulus.
+Tes yang harus lulus: `P03EncapsulationTest` dan `P03MemberTest`. Tes Bagian 2 tidak boleh rusak.
 
 ---
 
@@ -674,9 +674,9 @@ public class Librarian {
 
 Tidak dinilai: jika objek `Member` dibuang, apa yang terjadi pada `LibraryCard`-nya? Jika objek `Shelf` dibuang, apa yang terjadi pada `Book` di dalamnya? Jelaskan perbedaan keduanya dengan kata-katamu sendiri.
 
-### Cek dirimu
+### Periksa Hasil
 
-`P04AssociationTest`, `P04ShelfAggregationTest`, `P04MemberCardCompositionTest`, dan `P04LibrarianDependencyTest` lulus.
+Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04MemberCardCompositionTest`, dan `P04LibrarianDependencyTest`.
 
 ---
 
@@ -804,9 +804,9 @@ public class Magazine extends ____ {
 
 Tidak dinilai: apa yang diwarisi `Dvd` dari `LibraryItem`, dan apa yang tidak? Mengapa constructor `LibraryItem` tidak ikut diwariskan, tetapi tetap harus dipanggil saat `Dvd` dibuat?
 
-### Cek dirimu
+### Periksa Hasil
 
-`P06InheritanceTest` lulus, dan tes Bagian 2 sampai 4 tidak ada yang rusak.
+Tes yang harus lulus: `P06InheritanceTest`. Tes Bagian 2 sampai 4 tidak boleh rusak.
 
 ---
 
@@ -965,9 +965,9 @@ public Magazine(String title, int year) {
 
 Tidak dinilai: di `Main`, buat array bertipe `LibraryItem[]` berisi satu `Book`, satu `Dvd`, dan satu `Magazine`, lalu cetak `loanDays()` dan `describe()` masing-masing dengan satu perulangan. Variabelnya bertipe `LibraryItem`, tetapi hasilnya `14`, `3`, dan `7`, bukan `7` untuk semuanya. Siapa yang menentukan versi method mana yang berjalan: tipe variabel atau objeknya?
 
-### Cek dirimu
+### Periksa Hasil
 
-`P07OverrideTest` dan `P07OverloadTest` lulus.
+Tes yang harus lulus: `P07OverrideTest` dan `P07OverloadTest`.
 
 ---
 
@@ -1386,9 +1386,9 @@ Contoh baris menu 1: `Clean Code (2008) by Robert Martin | Available | 14 days`.
 
 Tidak dinilai: ikuti satu alur peminjaman dari menu 6 sampai selesai. Sebutkan urutan objek yang dipanggil: `LibraryApp`, `Library`, `Member`, `LibraryItem`. Method apa saja yang berjalan di setiap objek? Tulis di laporan.
 
-### Cek dirimu
+### Periksa Hasil
 
-`P08LibraryTest` dan `P08LibraryAppTest` lulus, lalu jalankan aplikasinya dan coba semua menu.
+Tes yang harus lulus: `P08LibraryTest` dan `P08LibraryAppTest`. Setelah itu jalankan aplikasi dan coba semua menu.
 
 ---
 
