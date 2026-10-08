@@ -112,7 +112,7 @@ Diagram kelas adalah spesifikasi utama. Semua kelas, field, constructor, dan met
 
 Baca per kotak kelas: field di atas, constructor dan method di bawah. Lalu baca garis antar kelas.
 
-Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu.
+Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu. Bantuan di README ini berbentuk pertanyaan, bukan jawaban. Jawabannya kamu cari sendiri dari diagram, dari dokumentasi Java, dan dari pesan tes yang gagal.
 
 ---
 
@@ -131,46 +131,23 @@ Buka Bantuan 1 dulu. Buka Bantuan 2 hanya jika masih buntu.
 <details>
 <summary>Bantuan 1</summary>
 
-- Cek `java -version` di terminal. Kamu butuh versi 17 atau lebih.
-- Di Java, perintah untuk menampilkan teks ke layar berbentuk `System.out.println("teks kamu");`.
-- Teks yang ingin ditampilkan ditulis di dalam tanda kutip ganda. Ganti `teks kamu` dengan teks dari soal.
-- Perintah ini ditulis di dalam `main`, di antara kurung kurawalnya.
+- Cek `java -version` di terminal. Versi berapa yang kamu punya, dan apakah itu cukup?
+- Java punya satu perintah baku untuk menampilkan teks ke layar. Kamu sudah pernah melihatnya di contoh kode lain atau di materi kuliah, coba ingat lagi bentuknya.
+- Teks yang tampil di layar harus persis sama dengan teks di soal. Bagian mana dari perintah itu yang menentukan teks apa yang tampil?
+- Perintah ini perlu ditulis di tempat yang dijalankan JVM duluan. Method mana itu, dan di mana letaknya di `Main.java`?
 
 </details>
 
 <details>
 <summary>Bantuan 2 (langkah demi langkah, buka jika Bantuan 1 belum cukup)</summary>
 
-1. Buka `Main.java`. Cari bagian `main`. Tulis kodemu **di dalam kurung kurawalnya**, menggantikan komentar `TODO`.
-2. Satu baris perintah cukup. Bentuknya sudah ada di Bantuan 1.
-3. Isi teks di antara tanda kutip ganda. Huruf besar-kecil, spasi, dan ejaan harus persis sama dengan `Welcome to Polinema Library`.
-4. Pastikan baris perintah diakhiri **titik koma**.
-5. Jalankan `Main` (di NetBeans: klik kanan file, `Run File`, atau `Shift+F6`). Teks yang kamu tulis muncul di jendela Output.
-6. Jika ada garis merah atau error, periksa kesalahan yang paling sering terjadi:
-   - `System` ditulis dengan huruf kecil (Java membedakan huruf besar dan kecil).
-   - Tanda kutip tidak berpasangan.
-   - Titik koma terlupa.
-   - Kode ditulis di luar kurung kurawal `main`.
-7. Cek hasilnya: baris pertama output hanya berisi teks itu, tanpa tambahan spasi atau karakter lain.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti `____` dengan teks dari soal.
-
-```java
-// Main.java
-package id.ac.polinema.library;
-
-public class Main {
-
-    public static void main(String[] args) {
-        System.out.println("____");
-    }
-}
-```
+1. Buka `Main.java`. Di mana komentar `TODO` berada? Apakah di dalam atau di luar kurung kurawal `main`?
+2. Satu baris perintah cukup di sini. Bagian mana dari perintah itu diapit tanda kutip ganda?
+3. Bandingkan teks yang kamu tulis huruf demi huruf dengan `Welcome to Polinema Library`. Apakah besar-kecil hurufnya sama? Apakah ada spasi tambahan di awal atau akhir?
+4. Setiap baris perintah di Java diakhiri satu tanda baca. Tanda apa itu?
+5. Jalankan `Main` (di NetBeans: klik kanan file, `Run File`, atau `Shift+F6`). Apa yang muncul di jendela Output?
+6. Jika ada garis merah atau error, baca pesannya baris per baris. Error itu menunjuk ke baris berapa, dan apa yang berbeda dari perintah yang kamu kenal di Bantuan 1?
+7. Jalankan `mvn -q test -Dtest=P01MainOutputTest`. Jika gagal, pesan tesnya membandingkan apa dengan apa? Baris mana dari outputmu yang diperiksa?
 
 </details>
 
@@ -207,95 +184,22 @@ Tes yang harus lulus: `P01MainOutputTest`.
 <details>
 <summary>Bantuan 1</summary>
 
-- Deklarasikan field di dalam kelas, di luar method. Tipe field bisa dibaca dari diagram.
-- Kata kunci `this` menunjuk ke objek yang sedang dikerjakan.
-- Status "dipinjam atau tidak" cocok disimpan sebagai tipe `boolean`. Apa nilai awalnya?
-- Method yang mengembalikan `boolean` boleh punya dua `return` yang berbeda. Cek kondisi lebih dulu.
-- Di `Main`, coba buat dua objek `Book` dan cetak datanya. Ini membantu kamu melihat bahwa objek berdiri sendiri.
+- Field dideklarasikan di dalam kelas tapi di luar semua method. Untuk tiap field di diagram, tipe apa yang tertulis di sana?
+- Constructor dan parameternya sering punya nama yang sama dengan field. Kata kunci apa yang membedakan "field milik objek ini" dari "parameter yang baru masuk"?
+- "Dipinjam atau tidak" hanya punya dua kemungkinan jawaban. Tipe data apa di Java yang hanya punya dua nilai? Saat `Book` baru dibuat, mana dari dua nilai itu yang masuk akal?
+- `checkOut()` mengembalikan `boolean`, dan hasilnya berbeda tergantung kondisi. Berapa jalur keluar (`return`) yang kamu perlukan, dan kondisi apa yang memisahkannya?
+- Coba buat dua objek `Book` di `Main` dan ubah salah satunya. Apakah objek yang satu lagi ikut berubah? Apa artinya itu tentang bagaimana Java menyimpan objek?
 
 </details>
 
 <details>
 <summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
-- **`Author`**: (1) buat dua field, nama dan negara, keduanya bertipe `String`. (2) Constructor menyalin setiap parameter ke field yang bernama sama. Pakai `this.` di sisi kiri agar Java tahu mana field dan mana parameter. (3) Setiap getter hanya mengembalikan field-nya. (4) `getInfo` menyusun teks dari nama, sebuah spasi, tanda kurung buka, negara, dan tanda kurung tutup.
-- **`Book`**: (1) buat empat field: `isbn` dan `title` bertipe `String`, `year` bertipe `int`, dan satu `boolean` bernama `available`. (2) Constructor menyalin `isbn`, `title`, dan `year` dari parameter. Field `available` tidak punya parameter. Karena buku baru langsung tersedia, isi dengan nilai `true`. (3) Setiap getter hanya mengembalikan field-nya. `isAvailable` mengembalikan `available`.
-- **`checkOut`**: (1) jika `available` bernilai `false`, hentikan dengan `return false`. (2) Jika tidak, ubah `available` menjadi `false` dan `return true`. Dua jalur `return` ini sudah cukup, tanpa `else`.
-- **`returnItem`**: satu baris yang mengubah `available` menjadi `true`. Method ini bertipe `void`, jadi tanpa `return` nilai.
-- Cara memeriksa tanpa tes: di `Main`, buat dua `Book`. Panggil `checkOut()` pada yang pertama dua kali dan cetak hasilnya (`true`, lalu `false`). Cetak `isAvailable()` kedua buku dan pastikan hanya yang pertama berubah.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// Author.java
-package id.ac.polinema.library;
-
-public class Author {
-    public ____ name;
-    public ____ country;
-
-    public Author(String name, String country) {
-        this.name = ____;
-        this.country = ____;
-    }
-
-    public String getName() {
-        return ____;
-    }
-
-    public String getCountry() {
-        return ____;
-    }
-
-    public String getInfo() {
-        return name + " (" + ____ + ")";
-    }
-}
-```
-
-```java
-// Book.java
-package id.ac.polinema.library;
-
-public class Book {
-    public String isbn;
-    public ____ title;
-    public ____ year;
-    public ____ available;           // true berarti belum dipinjam
-
-    public Book(String isbn, String title, int year) {
-        this.isbn = isbn;
-        this.title = ____;
-        this.year = ____;
-        this.available = ____;       // buku baru langsung tersedia
-    }
-
-    public String getIsbn() { return isbn; }
-    public String getTitle() { return ____; }
-    public int getYear() { return ____; }
-
-    public boolean isAvailable() {
-        return ____;
-    }
-
-    public boolean checkOut() {
-        if (____) {                  // sudah dipinjam?
-            return false;
-        }
-        ____ = false;
-        return true;
-    }
-
-    public void returnItem() {
-        ____ = true;
-    }
-}
-```
+- **`Author`**: Diagram menyebut dua data yang diingat `Author`. Bagaimana constructor-nya seharusnya mengisi keduanya? Setiap getter hanya punya satu tugas, tugas apa itu? `getInfo()` menggabungkan dua data itu menjadi satu teks berbentuk `nama (negara)`. Operator apa di Java yang menggabungkan teks?
+- **`Book`**: Diagram menyebut empat data yang diingat `Book`, termasuk satu yang statusnya bukan berasal dari parameter constructor. Data mana itu, dan nilai apa yang masuk akal untuk buku yang baru dibuat?
+- **`checkOut`**: Buku yang sedang dipinjam tidak boleh dipinjam lagi. Bagaimana method ini tahu buku sedang dipinjam? Jika sedang dipinjam, apa yang dikembalikan dan apa yang TIDAK boleh berubah? Jika tidak, apa yang berubah dan apa yang dikembalikan?
+- **`returnItem`**: Method ini tidak mengembalikan nilai apa pun (`void`). Satu data apa di objek yang harus berubah agar buku bisa dipinjam lagi?
+- Cara memeriksa tanpa tes: di `Main`, buat dua `Book`. Panggil `checkOut()` pada yang pertama dua kali. Apakah hasil panggilan pertama dan kedua sama? Lalu cetak `isAvailable()` kedua buku. Apakah hanya yang pertama berubah?
 
 </details>
 
@@ -354,120 +258,29 @@ Semua kelas:
 <details>
 <summary>Bantuan 1</summary>
 
-- Ubah modifier field, lalu lihat apa yang error di `Main` kamu. Itu pelajaran enkapsulasinya.
-- Urutan aman di setter: **periksa dulu**, baru isi field. Kalau tidak valid, hentikan sebelum field disentuh.
-- Untuk menolak data, ingat kata kunci `throw` dan tipe exception yang disebut di atas.
-- Constructor boleh memanggil setter milik kelasnya sendiri.
-- Untuk teks kosong, class `String` punya method yang menjawab apakah teks kosong atau hanya spasi.
-- `canBorrow()` bisa dihitung langsung dari `loanCount` setiap kali dipanggil.
+- Ubah modifier semua field menjadi `private`, lalu lihat apa yang error di `Main` kamu. Baris mana yang error, dan mengapa `private` membuatnya error?
+- Di setter, apa yang terjadi jika kamu mengisi field dulu baru memeriksa, dibandingkan memeriksa dulu baru mengisi? Mana yang membiarkan data lama tetap aman saat ditolak?
+- Untuk menolak data, exception apa yang disebut di "Yang Diuji Oleh Autograder"? Kata kunci apa yang melemparkan sebuah exception?
+- Bolehkah constructor memanggil method lain milik kelasnya sendiri, termasuk setter? Apa untungnya jika aturan validasi hanya ditulis di satu tempat?
+- Untuk mengenali teks kosong atau hanya spasi, class `String` punya banyak method. Method mana yang namanya terdengar seperti menjawab pertanyaan itu? Cari di dokumentasi Java.
+- `canBorrow()` tidak disebutkan punya field sendiri di diagram. Bisakah jawabannya dihitung langsung dari `loanCount` setiap kali dipanggil, tanpa menyimpan apa pun tambahan?
 
 </details>
 
 <details>
 <summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
-- **Langkah awal**: ubah semua field `Author` dan `Book` menjadi `private`. Jalankan `P02AuthorTest` dan `P02BookTest`: harus tetap lulus karena getter sudah ada. Jika `Main` kamu error, ganti akses langsung ke field dengan getter.
-- **`Book.setTitle`**: (1) jika `title` bernilai `null`, lempar `IllegalArgumentException` (cek `null` **lebih dulu**, karena memanggil method pada `null` menimbulkan error lain). (2) Jika `title` hanya berisi spasi atau kosong, lempar exception yang sama. Method `isBlank()` milik `String` menjawab ini. (3) Jika lolos kedua pemeriksaan, baru isi field.
-- **`Book.setYear`**: jika `year` kurang dari atau sama dengan 0, lempar `IllegalArgumentException`. Jika tidak, isi field.
-- **`Book` constructor**: (1) periksa `isbn` dengan pola yang sama dengan judul (`null` atau kosong ditolak). (2) Isi `isbn`. (3) Panggil `setTitle(title)` dan `setYear(year)` untuk judul dan tahun, bukan mengisi field langsung, supaya aturannya tidak ditulis dua kali. (4) Status `available` tetap `true`.
-- **`Member` field**: `memberId` dan `name` bertipe `String`, `loanCount` bertipe `int` dengan nilai awal 0. Semuanya `private`.
-- **`Member` constructor**: (1) periksa `memberId` (`null` atau kosong ditolak). (2) Isi `memberId`. (3) Panggil `setName(name)` agar aturan nama tidak ditulis dua kali.
-- **`Member.setName`**: pola yang sama dengan `Book.setTitle`.
-- **Tanpa setter**: tulis hanya getter untuk `memberId` dan `loanCount`. Perubahan `loanCount` hanya lewat `addLoan` dan `returnLoan`.
-- **`canBorrow`**: kembalikan hasil perbandingan `loanCount` dengan batas 3. Tidak ada field baru.
-- **`addLoan`**: (1) jika `canBorrow()` bernilai `false`, `return false`. (2) Jika tidak, naikkan `loanCount` satu dan `return true`. Manfaatkan `canBorrow()` supaya angka batas hanya ada di satu tempat.
-- **`returnLoan`**: (1) jika `loanCount` sama dengan 0, `return false`. (2) Jika tidak, turunkan satu dan `return true`.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// Author.java dan Book.java: ubah semua field menjadi private
-private String name;
-private String country;
-```
-
-```java
-// Book.java (tambahan)
-public void setTitle(String title) {
-    if (title == null || title.____()) {
-        throw new IllegalArgumentException("____");
-    }
-    this.title = title;
-}
-
-public void setYear(int year) {
-    if (year ____ 0) {
-        throw new IllegalArgumentException("____");
-    }
-    this.year = year;
-}
-
-// constructor Book: periksa isbn, lalu pakai setter untuk judul dan tahun
-public Book(String isbn, String title, int year) {
-    if (isbn == null || ____) {
-        throw new IllegalArgumentException("ISBN must not be blank");
-    }
-    this.isbn = isbn;
-    setTitle(____);
-    setYear(____);
-    this.available = true;
-}
-```
-
-```java
-// Member.java
-package id.ac.polinema.library;
-
-public class Member {
-    private ____ memberId;
-    private ____ name;
-    private int loanCount;           // awalnya 0
-
-    public Member(String memberId, String name) {
-        if (memberId == null || ____) {
-            throw new IllegalArgumentException("____");
-        }
-        this.memberId = memberId;
-        setName(____);               // aturan nama ditulis sekali, di setName
-    }
-
-    public String getMemberId() { return memberId; }
-    public String getName() { return ____; }
-    public int getLoanCount() { return ____; }
-
-    public void setName(String name) {
-        if (name == null || ____) {
-            throw new IllegalArgumentException("____");
-        }
-        this.name = name;
-    }
-
-    public boolean canBorrow() {
-        return loanCount ____ 3;
-    }
-
-    public boolean addLoan() {
-        if (!____) {
-            return false;
-        }
-        loanCount++;
-        return true;
-    }
-
-    public boolean returnLoan() {
-        if (loanCount == ____) {
-            return false;
-        }
-        loanCount--;
-        return true;
-    }
-}
-```
+- **Langkah awal**: ubah semua field `Author` dan `Book` menjadi `private`. Jalankan `P02AuthorTest` dan `P02BookTest`. Mengapa keduanya tetap lulus walau field sudah tertutup?
+- **`Book.setTitle`**: Ada dua kondisi yang membuat judul ditolak. Kondisi mana yang harus diperiksa lebih dulu, dan mengapa (apa yang terjadi kalau kamu memanggil method pada sesuatu yang `null`)? Jika kedua pemeriksaan lolos, baris apa yang terakhir dijalankan?
+- **`Book.setYear`**: Tahun berapa saja yang ditolak menurut "Yang Diuji Oleh Autograder"? Tulis kondisinya sebagai perbandingan angka.
+- **`Book` constructor**: `isbn` juga punya aturan "tidak boleh kosong", mengapa polanya mirip dengan judul? Untuk judul dan tahun, apakah constructor perlu memeriksa sendiri, atau ada method lain di kelas yang sudah tahu caranya?
+- **`Member` field**: Dari diagram, data apa saja yang diingat `Member`, dan tipe apa masing-masing? Satu di antaranya nilai awalnya bukan dari parameter, berapa nilai awal yang masuk akal?
+- **`Member` constructor**: Pola pemeriksaannya mirip dengan constructor `Book` yang mana? Untuk nama, apakah constructor perlu menulis ulang aturan validasinya, atau bisa memanggil method yang sudah ada?
+- **`Member.setName`**: Bandingkan dengan `Book.setTitle`. Apa yang sama persis, dan apa yang beda (nama field dan pesannya)?
+- **Tanpa setter**: Dua data di `Member` disebut "read-only" di "Yang Diuji Oleh Autograder". Apa artinya itu untuk method yang kamu tulis, getter saja atau getter dan setter?
+- **`canBorrow`**: Batas pinjam disebutkan di "Yang Diuji Oleh Autograder". Operator perbandingan apa yang menjawab "masih di bawah batas"?
+- **`addLoan`**: Method ini gagal dalam kondisi yang sama dengan jawaban `canBorrow()` yang mana? Jika berhasil, data apa yang berubah dan berapa banyak?
+- **`returnLoan`**: Kapan method ini seharusnya gagal? Pikirkan batas bawahnya, bukan batas atas. Jika berhasil, data apa yang berubah?
 
 </details>
 
@@ -520,153 +333,25 @@ Jawab untuk **setiap** garis relasi di diagram:
 <details>
 <summary>Bantuan 1</summary>
 
-- Relasi yang disimpan sebagai field berarti kelas **mengingat** objek itu. Relasi dependensi tidak mengingat apa pun.
-- Pada komposisi, field diisi **di dalam constructor**, bukan dari parameter constructor.
-- Array di Java punya ukuran tetap. Kamu butuh satu variabel lagi untuk tahu berapa slot yang sudah terisi.
-- `findByIsbn`: telusuri hanya slot yang terisi. Bandingkan teks dengan `equals`, bukan `==`.
-- `Librarian`: method milik `Member` dan `Book` yang sudah ada sudah menjawab sebagian besar pertanyaanmu. Panggil, jangan tulis ulang aturannya.
-- Urutan pemeriksaan di `lend` penting. Apa yang terjadi jika kamu meminjam bukunya dulu, baru sadar anggotanya sudah mencapai batas?
+- Relasi yang disimpan sebagai field berarti kelas **mengingat** objek itu. Relasi dependensi tidak mengingat apa pun. Bagaimana itu terlihat di tanda tangan method `Librarian`?
+- Pada komposisi, kapan field `LibraryCard` sebaiknya diisi, dari parameter yang diterima dari luar atau dibuat sendiri oleh objeknya? Mengapa diagram bilang `Member` tidak punya constructor yang menerima `LibraryCard`?
+- Array di Java punya ukuran tetap sejak dibuat. Jika kamu ingin tahu "berapa slot yang sudah terisi" tanpa menghitung ulang setiap kali, apa yang perlu kamu simpan selain array itu sendiri?
+- `findByIsbn` hanya boleh menelusuri slot yang terisi, bukan seluruh array. Bagaimana kamu membatasi perulangannya? Dan untuk membandingkan dua `String`, operator `==` membandingkan apa, dan method apa yang membandingkan isinya?
+- `Librarian` tidak menyimpan field apa pun. Coba lihat lagi method `Member` dan `Book` yang sudah kamu buat di bagian sebelumnya. Adakah yang sudah menjawab "boleh pinjam?" atau "berhasil dipinjam?"
+- Di `lend`, urutan pemeriksaan penting. Apa akibatnya jika kamu mengubah status buku dulu, baru belakangan sadar anggotanya sudah mencapai batas pinjam?
 
 </details>
 
 <details>
 <summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
-- **`Book` dan `Author` (asosiasi)**: (1) tambahkan field bertipe `Author` di `Book`, `private`. Tidak ada yang mengisinya di constructor, jadi nilai awalnya `null`. (2) `getAuthor` mengembalikan field itu. (3) `setAuthor` hanya **menyimpan referensi** yang diterima. Jangan membuat `Author` baru di dalamnya, supaya dua buku bisa menunjuk ke objek yang sama.
-- **`LibraryCard`**: satu field `private` untuk nomor. Constructor menyimpannya, dan `getNumber` mengembalikannya.
-- **`Member` (komposisi)**: (1) tambahkan field bertipe `LibraryCard`. (2) Di constructor `Member`, setelah semua validasi lolos, buat objek `LibraryCard` dengan `new` dan simpan di field. Nomornya dibentuk dari teks `CARD-` yang digabung dengan `memberId`. (3) `getCard` mengembalikan field. Jangan menambahkan parameter kartu ke constructor, dan jangan membuat kartu baru setiap `getCard` dipanggil.
-- **`Shelf`**: (1) field: kode rak, array `Book` berukuran 5, dan penghitung jumlah buku terisi dengan nilai awal 0. (2) `addBook`: jika bukunya `null` atau penghitung sudah sama dengan panjang array, kembalikan `false`. Jika tidak, simpan buku di slot yang ditunjuk penghitung, naikkan penghitung, dan kembalikan `true`. (3) `getBookCount` mengembalikan penghitung. (4) `findByIsbn`: ulangi dari slot 0 sampai sebelum penghitung. Jika ISBN buku di slot itu sama dengan yang dicari (pakai `equals`), kembalikan buku itu. Jika perulangan selesai, kembalikan `null`. (5) `countAvailable`: ulangi dengan batas yang sama. Setiap buku yang tersedia menambah satu ke hitungan.
-- **`Librarian` (dependensi)**: tanpa field dan tanpa constructor khusus. Method-nya menerima `Member` dan `Book` sebagai parameter dan tidak menyimpannya.
-  - `lend`: (1) jika anggota tidak boleh meminjam, kembalikan `false`. (2) Pinjam bukunya. Jika gagal, kembalikan `false`. (3) Tambah pinjaman anggota, lalu kembalikan `true`. Cek anggota **sebelum** mengubah buku.
-  - `receive`: (1) jika buku tidak sedang dipinjam, kembalikan `false`. (2) Kurangi pinjaman anggota. Jika gagal (tidak punya pinjaman), kembalikan `false`. (3) Kembalikan bukunya, lalu kembalikan `true`.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// LibraryCard.java
-package id.ac.polinema.library;
-
-public class LibraryCard {
-    private String number;
-
-    public LibraryCard(String number) {
-        this.number = ____;
-    }
-
-    public String getNumber() {
-        return ____;
-    }
-}
-```
-
-```java
-// Book.java (tambahan)
-private Author author;   // belum diisi, jadi nilainya null
-
-public Author getAuthor() {
-    return ____;
-}
-
-public void setAuthor(Author author) {
-    this.author = ____;   // simpan referensinya, jangan membuat Author baru
-}
-```
-
-```java
-// Member.java (tambahan)
-private LibraryCard card;
-
-// di constructor, setelah semua validasi:
-this.card = new LibraryCard("____" + memberId);
-
-public LibraryCard getCard() {
-    return ____;
-}
-```
-
-```java
-// Shelf.java
-package id.ac.polinema.library;
-
-public class Shelf {
-    private String code;
-    private Book[] books = new Book[____];   // kapasitas rak
-    private int count;                        // jumlah slot terisi, awalnya 0
-
-    public Shelf(String code) {
-        this.code = code;
-    }
-
-    public String getCode() { return code; }
-
-    public int getBookCount() {
-        return ____;
-    }
-
-    public boolean addBook(Book book) {
-        if (book == null || count == ____) {
-            return false;
-        }
-        books[count] = ____;
-        count++;
-        return true;
-    }
-
-    public Book findByIsbn(String isbn) {
-        for (int i = 0; i < ____; i++) {
-            if (books[i].getIsbn().equals(____)) {
-                return books[i];
-            }
-        }
-        return ____;
-    }
-
-    public int countAvailable() {
-        int total = 0;
-        for (int i = 0; i < count; i++) {
-            if (books[i].____()) {
-                total++;
-            }
-        }
-        return total;
-    }
-}
-```
-
-```java
-// Librarian.java
-package id.ac.polinema.library;
-
-public class Librarian {
-
-    public boolean lend(Member member, Book book) {
-        if (!member.____()) {
-            return false;
-        }
-        if (!book.____()) {
-            return false;
-        }
-        member.____();
-        return true;
-    }
-
-    public boolean receive(Member member, Book book) {
-        if (book.____()) {          // buku tidak sedang dipinjam?
-            return false;
-        }
-        if (!member.____()) {
-            return false;
-        }
-        book.____();
-        return true;
-    }
-}
-```
+- **`Book` dan `Author` (asosiasi)**: Field apa yang perlu ditambahkan di `Book` agar ia bisa "mengingat" satu `Author`? Constructor `Book` tidak menerima `Author`, jadi nilai field itu sebelum `setAuthor` dipanggil adalah apa? Agar dua buku bisa berbagi satu `Author` yang sama persis, apakah `setAuthor` boleh membuat objek `Author` baru, atau harus menyimpan apa yang diterima?
+- **`LibraryCard`**: Data apa yang diingat kelas ini menurut diagram? Bagaimana constructor dan getter-nya seharusnya terlihat, dibandingkan kelas sederhana lain yang sudah kamu buat?
+- **`Member` (komposisi)**: Kapan `LibraryCard` sebaiknya dibuat, sebelum atau sesudah validasi `Member` lolos? Nomor kartu berbentuk `CARD-` diikuti `memberId`. Operator apa yang menggabungkan teks itu? Agar `getCard` selalu mengembalikan kartu yang sama (bukan kartu baru setiap dipanggil), di mana objek `LibraryCard` itu harus disimpan?
+- **`Shelf`**: Data apa saja yang perlu diingat `Shelf` agar bisa membatasi kapasitas 5 dan tahu mana slot yang terisi? `addBook` punya dua alasan untuk gagal. Apa saja, dan kondisi mana yang diperiksa lebih dulu? `countAvailable` perlu memeriksa setiap buku yang tersimpan. Method apa di `Book`/`LibraryItem` yang menjawab "tersedia atau tidak"?
+- **`Librarian` (dependensi)**: Tanpa field dan tanpa constructor khusus, bagaimana method-nya menerima `Member` dan `Book` kalau bukan lewat field?
+  - `lend`: Apa dua syarat yang harus **sama-sama** benar agar peminjaman berhasil? Jika salah satu gagal di tengah jalan, apa yang harus **tidak berubah**?
+  - `receive`: Kebalikan dari `lend`. Syarat apa yang membuatnya gagal, dan data apa yang harus kembali ke keadaan semula jika berhasil?
 
 </details>
 
@@ -703,100 +388,25 @@ Tes yang harus lulus: `P04AssociationTest`, `P04ShelfAggregationTest`, `P04Membe
 <details>
 <summary>Bantuan 1</summary>
 
-- Kata kunci `extends` menyatakan hubungan IS-A.
-- Constructor tidak diwariskan. Subclass memanggil constructor parent dengan `super(...)`, dan harus menjadi **baris pertama**.
-- `protected` bisa diakses subclass, tetapi tidak oleh kelas lain di luar paket dan keluarga.
-- Kerjakan bertahap: buat `LibraryItem`, pindahkan satu bagian, jalankan tes, ulangi. Jangan memindahkan semuanya sekaligus.
-- Jika tes lama merah setelah memindahkan sesuatu, sebuah method atau constructor kemungkinan hilang atau berubah.
+- Kata kunci `extends` menyatakan hubungan IS-A. Dari ketiga subclass di diagram, apa yang membuat masing-masing bisa dibilang "adalah sebuah `LibraryItem`"?
+- Constructor tidak diwariskan. Jika subclass ingin memakai logika constructor parent, kata kunci apa yang dipanggil, dan di baris keberapa dalam constructor subclass ia harus berada?
+- `protected` bisa diakses subclass. Field mana di diagram yang ditandai begitu, dan mengapa hanya dua field itu, bukan semuanya?
+- Kerjakan bertahap, bukan sekaligus: pindahkan satu bagian kode, jalankan tes, lihat hasilnya, baru lanjut. Apa untungnya dibanding memindahkan semuanya lalu baru menjalankan tes?
+- Jika sebuah tes lama yang tadinya hijau berubah merah setelah kamu memindahkan kode, apa kemungkinan penyebabnya?
 
 </details>
 
 <details>
 <summary>Bantuan 2 (urutan kerja refactoring, buka jika Bantuan 1 belum cukup)</summary>
 
-Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus tetap sama dengan sebelum langkah itu, kecuali tes `P06InheritanceTest` yang baru lulus di akhir.
+Kerjakan urut. Jalankan seluruh tes setelah **setiap** langkah. Hasilnya harus tetap sama dengan sebelum langkah itu, kecuali `P06InheritanceTest` yang baru lulus di akhir.
 
-1. **Buat `LibraryItem` dan salin dulu, jangan hapus dulu.** Buat file `LibraryItem.java`. Salin dari `Book` ke sana: field `title`, `year`, dan `available`, serta method `getTitle`, `setTitle`, `getYear`, `setYear`, `isAvailable`, `checkOut`, dan `returnItem`. Ubah `title` dan `year` menjadi `protected`. Tulis constructor `LibraryItem(String title, int year)` yang mengisi judul dan tahun lewat setter-nya dan membuat status `available` bernilai `true`.
-2. **Hubungkan `Book` ke `LibraryItem`.** Ubah deklarasi kelas `Book` menjadi `extends LibraryItem`. Di constructor `Book`, baris pertamanya memanggil `super` dengan judul dan tahun. Setelah itu periksa `isbn` dan isi `isbn`.
-3. **Hapus duplikat dari `Book`.** Hapus field `title`, `year`, `available` dan semua method yang sudah ada di `LibraryItem`. `Book` tinggal menyimpan `isbn`, `author`, dan method yang berhubungan dengan keduanya. Jalankan tes Bagian 2 sampai 4. Semua harus tetap lulus.
-4. **Buat `Dvd`.** `extends LibraryItem`, satu field `private` untuk durasi. Constructor menerima `title`, `year`, dan durasi. Baris pertamanya memanggil `super` dengan judul dan tahun, lalu menyimpan durasi. Tambahkan getter durasi.
-5. **Buat `Magazine`** dengan pola yang sama dengan `Dvd`, tetapi menyimpan nomor edisi.
-6. Jika muncul error "constructor LibraryItem ... cannot be applied to given types", artinya sebuah subclass belum memanggil `super(...)` dengan argumen yang sesuai. Periksa constructor subclass yang disebut di pesan error.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// LibraryItem.java
-package id.ac.polinema.library;
-
-public class LibraryItem {
-    protected String title;
-    protected int year;
-    private boolean available;
-
-    public LibraryItem(String title, int year) {
-        setTitle(title);
-        setYear(____);
-        this.available = ____;
-    }
-
-    // Pindahkan dari Book ke sini:
-    // getTitle, setTitle, getYear, setYear, isAvailable, checkOut, returnItem
-}
-```
-
-```java
-// Book.java
-public class Book extends ____ {
-    private String isbn;
-    private Author author;
-
-    public Book(String isbn, String title, int year) {
-        ____(title, year);                // baris pertama
-        if (isbn == null || ____) {
-            throw new IllegalArgumentException("ISBN must not be blank");
-        }
-        this.isbn = isbn;
-    }
-
-    // getIsbn, getAuthor, dan setAuthor tetap di Book
-}
-```
-
-```java
-// Dvd.java
-public class Dvd extends ____ {
-    private int durationMinutes;
-
-    public Dvd(String title, int year, int durationMinutes) {
-        ____(title, year);
-        this.durationMinutes = ____;
-    }
-
-    public int getDurationMinutes() {
-        return ____;
-    }
-}
-```
-
-```java
-// Magazine.java
-public class Magazine extends ____ {
-    private int issueNumber;
-
-    public Magazine(String title, int year, int issueNumber) {
-        ____;                             // panggil constructor parent
-        ____;                             // simpan nomor edisi
-    }
-
-    // getIssueNumber()
-}
-```
+1. **Buat `LibraryItem`, salin dulu, jangan hapus dulu dari `Book`.** Data dan method apa saja di `Book` yang sebenarnya berlaku umum untuk semua koleksi, bukan khusus buku? Pindahkan itu (tersalin, bukan terhapus) ke `LibraryItem`, lalu ubah `title` dan `year` menjadi `protected`. Constructor `LibraryItem` perlu mengisi judul, tahun, dan status tersedia. Bisakah ia memanfaatkan setter yang sudah ada, seperti yang dilakukan constructor `Book` di Bagian 3?
+2. **Hubungkan `Book` ke `LibraryItem`.** Ganti deklarasi kelasnya. Baris pertama constructor `Book` sekarang harus memanggil apa, dengan argumen apa?
+3. **Hapus duplikat dari `Book`.** Setelah `LibraryItem` punya salinannya, apa yang tersisa di `Book` yang benar-benar khusus untuknya? Jalankan tes Bagian 2 sampai 4. Apakah semuanya masih lulus?
+4. **Buat `Dvd`.** Data apa yang khusus dimiliki `Dvd` menurut diagram? Baris pertama constructor-nya memanggil apa?
+5. **Buat `Magazine`** dengan pola yang sama. Data apa yang khusus untuknya?
+6. Jika muncul error yang menyebut constructor `LibraryItem` "cannot be applied to given types", constructor subclass mana yang disebut di pesan itu, dan argumen apa yang sudah/belum diberikannya ke `super(...)`?
 
 </details>
 
@@ -852,12 +462,12 @@ Struktur:
 <details>
 <summary>Bantuan 1</summary>
 
-- Anotasi `@Override` membuat compiler menolak jika nama atau parameter salah. Pasang pada setiap override.
-- Kata kunci `super` bisa dipakai bukan hanya untuk constructor, tetapi juga untuk memanggil method milik parent.
-- Constructor boleh memanggil constructor lain di kelas yang **sama**, dengan kata kunci yang berbeda dari `super(...)`. Pemanggilan ini juga harus berada di baris pertama.
-- `toString()` sudah ada di `Object`. Kamu meng-override-nya.
-- Teks `Unknown` hanya dipakai jika `author` bernilai `null`.
-- Perpanjangan perlu diingat di sebuah field di `LibraryItem`. Bagaimana `getTotalLoanDays()` memakainya agar tetap benar untuk `Book` (14) dan `Dvd` (3)?
+- Anotasi `@Override` membuat compiler menolak jika nama atau parameter salah. Method mana saja di tabel nilai yang diharapkan yang berbeda per kelas? Itu petunjuk method mana yang perlu di-override.
+- Kata kunci `super` bisa dipakai bukan hanya untuk constructor, tetapi juga untuk memanggil versi method milik parent. Pada `describe()` tiap subclass, bagian mana dari hasilnya sudah dikerjakan `LibraryItem`, dan bagian mana yang khusus?
+- Constructor boleh memanggil constructor lain di kelas yang **sama**, dengan kata kunci yang berbeda dari `super(...)`. Dua constructor `Book` di diagram hampir sama. Constructor mana yang lebih sederhana untuk dipanggil dari yang satunya?
+- `toString()` sudah ada di setiap objek Java (lewat `Object`). Tabel nilai bilang `toString()` harus sama dengan `describe()`. Apakah itu berarti menyusun ulang teksnya, atau cukup memanggil satu method yang sudah ada?
+- Nama penulis di `describe()` punya dua kemungkinan. Kapan teks `Unknown` dipakai?
+- Perpanjangan hari perlu diingat di suatu tempat. `getTotalLoanDays()` harus benar untuk `Book` (14) dan `Dvd` (3) sekaligus. Kalau kamu menulis angka tetap di method itu, bisakah itu benar untuk keduanya? Method apa yang sudah tahu angka yang berbeda-beda per kelas?
 
 </details>
 
@@ -865,99 +475,20 @@ Struktur:
 <summary>Bantuan 2 (langkah per kelas, buka jika Bantuan 1 belum cukup)</summary>
 
 - **`LibraryItem`**:
-  - `loanDays()` mengembalikan 7.
-  - `describe()` menyusun teks dari `title`, sebuah spasi, lalu `year` di dalam tanda kurung (hasil seperti `Generic (2000)`).
-  - `toString()` cukup memanggil `describe()`. Tidak perlu menyusun teks lagi.
-  - Tambahkan field `private` untuk total hari perpanjangan, nilai awal 0.
-  - `extendLoan(int days)`: jika `days` 0 atau negatif, lempar `IllegalArgumentException`. Jika tidak, tambahkan ke field perpanjangan.
-  - `extendLoan()` tidak perlu mengulang isi di atas. Cukup panggil `extendLoan(int)` dengan angka 7.
-  - `getTotalLoanDays()` menjumlahkan **hasil pemanggilan `loanDays()`** dan field perpanjangan. Jangan menulis angka 7 langsung. Dengan memanggil method, `Book` otomatis memakai 14 dan `Dvd` memakai 3 (inilah polymorphism).
+  - `loanDays()`: tabel menyebut berapa hari standarnya untuk item generik.
+  - `describe()`: bentuk hasilnya `Generic (2000)`. Data apa yang disusun, dan tanda baca apa di antaranya?
+  - `toString()`: method apa di kelas ini yang sudah menghasilkan teks yang persis diminta?
+  - Field baru untuk total perpanjangan, tipe apa, dan nilai awal berapa?
+  - `extendLoan(int days)`: kondisi apa yang ditolak (lihat "Yang Diuji Oleh Autograder")? Jika lolos, apa yang berubah pada field perpanjangan?
+  - `extendLoan()` (tanpa parameter): bisakah ia memanfaatkan `extendLoan(int)` dengan satu angka tetap, alih-alih menulis ulang pemeriksaannya?
+  - `getTotalLoanDays()`: dua angka apa yang dijumlahkan? Salah satunya harus didapat lewat pemanggilan method, method mana, dan mengapa bukan angka tetap?
 - **`Book`**:
-  - `loanDays()` mengembalikan 14.
-  - `describe()`: (1) ambil hasil `describe()` milik parent dengan `super`. (2) Tentukan nama penulis: `Unknown` jika `author` `null`, selain itu nama dari objek `Author`. (3) Gabungkan hasil parent, teks ` by ` (dengan spasi di kiri dan kanan), dan nama penulis.
-  - Constructor 4 parameter: baris pertamanya memanggil constructor 3 parameter milik `Book` sendiri (kata kunci `this` diikuti kurung). Setelah itu baru isi penulisnya.
-- **`Dvd`**: `loanDays()` mengembalikan 3. `describe()` mengambil hasil parent, lalu menambahkan spasi, tanda kurung siku berisi durasi dan teks `min` (hasil seperti `Inception (2010) [148 min]`).
-- **`Magazine`**: tidak ada override sama sekali. Constructor 2 parameter: baris pertamanya memanggil constructor 3 parameter milik `Magazine` sendiri dengan nomor edisi 1.
-- Cara memeriksa tanpa tes: di `Main`, taruh `Book`, `Dvd`, dan `Magazine` dalam satu array `LibraryItem[]`, cetak `loanDays()` dan `describe()` setiap elemen, lalu bandingkan dengan tabel nilai yang diharapkan.
-
-</details>
-
-<details>
-<summary>Kerangka kode (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// LibraryItem.java (tambahan)
-private int extraDays;   // total hari perpanjangan, awalnya 0
-
-public int loanDays() {
-    return ____;
-}
-
-public String describe() {
-    return title + " (" + ____ + ")";
-}
-
-@Override
-public String toString() {
-    return ____();
-}
-
-public void extendLoan() {
-    extendLoan(____);
-}
-
-public void extendLoan(int days) {
-    if (days ____ 0) {
-        throw new IllegalArgumentException("____");
-    }
-    extraDays += ____;
-}
-
-public int getTotalLoanDays() {
-    return ____() + extraDays;      // panggil method, jangan tulis angka langsung
-}
-```
-
-```java
-// Book.java (tambahan)
-@Override
-public int loanDays() {
-    return ____;
-}
-
-@Override
-public String describe() {
-    String name = (author == null) ? "____" : author.____();
-    return ____.describe() + " by " + name;     // versi milik parent
-}
-
-public Book(String isbn, String title, int year, Author author) {
-    ____(isbn, title, year);                     // panggil constructor 3 parameter
-    this.author = author;
-}
-```
-
-```java
-// Dvd.java (tambahan)
-@Override
-public int loanDays() {
-    return ____;
-}
-
-@Override
-public String describe() {
-    return super.describe() + " [" + ____ + " min]";
-}
-```
-
-```java
-// Magazine.java (tambahan)
-public Magazine(String title, int year) {
-    ____(title, year, 1);
-}
-```
+  - `loanDays()`: berapa hari menurut tabel?
+  - `describe()`: bagaimana cara mengambil hasil `describe()` versi `LibraryItem`, lalu apa yang ditambahkan di belakangnya? Bentuk hasil akhirnya `Clean Code (2008) by Robert Martin` atau `... by Unknown`, kapan masing-masing dipakai?
+  - Constructor 4 parameter: constructor 3 parameter sudah mengerjakan validasi `isbn`, judul, dan tahun. Bagaimana memanfaatkannya alih-alih menulis ulang? Setelah itu, data apa lagi yang perlu diisi?
+- **`Dvd`**: `loanDays()` mengembalikan berapa hari menurut tabel? Untuk `describe()`, bentuk hasilnya `Inception (2010) [148 min]`. Bagian mana yang berasal dari parent, bagian mana yang ditambahkan `Dvd`?
+- **`Magazine`**: tidak ada override sama sekali. Mengapa versi `LibraryItem` untuk `loanDays()` dan `describe()` sudah cukup benar untuknya? Constructor 2 parameter memberi nomor edisi tetap. Bagaimana ia memanggil constructor 3 parameter dengan nilai itu?
+- Cara memeriksa tanpa tes: di `Main`, taruh satu `Book`, satu `Dvd`, dan satu `Magazine` dalam satu array bertipe `LibraryItem[]`, cetak `loanDays()` dan `describe()` tiap elemen, lalu bandingkan dengan tabel nilai yang diharapkan.
 
 </details>
 
@@ -1000,129 +531,33 @@ Buat kelas `Library` sesuai diagram. Tidak boleh ada `System.out` di dalamnya.
 <details>
 <summary>Bantuan 1: Library</summary>
 
-- Dua array (`items` dan `members`) masing-masing perlu penghitung isi, seperti di `Shelf`.
-- Tipe elemen array koleksi adalah `LibraryItem`. Itu sebabnya `Book`, `Dvd`, dan `Magazine` bisa masuk bersama.
-- Untuk memotong array menjadi hanya bagian yang terisi, pelajari `java.util.Arrays.copyOf`. Memakai `Arrays` untuk array biasa tetap sesuai aturan (bukan koleksi).
-- Untuk mengabaikan huruf besar-kecil, `String` punya method khusus perbandingan dan method untuk mengubah huruf.
-- `lend` dan `receive` cukup memanggil method yang sudah ada di `Member` dan `LibraryItem`. Tulis alurnya: cari, periksa, ubah.
-- Hasil `searchByKeyword` panjangnya belum diketahui sebelum menghitung. Pikirkan cara menampungnya dulu.
+- Dua array (`items` dan `members`) perlu dibatasi kapasitasnya (20 dan 10). Kelas lain di bagian sebelumnya sudah menghadapi masalah yang sama. Bagaimana kelas itu tahu "berapa slot yang sudah terisi"?
+- Tipe elemen array koleksi adalah `LibraryItem`, bukan `Book`. Konsep apa yang membuat `Book`, `Dvd`, dan `Magazine` boleh masuk ke array bertipe itu bersama-sama?
+- `getItems`/`getMembers` harus mengembalikan array baru yang "hanya berisi elemen terisi", artinya bukan array penuh 20/10 slot. Cari di `java.util` sebuah utilitas untuk array biasa yang bisa memotong panjangnya.
+- Untuk judul dan kata kunci yang harus dicocokkan "tanpa peduli huruf besar-kecil", `String` punya lebih dari satu method yang relevan: satu untuk membandingkan, satu untuk mengubah semua huruf jadi kecil. Mana yang cocok untuk `findItemByTitle`, dan mana untuk `searchByKeyword` (yang mencari "memuat", bukan "sama persis")?
+- `lend` dan `receive` tidak perlu menulis ulang aturan peminjaman. Method apa di `Member` dan `LibraryItem` yang sudah menjawab "boleh pinjam?", "berhasil dipinjam?", "sedang dipinjam?"
+- `searchByKeyword` harus mengembalikan array sepanjang jumlah hasil, tapi jumlah itu belum diketahui sebelum pencarian selesai. Bagaimana caranya menampung hasil sementara, lalu memotongnya ke ukuran yang pas di akhir?
 
 </details>
 
 <details>
 <summary>Bantuan 2: Library (langkah per method, buka jika Bantuan 1 belum cukup)</summary>
 
-Field yang dibutuhkan: nama, array koleksi berukuran 20 dan penghitungnya, array anggota berukuran 10 dan penghitungnya. Nilai awal kedua penghitung adalah 0.
+Field yang dibutuhkan: nama, array koleksi dan penghitungnya, array anggota dan penghitungnya. Apa nilai awal yang masuk akal untuk kedua penghitung?
 
-- **`addItem`**: (1) jika item `null` atau penghitung sudah sama dengan panjang array, kembalikan `false`. (2) Simpan item di slot yang ditunjuk penghitung. (3) Naikkan penghitung. (4) Kembalikan `true`.
-- **`addMember`**: sama dengan `addItem`, ditambah satu pemeriksaan: panggil `findMember` dengan `memberId` anggota itu. Jika hasilnya bukan `null`, id sudah terdaftar.
-- **`getItems`** dan **`getMembers`**: salin array dari indeks 0 sampai sebelum penghitung ke array baru. `Arrays.copyOf(array, panjangBaru)` melakukannya.
-- **`findItemByTitle`** dan **`findMember`**: gunakan perulangan dari 0 sampai sebelum penghitung (bukan sampai panjang array, karena sisanya `null`). Jika ada yang cocok, langsung kembalikan. Jika perulangan selesai, kembalikan `null`. Untuk judul, cari method `String` yang membandingkan tanpa peduli huruf besar-kecil.
-- **`searchByKeyword`**: (1) buat array sementara sepanjang jumlah koleksi. (2) Telusuri koleksi. Ubah judul dan kata kunci ke huruf kecil, lalu periksa apakah judul memuat kata kunci. Jika ya, simpan di array sementara dan naikkan penghitung hasil. (3) Salin array sementara sepanjang penghitung hasil. Tanpa hasil, kamu otomatis mendapat array kosong.
-- **`lend`**: (1) cari anggota dan koleksi. (2) Jika salah satunya `null`, kembalikan `false`. (3) Jika anggota tidak boleh meminjam, kembalikan `false`. (4) Pinjam koleksinya. Jika gagal, kembalikan `false`. (5) Tambah pinjaman anggota, lalu kembalikan `true`. Perhatikan urutan 3 dan 4: koleksi baru boleh diubah setelah anggota dipastikan boleh meminjam.
-- **`receive`**: (1) cari anggota dan koleksi, `null` berarti `false`. (2) Jika koleksi tidak sedang dipinjam, kembalikan `false`. (3) Kurangi pinjaman anggota. Jika gagal (tidak punya pinjaman), kembalikan `false`. (4) Kembalikan koleksinya, lalu kembalikan `true`.
-
-</details>
-
-<details>
-<summary>Kerangka kode: Library (belum lengkap, buka jika Bantuan 2 belum cukup)</summary>
-
-Kerangka ini **belum bisa dikompilasi**. Ganti setiap `____` dengan kode yang benar, lalu hapus komentar yang tidak perlu.
-
-```java
-// Library.java
-package id.ac.polinema.library;
-
-import java.util.Arrays;
-
-public class Library {
-    private String name;
-    private LibraryItem[] items = new LibraryItem[____];
-    private int itemCount;
-    private Member[] members = new Member[____];
-    private int memberCount;
-
-    public Library(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return ____;
-    }
-
-    public boolean addItem(LibraryItem item) {
-        if (item == null || itemCount == ____) {
-            return false;
-        }
-        items[itemCount] = ____;
-        itemCount++;
-        return true;
-    }
-
-    public boolean addMember(Member member) {
-        // sama seperti addItem, ditambah satu syarat: id belum terdaftar
-        if (member == null || memberCount == ____ || findMember(member.____()) != null) {
-            return false;
-        }
-        // simpan di members, lalu naikkan memberCount
-        return true;
-    }
-
-    public LibraryItem[] getItems() {
-        return Arrays.copyOf(items, ____);
-    }
-
-    // getMembers(): pola yang sama dengan getItems
-
-    public LibraryItem findItemByTitle(String title) {
-        for (int i = 0; i < ____; i++) {
-            if (items[i].getTitle().____(title)) {      // abaikan huruf besar-kecil
-                return items[i];
-            }
-        }
-        return null;
-    }
-
-    // findMember(String memberId): pola yang sama, bandingkan dengan getMemberId()
-
-    public LibraryItem[] searchByKeyword(String keyword) {
-        LibraryItem[] found = new LibraryItem[____];
-        int total = 0;
-        for (int i = 0; i < itemCount; i++) {
-            if (items[i].getTitle().toLowerCase().____(keyword.toLowerCase())) {
-                found[total] = ____;
-                total++;
-            }
-        }
-        return Arrays.copyOf(found, ____);
-    }
-
-    public boolean lend(String memberId, String title) {
-        Member member = ____(memberId);
-        LibraryItem item = ____(title);
-        if (member == null || item == null) {
-            return false;
-        }
-        if (!member.____()) {
-            return false;
-        }
-        if (!item.____()) {
-            return false;
-        }
-        member.____();
-        return true;
-    }
-
-    // receive(String memberId, String title): cari, periksa item sedang dipinjam,
-    // kurangi pinjaman anggota, lalu kembalikan item
-}
-```
+- **`addItem`**: Ada dua alasan method ini gagal (lihat tabel aturan). Apa saja, dan bagaimana urutan tiga langkah "simpan di slot yang tepat, naikkan penghitung, kembalikan hasil"?
+- **`addMember`**: Sama seperti `addItem`, tapi dengan satu syarat tambahan soal `memberId`. Method apa yang sudah kamu tulis di bawah ini (`findMember`) yang bisa menjawab "id ini sudah dipakai atau belum"?
+- **`getItems`** dan **`getMembers`**: Array penuh berukuran 20/10 tidak boleh dikembalikan apa adanya kalau belum semua slot terisi. Dari utilitas `Arrays` yang kamu temukan di Bantuan 1, argumen kedua apa yang harus diberikan supaya hasilnya pas sepanjang data yang terisi?
+- **`findItemByTitle`** dan **`findMember`**: Perulangannya harus berhenti di slot terakhir yang terisi, bukan di akhir array. Mengapa? Jika tidak ada yang cocok sampai perulangan selesai, apa yang dikembalikan?
+- **`searchByKeyword`**: Berapa ukuran maksimal array sementara yang cukup aman untuk menampung semua kemungkinan hasil? Setelah menelusuri dan mencocokkan (keduanya sama-sama diubah ke huruf kecil dulu), bagaimana memotong array sementara itu agar hasilnya pas? Apa yang terjadi secara otomatis kalau tidak ada yang cocok sama sekali?
+- **`lend`**: Urutkan pemeriksaannya: anggota dan koleksinya ditemukan dulu, lalu dua syarat apa yang harus sama-sama benar sebelum apa pun diubah? Jika salah satu gagal di tengah, apa yang harus tetap sama seperti semula?
+- **`receive`**: Kebalikan dari `lend`. Syarat apa yang membuatnya gagal, dan dua perubahan apa yang terjadi kalau berhasil?
 
 </details>
 
 ### Kelas `LibraryApp`
 
-Buat file `LibraryApp.java`. Perulangan menu (`run`) dan pembacaan input dengan `Scanner` (`readLine`, `readInt`) **sudah lengkap**. Salin, lalu isi method yang masih kosong. Setiap method punya bantuan dan kerangka di komentarnya: ganti `____`, lalu hapus tanda `//` di depan baris kode.
+Buat file `LibraryApp.java`. Perulangan menu (`run`) dan pembacaan input dengan `Scanner` (`readLine`, `readInt`) **sudah lengkap**. Salin, lalu isi setiap method yang masih bertanda `// TODO`. Bantuan untuk tiap method ada di bawah kode ini.
 
 ```java
 package id.ac.polinema.library;
@@ -1194,104 +629,48 @@ public class LibraryApp {
     }
 
     private void printMenu() {
-        out.println("=== " + library.getName() + " ===");
-        out.println("1. List items");
-        out.println("2. Add book");
-        // TODO: lanjutkan baris 3 sampai 9 dan "0. Exit" sesuai tabel "Teks yang harus dicetak".
-        out.print("Choose: ");
+        // TODO: cetak judul, sepuluh baris menu, dan prompt "Choose: " sesuai tabel "Teks yang harus dicetak".
     }
 
-    // Satu baris untuk satu koleksi: describe, status, lama pinjam.
+    // Satu baris untuk satu koleksi. Dipakai oleh dua menu berbeda, lihat Bantuan.
     private String line(LibraryItem item) {
-        // String status = item.____() ? "Available" : "Borrowed";
-        // return item.describe() + " | " + status + " | " + item.____() + " days";
         return "";
     }
 
     private void showItems() {
-        // LibraryItem[] items = library.____();
-        // if (items.length == 0) {
-        //     out.println("No items");
-        // }
-        // for (LibraryItem item : items) {
-        //     out.println(line(item));
-        // }
+        // TODO
     }
 
     private void addBook() {
-        // String isbn = readLine("ISBN: ");
-        // String title = readLine("Title: ");
-        // int year = readInt("Year: ");
-        // if (year < 0) {
-        //     out.println("Invalid number");
-        //     return;
-        // }
-        // if (isbn.isEmpty() || ____) {
-        //     out.println("Invalid input");
-        //     return;
-        // }
-        // Book book = new Book(isbn, title, year);
-        // String authorName = readLine("____");
-        // if (!authorName.isEmpty()) {
-        //     String country = readLine("____");
-        //     book.setAuthor(new Author(____, ____));
-        // }
-        // out.println(library.____(book) ? "Item added" : "Library is full");
+        // TODO
     }
 
     private void addDvd() {
-        // String title = readLine("Title: ");
-        // int year = readInt("Year: ");
-        // int minutes = readInt("____");
-        // if (year < 0 || ____) { out.println("Invalid number"); return; }
-        // if (title.isEmpty()) { out.println("Invalid input"); return; }
-        // out.println(library.addItem(new Dvd(title, year, minutes)) ? "Item added" : "Library is full");
+        // TODO
     }
 
     private void addMagazine() {
-        // Pola yang sama dengan addDvd. Prompt ketiga: "Issue number: ".
+        // TODO
     }
 
     private void registerMember() {
-        // String id = readLine("Member ID: ");
-        // String name = readLine("____");
-        // if (id.isEmpty() || ____) {
-        //     out.println("Invalid input");
-        //     return;
-        // }
-        // boolean added = library.addMember(new Member(id, name));
-        // out.println(added ? "Member registered" : "____");
+        // TODO
     }
 
     private void lendItem() {
-        // String id = readLine("Member ID: ");
-        // String title = readLine("Title: ");
-        // out.println(library.____(id, title) ? "Loan successful" : "Loan failed");
+        // TODO
     }
 
     private void returnItem() {
-        // Pola yang sama dengan lendItem, tetapi memanggil receive dan pesan "Return ...".
+        // TODO
     }
 
     private void searchItems() {
-        // String keyword = readLine("____");
-        // LibraryItem[] found = library.____(keyword);
-        // if (found.length == 0) {
-        //     out.println("No items found");
-        // }
-        // for (LibraryItem item : found) {
-        //     out.println(line(item));
-        // }
+        // TODO
     }
 
     private void showMembers() {
-        // Member[] members = library.getMembers();
-        // if (members.length == 0) {
-        //     out.println("No members");
-        // }
-        // for (Member m : members) {
-        //     out.println(m.getMemberId() + " - " + m.____() + " (" + m.____() + " loans)");
-        // }
+        // TODO
     }
 }
 ```
@@ -1306,48 +685,40 @@ Buka `Main.java` dan lanjutkan di bawah baris sapaan. `Main` membuat `Library`, 
 import java.util.Scanner;   // di bagian atas file
 
 public static void main(String[] args) {
-    System.out.println("Welcome to Polinema Library");
-
-    Library library = new Library("Polinema Library");
-    Book book = new Book("978-0132350884", "Clean Code", 2008);
-    book.setAuthor(new Author("Robert Martin", "____"));
-    library.addItem(____);
-    library.addItem(new Dvd("Inception", 2010, ____));
-    library.addItem(new Magazine("Tempo", 2024, ____));
-    library.addMember(new Member("M001", "____"));
-
-    LibraryApp app = new LibraryApp(____, new Scanner(System.in), System.out);
-    app.____();
+    // TODO: lihat Bantuan di bawah untuk apa yang harus terjadi di sini, lalu tulis sendiri.
 }
 ```
+
+`Main` harus: mencetak sapaan, membuat satu `Library` bernama `Polinema Library`, mengisi data contoh yang terlihat di "Coba Aplikasinya" (satu `Book` dengan penulisnya, satu `Dvd`, satu `Magazine`, satu `Member`), lalu menjalankan `LibraryApp` dengan keyboard dan layar sungguhan.
+
+- Constructor `LibraryApp` meminta tiga hal: `Library`, sumber input, dan tujuan output. Untuk "keyboard sungguhan" dan "layar sungguhan", objek baku Java apa yang kamu pakai, dan bagaimana cara membuatnya?
+- Setelah `LibraryApp` dibuat, method apa yang membuat menunya benar-benar berjalan?
 
 <details>
 <summary>Bantuan 1: LibraryApp</summary>
 
-- Kerjakan satu method sekali, dari yang paling sederhana: `showItems`, lalu `lendItem` dan `returnItem`, lalu `showMembers`, `registerMember`, dan terakhir `addBook`, `addDvd`, `addMagazine`. Jalankan `P08LibraryAppTest` setelah beberapa method selesai.
-- Setiap method di kerangka punya komentar dengan kode dan `____`. Hapus tanda `//` di depan baris, lalu ganti `____` dengan nama method atau teks yang benar. Tanya dirimu: method mana di `Library`, `Member`, atau `LibraryItem` yang menjawab bagian ini?
-- Semua handler berpola sama: **baca input**, **periksa**, **serahkan ke `library`**, lalu **cetak hasil**. `LibraryApp` tidak memutuskan boleh atau tidaknya meminjam. Keputusan itu milik `Library`.
-- Cetak dengan `out`, baca dengan `readLine` dan `readInt`. `readInt` mengembalikan -1 jika isinya bukan bilangan positif, jadi periksa -1 itu sebelum membuat objek.
-- Pesan di layar harus persis seperti tabel "Teks yang harus dicetak". Perbedaan satu huruf membuat tes gagal.
-- Method `line` dipakai oleh `showItems` dan `searchItems`. Tulis sekali, panggil dua kali.
-- `run` sudah lengkap. Pahami alurnya: menu dicetak, satu baris dibaca, `switch` memilih method, lalu perulangan mengulang. Mengapa perulangan berhenti saat pilihan `0` atau saat input habis?
+- Kerjakan method satu per satu, bukan semuanya sekaligus. Dari sepuluh handler, yang mana paling sederhana, yaitu hanya membaca dari `library` dan mencetak tanpa mengubah apa pun? Urutkan dari situ menuju yang paling banyak langkahnya (`addBook`). Jalankan `P08LibraryAppTest` setelah beberapa method selesai.
+- Untuk tiap method, tanya: data apa yang perlu dibaca dari pengguna, method apa di `Library` (atau `Member`/`LibraryItem`) yang menjawab permintaan ini, dan pesan mana dari tabel "Teks yang harus dicetak" yang dicetak untuk tiap kemungkinan hasil?
+- Semua handler berpola sama: **baca input**, **periksa**, **serahkan ke `library`**, lalu **cetak hasil**. Apakah `LibraryApp` sendiri yang memutuskan boleh/tidaknya suatu aksi, atau keputusan itu didelegasikan?
+- Cetak dengan `out`, baca dengan `readLine` dan `readInt`, bukan `System.out`/`System.in` langsung. Mengapa itu penting untuk tes otomatis? `readInt` mengembalikan -1 untuk input yang bukan bilangan positif. Kapan kamu harus memeriksa -1 itu, sebelum atau sesudah membuat objek?
+- Pesan di layar harus persis seperti tabel. Apa akibatnya kalau satu huruf, spasi, atau tanda baca berbeda?
+- `line` dipakai oleh dua menu berbeda (lihat tabel: formatnya sama untuk menu 1 dan menu 8). Apa untungnya menulis logikanya satu kali di method ini saja?
+- `run` sudah lengkap, baca dulu alurnya. Mengapa perulangan berhenti saat pilihan `0` atau saat input habis, tapi tidak untuk pilihan lain?
 
 </details>
 
 <details>
 <summary>Bantuan 2: LibraryApp (langkah per method, buka jika Bantuan 1 belum cukup)</summary>
 
-Gunakan `out` untuk mencetak dan `in` untuk membaca, bukan `System.out` dan `System.in`. Method `run`, `readLine`, dan `readInt` sudah ada di kerangka.
-
-- **`printMenu`**: satu `println` untuk judul (`=== ` + nama perpustakaan + ` ===`), sepuluh `println` untuk baris menu, lalu satu `print` (tanpa `ln`) untuk `Choose: `. Nama perpustakaan diminta dari `library`.
-- **`showItems`**: (1) ambil array dari `library`. (2) Jika panjangnya 0, cetak `No items`. (3) Jika tidak, telusuri dan cetak satu baris per koleksi. Susun barisnya dari tiga bagian: hasil `describe()`, status (cek `isAvailable()` untuk memilih `Available` atau `Borrowed`), dan `loanDays()` diikuti ` days`, dipisahkan ` | `. Karena baris ini juga dipakai `searchItems`, pertimbangkan menaruhnya di satu method bantu.
-- **`addBook`**: (1) baca `ISBN`, `Title`, lalu `Year` dengan `readInt`. (2) Jika tahun -1, cetak `Invalid number` dan hentikan method. (3) Jika `ISBN` atau judul kosong, cetak `Invalid input` dan hentikan. (4) Buat objek `Book`. (5) Baca nama penulis. Jika tidak kosong, baca negara, buat `Author`, lalu pasang ke buku. (6) Serahkan buku ke `library` dan cetak `Item added` atau `Library is full` sesuai hasilnya.
-- **`addDvd`** dan **`addMagazine`**: pola yang sama, tanpa langkah penulis. Pesan hasilnya sama dengan `addBook`, sehingga bisa dipakai bersama lewat method bantu yang menerima hasil `addItem`.
-- **`registerMember`**: (1) baca id dan nama. (2) Jika salah satunya kosong, cetak `Invalid input` dan hentikan. (3) Buat `Member`. (4) Cetak `Member registered` atau `Member ID already exists` sesuai hasil `addMember`.
-- **`lendItem`** dan **`returnItem`**: baca id dan judul, panggil method yang sesuai di `library`, lalu pilih salah satu dari dua pesan berdasarkan hasilnya. Tidak ada aturan peminjaman di sini.
-- **`searchItems`**: baca kata kunci, minta hasil dari `library`, cetak `No items found` jika kosong, dan jika tidak cetak setiap hasil dengan format yang sama seperti `showItems`.
-- **`showMembers`**: minta array anggota. Jika kosong cetak `No members`. Jika tidak, cetak satu baris per anggota dengan bentuk `id - nama (N loans)`.
-- **`Main.main`** (di `Main.java`): (1) cetak sapaan. (2) Buat `Library`. (3) Buat beberapa objek (`Book` yang sudah punya penulis, `Dvd`, `Magazine`, `Member`) dan tambahkan ke `library`. (4) Buat `LibraryApp` dengan `new Scanner(System.in)` dan `System.out`, lalu panggil `run()`.
+- **`printMenu`**: Berapa baris yang dicetak dengan pindah baris (`println`), dan baris mana yang tidak (`print`)? Bagian mana dari judul yang berasal dari `library`, bukan teks tetap?
+- **`line`**: Satu baris koleksi tersusun dari tiga bagian yang dipisah ` | `: hasil `describe()`, lalu status, lalu lama pinjam dengan akhiran ` days`. Status punya dua kemungkinan teks, method apa di `LibraryItem` yang menentukan yang mana?
+- **`showItems`**: Array apa yang diminta dari `library`? Jika kosong, pesan apa yang dicetak? Jika tidak, method `line` dipanggil berapa kali?
+- **`addBook`**: Data mana yang dibaca lebih dulu, ISBN/Title/Year atau data penulis? Ada dua kemungkinan kegagalan berbeda (`Invalid number` vs `Invalid input`). Kondisi apa yang memicu masing-masing, dan harus diperiksa sebelum objek `Book` dibuat atau sesudah? Data penulis dibaca hanya dalam satu kondisi, kondisi apa itu?
+- **`addDvd`** dan **`addMagazine`**: pola yang sama dengan `addBook` tapi tanpa langkah penulis. Prompt mana yang berubah di masing-masing?
+- **`registerMember`**: dua data apa yang dibaca, dan kapan keduanya dianggap tidak valid?
+- **`lendItem`** dan **`returnItem`**: method `Library` apa yang dipanggil masing-masing, dan dua pesan apa yang dipilih berdasarkan hasilnya?
+- **`searchItems`**: hasil pencarian bisa lebih dari satu atau kosong. Bagaimana format cetaknya dibandingkan dengan `showItems`?
+- **`showMembers`**: bentuk satu barisnya `id - nama (N loans)`. Dari method apa di `Member` kamu mendapatkan tiap bagian itu?
 
 </details>
 
